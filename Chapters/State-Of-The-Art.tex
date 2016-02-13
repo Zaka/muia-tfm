@@ -1,28 +1,81 @@
 % State Of The Art
 
-\chapter{State Of The Art} % Chapter title
+\chapter{Bitcoin Trading State Of The Art} % Chapter title
 
-\label{ch:state-of-the-art}
+\label{ch:bitcoin-trading-state-of-the-art}
 
-%----------------------------------------------------------------------
-
-Summary of State Of The Art.
-
-%----------------------------------------------------------------------
 %----------------------------------------------------------------------
 
 \section{Automated Bitcoin Trading via Machine Learning Algorithms}
 
-In this paper by \cite{madan_automated_2014} they try to forecast the
-price of BTC for periods of 24h (phase one), 10 minutes and 10 seconds
-(phase two), obtaining an accuracy of $98.7\%$ for phase one and
-$50\% - 55\%$ for phase two. The data for phase one consists of about
-25 features relating to the BTC price and payment network over the
-course of five years, recorded daily. They did a manual feature
-selection based on the research of the significance to the problem of
-forecasting. The final result is a 16 feature set collected daily. For
-the second phase the data consisted of 10-second and 10-minute
-interval BTC price.
+In this paper by \cite{madan_automated_2014} they explored several
+techniques to forecast the fluctuation of BTC price (hence, they
+predict if the price rises or decreases) for periods of 24h (phase
+one), 10 minutes and 10 seconds (phase two), obtaining an accuracy of
+$98.7\%$ for phase one and $50\% - 55\%$ for phase two.
+
+The data for phase one consists of about 25 features relating to the
+BTC price and payment network over the course of five years, recorded
+daily. For the second phase the data consisted of 10-second and 10-minute
+interval BTC price. 
+
+They did a manual feature selection based on the research of the
+significance to the problem. The final result is a 16 feature set
+collected daily.
+
+The results obtained are shown in
+\autoref{tab:madanetal-results-phase-one} for phase one and
+\autoref{tab:madanetal-results-phase-two} for phase two.
+
+The results for the phase one are excelent, and \textit{Binomial GLM}
+performs remarkably good, wich an accuracy of $0.9879$. For the second
+phase the results are not so promising, and, according to the authors
+``\textit{this can be attributed to extremely small and rapid changes
+  in the Bitcoin market that too closely depict the erratic nature of
+  the Bitcoin fluctuations}''.
+
+\begin{table}
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{cccc} 
+    \toprule
+    \tableheadline{STATISTIC} & \tableheadline{BINOMIAL GLM}
+    & \tableheadline{SVM} & \tableheadline{RANDOM FOREST} \\ \midrule
+    \textbf{Sensitivity(TPR)} & 0.9790 & 0.0348 & 1.0 \\
+    \textbf{Specificity(TNR)} & 0.9939 & 0.5514 & 0.9392 \\
+    \textbf{Precision(PPV)} & 0.9790 & 0.0839 & 0.7762 \\
+    \textbf{Accuracy(ACC)} & 0.9879 & 0.2716 & 0.9498 \\
+    \bottomrule
+  \end{tabularx}
+  \caption[First phase results by \cite{madan_automated_2014}]{First
+    phase results}
+  \label{tab:madanetal-results-phase-one}
+\end{table}
+
+
+
+
+\begin{table}
+  \myfloatalign
+  \resizebox{\columnwidth}{!}{%
+    \begin{tabularx}{\textwidth}{cccc}
+      \toprule
+      \tableheadline{STATISTIC} &
+      \tableheadline{10 SECOND GLM} &
+      \tableheadline{10 MINUTE GLM} &
+      \tableheadline{10 MINUTE RANDOM FOREST} \\ \midrule 
+      \textbf{Sensitivity(TPR)} & 0.5429 & 0.524 & 0.540 \\
+      \textbf{Specificity(TNR)} & 0.577 & 0.576 & 0.619 \\
+      \textbf{Precision(PPV)} & 0.574 & 0.551 & 0.581 \\
+      \textbf{Accuracy(ACC)} & 0.085 & 0.539 & 0.574 \\
+      \bottomrule
+    \end{tabularx}
+  }
+  \caption[Second phase results by \cite{madan_automated_2014}]{First
+    phase results}
+  \label{tab:madanetal-results-phase-two}
+
+\end{table}%
+
 
 %------------------------------------------------
 
