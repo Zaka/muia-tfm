@@ -6,27 +6,211 @@
 
 %----------------------------------------------------------------------
 
-Summary of State Of The Art.
+\section[\cite{madan_automated_2014}] {Automated Bitcoin Trading
+  via Machine Learning Algorithms}
 
-%----------------------------------------------------------------------
-%----------------------------------------------------------------------
+\label{sec:automated-bitcoin-trading-via-machine-learning-algorithms}
 
-\section{Automated Bitcoin Trading via Machine Learning Algorithms}
-
-In this paper by \cite{madan_automated_2014} they try to forecast the
-price of BTC for periods of 24h (phase one), 10 minutes and 10 seconds
-(phase two), obtaining an accuracy of $98.7\%$ for phase one and
-$50\% - 55\%$ for phase two. The data for phase one consists of about
-25 features relating to the BTC price and payment network over the
-course of five years, recorded daily. They did a manual feature
-selection based on the research of the significance to the problem of
-forecasting. The final result is a 16 feature set collected daily. For
-the second phase the data consisted of 10-second and 10-minute
+\cite{madan_automated_2014} forecast the price of BTC for periods
+of 24h (phase one) and 10 minutes/seconds (phase two), obtaining an
+accuracy of $98.7\%$
+for phase one and $50\% - 55\%$
+for phase two. The data set for \textit{first phase} consists of about
+16 features (shown in \autoref{tab:bitcoin-features-madan}) relating
+to the BTC price and payment network over the course of five years,
+recorded daily. The features were selected manually based on research
+of the significance to the problem of forecasting. For the
+\textit{second phase} the data consisted of 10-second and 10-minute
 interval BTC price.
 
-%------------------------------------------------
+In \textit{first phase} they used Binomial GLM, SVM and Random Forest.
+Binomial GLM shows higher precision \& accuracy that the other two
+algorithms.
 
-\section{Bayesian regression and Bitcoin}
+For the \textit{second phase} they used only Binomial GLM and Random
+Forest. Performing 10 second and 10 minute prediction with Binomial
+GLM and comparing with 10 minute prediction for Random Forest. It
+turns out that Random Forest shows the higher accuracy \& precision
+than GLM in both 10 seconds and 10 minutes interval prediction.
+
+\begin{table}
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{feature} & \tableheadline{definition} \\ 
+    \midrule
+    Average Confirmation Time & Ave. time to accept transaction in
+                                block \\
+    Block size & Average block size in MB \\
+    Cost per transaction percent & Miners revenue divided by the
+                                   number of transactions \\
+    Difficulty & How difficult it is to find a new block \\
+    Estimated Transaction Volume & Total output volume without change
+                                   from value \\
+    Hash Rate & Bitcoin network giga hashes per second \\
+    Market Capitalization & Number of Bitcoins in circulation * the
+                            marker price \\
+    Miners Revenue & (number of BTC mined/day * market price) +
+                     transaction fees \\
+    Number of Orphaned Blocks & Number of blocks mined/day not off
+                                blockchain \\
+    Number of TXN per block & Average number of transactions per block
+    \\ 
+    Number of TXN & Total number of unique Bitcoin transactions per
+                    day \\
+    Number of unique addresses & Number of unique Bitcoin addresses
+                                 used per day \\
+    Total Bitcoins & Historical total Number of Bitcoins mined \\
+    TXN Fees Total & BTC value of transactions fees miners earn/day \\
+    Trade Volume & USD trade volume from the top exchanges \\
+    Transactions to trade ratio & Relationship of BTC transaction
+                                  volume and USD volume \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Bitcoin features selected by
+    \cite{madan_automated_2014}}
+  \label{tab:bitcoin-features-madan}
+\end{table}
+
+\section[\cite{georgoula_using_2015}]{Using Time-Series and Sentiment
+  Analysis to detect the Determinants of Bitcoin Prices}
+
+\label{sec:using-time-series-and-sentiment-analysis}
+
+\cite{georgoula_using_2015} used time-series analysis to study the
+relationship between Bitcoin prices and fundamental economic
+variables, technological factors and measurements of collective mood
+derived from Twitter feeds. They conclude that Bitcoin price is
+positively associated with the number of Bitcoins in circulation and
+negatively associated with the Standard and Poor's 500 stock market
+index.
+
+\begin{table}
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{cX} 
+    \toprule
+    \tableheadline{Name of variable} & \tableheadline{Description} \\ 
+    \midrule
+    \textit{bcp} & Bitstamp daily closing price \\
+    \textit{totbc} & Total daily number of Bitcoins in circulation \\
+    \textit{ntran} & Total daily number of unique Bitcoin transactions
+    \\
+    \textit{bcdde} & Bitcoin days destroyed for any given transaction
+    \\
+    \textit{exrate} & Daily exchange rate between the USD and the
+    euro(\$/€) \\
+    \textit{sp} & Standar \& Poor's 500 stock market daily index \\
+    \textit{hash} & Processing power required for the secure operation
+    of Bitcoin network (in billions of hashes per second) \\
+    \textit{wiki} & Daily number of Bitcoin search queries on
+    Wikipedia \\
+    \textit{google} & Daily number of Bitcoin search queries in Google
+    \\
+    \textit{ntweets} & Daily number of Twitter posts related to
+    Bitcoins \\
+    \textit{sent} & Daily sentiment ration of Twitter posts related to
+    Bitcoins \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Bitcoin features selected by
+    \cite{georgoula_using_2015}}
+  \label{tab:bitcoin-features-georgoula-2015}
+\end{table}
+
+They used time-series to forecast the Bitcoin price and SVM to
+classify the Tweet feeds sentiment.
+
+As seen by ordinary least square regression model obtained, the paper
+suggests the next conclusions:
+
+\begin{itemize}
+\item \textit{logwiki} (representing the degree of public recognition
+  or interest in Bitcoins) and \textit{loghash} (measuring the mining
+  difficulty) have a positive impact on Bitcoin price 
+\item The exchange rate between the USD and the euro relationship is
+  negative 
+\item The sentiment ration of Twitter users, and the number of
+  Wikipedia search queries positively affects the price of Bitcoins
+\item The stock of Bitcoins has a positive long-run impact on its
+  price 
+\item The Standard and Poor's 500 index was found to have a negative
+  impact on Bitcoin prices in the long run
+\end{itemize}
+
+\section[\cite{kristoufek_what_2015}]{What are the main drivers of the
+  Bitcoin price? Evidence from Wavelet Coherence Analysis}
+\label{sec:where-are-the-main-drivers-of-the-bitcoin-price}
+
+\cite{kristoufek_what_2015} examines in this paper the potential
+drivers of Bitcoin price by means of wavelet coherence analysis of
+different variables. This paper doesn't try to perform a forecast,
+just select the variables that are \textit{``drive''} the price of
+BTC.
+
+The conclusions after the analysis are:
+\begin{itemize}
+\item The \textit{Trade Exchange Ratio} has a strong , but not
+  statistically significant at the 5\% level, relationship at high
+  scales. The price and the ratio are negatively correlated in the
+  long term
+\item Bitcoin appreciates in the long run if it is used more for
+  trade, i.e., non-exchange transactions, and hte increasing price
+  boosts the exchange transactions in the short run
+\item The money supply works as a standard supply, so that its
+  increase leads to a price decrease
+\item For the trade transactions, the increasing usage of bitcois in
+  real transactions leads to an appreciation of the bitcoin in the
+  long run
+\item For the trade volume the relationship changes in time to offer
+  any strong conclusion.
+\item Both measures of the mining difficulty (\textit{Hash} and
+  \textit{Difficulty}) are positively correlated with the price in the
+  long run
+\item In the short run, Bitcoin price and both \textit{Hash} and
+  \textit{Difficulty} relationship becomes negative
+\item The interest (\textit{Google} and \textit{Wikipedia}) in Bitcoin
+  appears to have an asymmetric effect during the bubble formation and
+  its bursting. During the bubble formation, interest boosts the
+  prices further, and during the bursting, it pushes them lower.
+\item For the \textit{FSI}, apart from the Cypriot crisis, there are
+  no longer-term time intervals during which the correlations are both
+  statistically significant and realiable
+\item Gold price apparently has no relationship with BTC price
+\item Although the USD and CNY (Chinese renminbi) markets are tightly
+  connected, there is no clear evidence that the Chinese market
+  influences the USD market.
+\end{itemize}
+
+\begin{table}
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{cX} 
+    \toprule
+    \tableheadline{Name of variable} & \tableheadline{Description} \\
+    \midrule \textit{BPI} & Bitcoin price index, is an exchange rate
+    between USD and BTC. \\
+    \textit{Total BTC} & Total Bitcoins in circulation \\
+    \textit{NumTrans} & Number of transactions excluding exchange
+    transactions \\
+    \textit{Out Val} & Estimated output volume \\
+    \textit{Trade Exchange Ratio} & Trade volume vs. transaction volume ratio \\
+    \textit{Hash} & Hash rate \\
+    \textit{Difficulty} & Current computation power of the system
+    measured in hashes \\
+    \textit{Exchange} & Time series of exchange rates between BTC and
+    various currencies \\
+    \textit{Google} & Weekly number of Bitcoin search queries in
+    Google \\
+    \textit{Wikipedia} & Daily number of Wikipedia search queries
+    related to Bitcoins \\
+    \textit{FSI} & Financial Stress Index provided by the Federal
+    Reserve Bank of Cleveland \\
+    \textit{Gold price} & Gold price for a troy ounce in Swiss francs (CHF) \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Bitcoin features selected by
+    \cite{kristoufek_what_2015}}
+  \label{tab:bitcoin-features-kristoufek}
+\end{table}
 
 %\enlargethispage{2cm}
 
