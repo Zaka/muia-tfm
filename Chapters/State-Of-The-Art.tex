@@ -137,6 +137,8 @@ suggests the next conclusions:
   impact on Bitcoin prices in the long run
 \end{itemize}
 
+%---------------------------------------------------------------------
+
 \section[\cite{kristoufek_what_2015}]{What are the main drivers of the
   Bitcoin price? Evidence from Wavelet Coherence Analysis}
 \label{sec:where-are-the-main-drivers-of-the-bitcoin-price}
@@ -211,6 +213,50 @@ The conclusions after the analysis are:
     \cite{kristoufek_what_2015}}
   \label{tab:bitcoin-features-kristoufek}
 \end{table}
+
+%---------------------------------------------------------------------
+
+\section[\cite{garcia_social_2015}]{Social signals and algorithmic
+  trading of Bitcoin}
+\label{sec:social-signals-and-algorithmic-trading-of-bitcoin}
+
+This paper by \cite{garcia_social_2015} provides a consistent approach
+that integrates various datasources in the design of algorithmic
+traders. They applied multidimensional model of vector auto-regression
+to design different types of trading algorithms. The analysis
+performed reveals that increases in opinion polarization and exchange
+volume precede rising Bitcoin prices, and that emotional valence
+pecedes opinion polarization and rising exchange volumes. They choosed
+a number of Bitcoin related variables based on the work of other
+researchers. They can be seen in
+\autoref{tab:bitcoin-features-garcia}.
+
+\begin{table}
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{cX} 
+    \toprule
+    \tableheadline{Name of variable} & \tableheadline{Description} \\
+    \midrule
+    $P(t)$ & Price \\
+    $Ret(t)$ & Return \\
+    $FX_{Vol}(t)$ & Trading volume \\
+    $BC_{Tra}(t)$ & Transaction volume in the Block Chain \\
+    $Dwn(t)$ & Amount of downloads of the most important Bitcoin client \\
+    $S(t)$ & Level of search volume in Google for the term ``bitcoin'' \\
+    $T_N(t)$ & Amount of tweets containing Bitcoin-related terms \\
+    $T_{Val}(t)$ & Emotional valence \\
+    $T_{Pol}(t)$ & Opinion polarization expressed in the tweets \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Bitcoin features selected by
+    \cite{garcia_social_2015}}
+  \label{tab:bitcoin-features-garcia}
+\end{table}
+
+%---------------------------------------------------------------------
+%---------------------------------------------------------------------
+%---------------------------------------------------------------------
+
 
 %\enlargethispage{2cm}
 
