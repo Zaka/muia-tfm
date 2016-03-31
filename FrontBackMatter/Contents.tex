@@ -2,11 +2,14 @@
 
 \refstepcounter{dummy}
 
-\pdfbookmark[1]{\contentsname}{tableofcontents} % Bookmark name visible in a PDF viewer
+\pdfbookmark[1]{\contentsname}{tableofcontents} % Bookmark name
+                                % visible in a PDF viewer 
 
-\setcounter{tocdepth}{2} % Depth of sections to include in the table of contents - currently up to subsections
+\setcounter{tocdepth}{2} % Depth of sections to include in the table
+                         % of contents - currently up to subsections 
 
-\setcounter{secnumdepth}{3} % Depth of sections to number in the text itself - currently up to subsubsections
+\setcounter{secnumdepth}{3} % Depth of sections to number in the text
+                            % itself - currently up to subsubsections 
 
 \manualmark
 \markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}}
@@ -22,61 +25,100 @@
 \let\cleardoublepage\relax
 \let\cleardoublepage\relax
 
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------
 %	List of Figures
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------
 
 \refstepcounter{dummy}
-%\addcontentsline{toc}{chapter}{\listfigurename} % Uncomment if you would like the list of figures to appear in the table of contents
-\pdfbookmark[1]{\listfigurename}{lof} % Bookmark name visible in a PDF viewer
+%\addcontentsline{toc}{chapter}{\listfigurename} % Uncomment if you
+%would like the list of figures to appear in the table of contents 
+\pdfbookmark[1]{\listfigurename}{lof} % Bookmark name visible in a PDF
+                                % viewer 
 
 \listoffigures
 
 \vspace{8ex}
 \newpage
 
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------
 %	List of Tables
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------
 
 \refstepcounter{dummy}
-%\addcontentsline{toc}{chapter}{\listtablename} % Uncomment if you would like the list of tables to appear in the table of contents
-\pdfbookmark[1]{\listtablename}{lot} % Bookmark name visible in a PDF viewer
+%\addcontentsline{toc}{chapter}{\listtablename} % Uncomment if you
+%would like the list of tables to appear in the table of contents 
+\pdfbookmark[1]{\listtablename}{lot} % Bookmark name visible in a PDF
+                                % viewer 
 
 \listoftables
         
 \vspace{8ex}
 \newpage
     
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------
 %	List of Listings
-%---------------------------------------------------------------------------------------- 
+%---------------------------------------------------------------------
 
 \refstepcounter{dummy}
-%\addcontentsline{toc}{chapter}{\lstlistlistingname} % Uncomment if you would like the list of listings to appear in the table of contents
-\pdfbookmark[1]{\lstlistlistingname}{lol} % Bookmark name visible in a PDF viewer
+%\addcontentsline{toc}{chapter}{\lstlistlistingname} % Uncomment if
+%you would like the list of listings to appear in the table of
+%contents 
+\pdfbookmark[1]{\lstlistlistingname}{lol} % Bookmark name visible in a
+                                % PDF viewer 
 
 \lstlistoflistings 
 
 \vspace{8ex}
 \newpage
        
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------
 %	Acronyms
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------------------------
 
 \refstepcounter{dummy}
-%\addcontentsline{toc}{chapter}{Acronyms} % Uncomment if you would like the acronyms to appear in the table of contents
-\pdfbookmark[1]{Acronyms}{acronyms} % Bookmark name visible in a PDF viewer
+%\addcontentsline{toc}{chapter}{Acronyms} % Uncomment if you would
+%like the acronyms to appear in the table of contents 
+\pdfbookmark[1]{Acronyms}{acronyms} % Bookmark name visible in a PDF
+                                % viewer 
 
 \markboth{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Acronyms}}
 
 \chapter*{Acronyms}
 
 \begin{acronym}[UML]
-\acro{DRY}{Don't Repeat Yourself}
-\acro{API}{Application Programming Interface}
-\acro{UML}{Unified Modeling Language}
+\acro{APN}{Arrayed probabilistic network}
+\acro{ARIMA}{Autoregressive integrated moving average}
+\acro{BFGS}{Broiden-Fletcher-Goldfarb-Shanno}
+\acro{BPNN}{Backpropagation neural networks}
+\acro{BTC}{Bitcoin}
+\acro{CBR}{Case-based reasoning}
+\acro{CFLANN}{Cascaded functional link ANN}
+\acro{CHF}{Swiss Franc}
+\acro{CNY}{Chinese Renminbi}
+\acro{DRPNN}{Dynamic ridge polynomial neural network}
+\acro{FA}{Factor analysis}
+\acro{FLANN}{Functional link ANN}
+\acro{GA}{Genetic Algorithms}
+\acro{GLM}{General Linear Models}
+\acro{LMS}{Least mean square}
+\acro{LM}{Levenberg-Marquardt}
+\acro{LR}{Logistic regression}
+\acro{NN}{Neural network}
+\acro{PCA}{Principle component analysis}
+\acro{PNN}{Probabilistic Neural Network}
+\acro{RNN}{Recurrent neural networks}
+\acro{RPROB}{Resilient propagation}
+\acro{SVM}{Support Vector Machine}
+\acro{TXN}{Transaction/s}
+\acro{USD}{United States Dollar}
+%\acro{}{}
+%\acro{}{}
+%\acro{}{}
+%\acro{}{}
 \end{acronym}  
                    
 \endgroup
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:

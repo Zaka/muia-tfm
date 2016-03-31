@@ -1,6 +1,6 @@
-% State Of The Art
+% State-Of-The-Art
 
-\chapter{Bitcoin Trading State Of The Art} % Chapter title
+\chapter{Bitcoin Trading State-Of-The-Art} % Chapter title
 
 \label{ch:bitcoin-trading-state-of-the-art}
 
@@ -34,6 +34,7 @@ turns out that Random Forest shows the higher accuracy \& precision
 than GLM in both 10 seconds and 10 minutes interval prediction.
 
 \begin{table}
+  \scriptsize
   \myfloatalign
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
@@ -86,6 +87,7 @@ negatively associated with the Standard and Poor's 500 stock market
 index.
 
 \begin{table}
+  \scriptsize
   \myfloatalign
   \begin{tabularx}{\textwidth}{cX} 
     \toprule
@@ -184,6 +186,7 @@ The conclusions after the analysis are:
 \end{itemize}
 
 \begin{table}
+  \scriptsize
   \myfloatalign
   \begin{tabularx}{\textwidth}{cX} 
     \toprule
@@ -232,6 +235,7 @@ other researchers. They can be seen in
 \autoref{tab:bitcoin-features-garcia}.
 
 \begin{table}
+  \scriptsize
   \myfloatalign
   \begin{tabularx}{\textwidth}{cX} 
     \toprule
@@ -252,6 +256,99 @@ other researchers. They can be seen in
     \cite{garcia_social_2015}}
   \label{tab:bitcoin-features-garcia}
 \end{table}
+
+%---------------------------------------------------------------------
+%---------------------------------------------------------------------
+
+\chapter{Financial forecasting State-Of-The-Art}
+\label{chap:financial-forecasting-state-of-the-art}
+
+\section[\cite{bahrammirzaee2010comparative}]{A comparative survey of
+  artificial intelligence applications in finance: artificial neural
+  networks, expert system and hybrid intelligent systems}
+\label{sec:a-comparative-survey-of-artificial-intelligence-applications}
+
+In this article by \cite{bahrammirzaee2010comparative} several
+forecasting and classification techniques are compared to three
+important AI techniques, namely, artificial neural networks, expert
+systems and hybrid intelligence systems. For the purpose of this
+thesis we are going to show the results related to ANNs in
+\autoref{tab:ann-compared-to-others}.
+
+\begin{table}[htbp]
+  \tiny
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{XXXX} 
+    \toprule
+    \tableheadline{Author/s} & \tableheadline{Domain} & \tableheadline{Method compared with} & \tableheadline{Result} \\
+    \midrule
+    \cite{kim1998graded} & Stock market index forecasting & Reined
+    PNN, APN, BPNN, RNN and CBR & CBR performs better \\ 
+    \cite{nasir2001selecting} & Bankruptcy prediction & Fully
+    connected BPNN versus interconnected BPNN & Interconnected BPNN
+    performs better \\ 
+    \cite{zhang2001time} & Exchange rate prediction & Ensemble NNs
+    with single NN & Ensemble NNs perform better \\ 
+    \cite{wang2004prediction} & Stock market prediction & Gradient
+    descent with adaptive learning rate BP, gradient descent with
+    momentum \& adaptive learning rate BP, LM BP, BFGS BP,
+    quasi-Newton and RPROB BP & LM BPNN performs better \\ 
+    \cite{zhang2004neural} & Earning per share forecasting & BPNN with
+    ARIMA and LR & BPNN perform better \\ 
+    \cite{majhi2009efficient} & Exchange rate prediction & CFLANN with
+    FLANN and standard LMS based forecasting model & CFLANN perform
+    better \\ 
+    \cite{tsai2009feature} & Feature selection in bankruptcy & $T$
+    test, correlation matrix, stepwise regression, PCA and FA for
+    feature selection in BPNN & $T$ test method is best method for
+    BPNN future selection \\  
+    \cite{leu2009distance} & Exchange rate forecasting &
+    Distance-based fuzzy time series with random walk model and ANN &
+    Distance-based fuzzy time series perform better \\ 
+    \cite{ghazali2009non} & Financial time series prediction & DRPNN
+    with Pi-Sigma NN and the ridge polynomial NN & DRPNN performs
+    better \\ 
+    \cite{cao2009neural} & Earning per share forecasting & BPNN
+    (suggests \cite{zhang2004neural}) with GA) & GA performs better \\ 
+    \bottomrule
+  \end{tabularx}
+  \caption{Comparisons between ANN model/s in financial prediction and
+    planning in \cite{bahrammirzaee2010comparative}}
+  \label{tab:ann-compared-to-others}
+\end{table}
+
+I want to include the next quote from the article because describes
+very well how NNs behave in a financial scenario: \textit{``Regarding
+  NNs, the empirical results of these comparative studies indicate
+  that the success of NNs in financial domain, especially in financial
+  prediction and planning, is very encouraging. (However, while NNs
+  often outperform the more traditional and statistical approaches but
+  this is not always the case. There are some studies in which other
+  traditional methods, or intelligent approach outperforms NNs.) This
+  success is due to some unique characteristics of NNs in financial
+  market like their numeric nature, no requirement to any data
+  distribution assumptions (for inputs) and model estimators and
+  finally, their capability to update the data. Despite this success,
+  this paper could not conclude that NNs are very accurate techniques
+  in financial market because at the first, among these studies, BPNN
+  is the most popular NN training technique. However, BPNN suffers
+  from the potential problems. One of the problems of BPNN is local
+  minimum convergence. Because the gradient search process proceeds in
+  a point-to-point mode and is intrinsically local in scope,
+  convergence to local rather than global minima is a very
+  possibility. Also BP training method is very slow and takes too much
+  time to converge. Besides, it can over fit the training data.
+  Secondly, it is difficult, if not impossible, to determine the
+  proper size and structure of a neural net to solve a given problem.
+  Therefore, the architectural parameters are generally designed by
+  researchers and via trial and errors and since these parameters
+  determine outputs of NNs, their accuracy and performance are subject
+  to numerous errors. Also sometimes NNs are incapable to recognize
+  patterns and establish relevant relationships between various
+  factors, which are important reasons to reduce their performance.
+  Finally, NNs learn based on past occurrences, which may not be
+  repeated, especially in financial markets and in current financial
+  crisis.''}
 
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------
