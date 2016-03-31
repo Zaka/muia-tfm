@@ -350,6 +350,74 @@ very well how NNs behave in a financial scenario: \textit{``Regarding
   repeated, especially in financial markets and in current financial
   crisis.''}
 
+\section[\cite{atsalakis2009surveying}]{Surveying stock market
+  forecasting techniques - Part II: Soft computing methods}
+\label{sec:surveing-stock-market-forecasting-techniques:part2}
+
+This paper enumerates over a 100 scientific articles applied to stock
+market forecasting with a focus on neural networks and neuro-fuzzy
+techniques. \cite{atsalakis2009surveying} enumerate the modeling
+techniques used to forecast, the stock markets whose information are
+used (not very useful for this thesis because we are interested in
+Bitcoin and the information source is clear), the input variables,
+which we summarize in \autoref{tab:input-variables-atsalakis2009},
+whether they perform data processing, sample sizes, network layers,
+membership functions, validation set and training method. The also
+show the methods used to compare with for each article, but don't give
+the conclusions made in each article. Another very interesting
+information are the \textit{model performance measures} where the
+measures are classified as statistical and non-statistical measures.
+\textit{``Statistical measures include the root mean square error
+  (RMSE), the mean absolute error (MAE) and the mean squared
+  prediction error (MSPE), statistical indicators like the
+  autocorrelation, the correlation coefficient, the mean absolute
+  deviation, the squared correlation and the standard deviation.''}
+\textit{``Non-statistical performance measures include measures that
+  are related with the economical side of the forecast. The most
+  common used performance measure is the so called Hit Rate that
+  measures the percentage of correct predictions of the model. Another
+  two measures that deal with the profitability of the model are the
+  annual rate of return and the average annual profit of the model''}
+
+\begin{table}[htbp]
+  %\scriptsize
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{X} 
+    \toprule
+    \tableheadline{Variable set} \\
+    \midrule
+    Eight input variables (NASDAQ and 7 indexes) \\ 
+    Opening, lowest, highest and closing index price \\ 
+    Index values of five previous days\\ 
+    Ten variables (five Technical Analysis factors, price of last 5
+    days) \\
+    Eight fundamental analysis indicators \\
+    Change of stock prices in last two sessions \\
+    Three technical analysis indexes \\
+    Volume, opening, lowest, highest and closing index price \\
+    Fifteen technical analysis factors \\ Changes in stock prices \\
+    Volume ratio, relative strength index, rate of change, slow \%D \\
+    Daily closing value \\
+    Technical Analysis variables \\
+    FTSE index, exchange rate, futures market etc \\
+    Beta, cap, b/m \\
+    Seven economical indicators \\
+    \bottomrule
+  \end{tabularx}
+  \caption{16 example sets of variables used by different articles extracted 
+    from \cite{atsalakis2009surveying}}
+  \label{tab:input-variables-atsalakis2009}
+\end{table}
+
+As a conclusion, they mention that \textit{``The observation is that
+  neural networks and neuro-fuzzy models are suitable for stock market
+  forecasting. Experiments demonstrate that soft computing techniques
+  outperform conventional models in most cases. They return better
+  results as trading systems and higher forecasting accuracy. However,
+  difficulties arise when defining the structure of the model (the
+  hidden layers the neurons etc.). For the time being, the structure
+  of the model is a matter of trial and error procedures.``}
+
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------
