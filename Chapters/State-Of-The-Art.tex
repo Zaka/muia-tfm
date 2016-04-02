@@ -73,6 +73,8 @@ than GLM in both 10 seconds and 10 minutes interval prediction.
   \label{tab:bitcoin-features-madan}
 \end{table}
 
+%---------------------------------------------------------------------
+
 \section[\cite{georgoula_using_2015}]{Using Time-Series and Sentiment
   Analysis to detect the Determinants of Bitcoin Prices}
 
@@ -263,6 +265,8 @@ other researchers. They can be seen in
 \chapter{Financial forecasting State-Of-The-Art}
 \label{chap:financial-forecasting-state-of-the-art}
 
+%---------------------------------------------------------------------
+
 \section[\cite{bahrammirzaee2010comparative}]{A comparative survey of
   artificial intelligence applications in finance: artificial neural
   networks, expert system and hybrid intelligent systems}
@@ -350,6 +354,8 @@ very well how NNs behave in a financial scenario: \textit{``Regarding
   repeated, especially in financial markets and in current financial
   crisis.''}
 
+%---------------------------------------------------------------------
+
 \section[\cite{atsalakis2009surveying}]{Surveying stock market
   forecasting techniques - Part II: Soft computing methods}
 \label{sec:surveing-stock-market-forecasting-techniques:part2}
@@ -359,28 +365,28 @@ market forecasting with a focus on neural networks and neuro-fuzzy
 techniques. \cite{atsalakis2009surveying} enumerate the modeling
 techniques used to forecast, the stock markets whose information are
 used (not very useful for this thesis because we are interested in
-Bitcoin and the information source is clear), the input variables,
+Bitcoin where the information source is clear), the input variables,
 which we summarize in \autoref{tab:input-variables-atsalakis2009},
 whether they perform data processing, sample sizes, network layers,
-membership functions, validation set and training method. The also
-show the methods used to compare with for each article, but don't give
+membership functions, validation set and training method. They also
+show the methods used to compare with for each article without giving
 the conclusions made in each article. Another very interesting
 information are the \textit{model performance measures} where the
-measures are classified as statistical and non-statistical measures.
+measures are classified as statistical and non-statistical measures:
 \textit{``Statistical measures include the root mean square error
   (RMSE), the mean absolute error (MAE) and the mean squared
   prediction error (MSPE), statistical indicators like the
   autocorrelation, the correlation coefficient, the mean absolute
-  deviation, the squared correlation and the standard deviation.''}
-\textit{``Non-statistical performance measures include measures that
-  are related with the economical side of the forecast. The most
-  common used performance measure is the so called Hit Rate that
-  measures the percentage of correct predictions of the model. Another
-  two measures that deal with the profitability of the model are the
-  annual rate of return and the average annual profit of the model''}
+  deviation, the squared correlation and the standard deviation. [...]
+  Non-statistical performance measures include measures that are
+  related with the economical side of the forecast. The most common
+  used performance measure is the so called Hit Rate that measures the
+  percentage of correct predictions of the model. Another two measures
+  that deal with the profitability of the model are the annual rate of
+  return and the average annual profit of the model''}
 
 \begin{table}[htbp]
-  %\scriptsize
+  \scriptsize
   \myfloatalign
   \begin{tabularx}{\textwidth}{X} 
     \toprule
@@ -409,7 +415,7 @@ measures are classified as statistical and non-statistical measures.
   \label{tab:input-variables-atsalakis2009}
 \end{table}
 
-As a conclusion, they mention that \textit{``The observation is that
+As a conclusion, they mention that: \textit{``The observation is that
   neural networks and neuro-fuzzy models are suitable for stock market
   forecasting. Experiments demonstrate that soft computing techniques
   outperform conventional models in most cases. They return better
@@ -417,6 +423,141 @@ As a conclusion, they mention that \textit{``The observation is that
   difficulties arise when defining the structure of the model (the
   hidden layers the neurons etc.). For the time being, the structure
   of the model is a matter of trial and error procedures.``}
+
+%---------------------------------------------------------------------
+
+\section[\cite{carpinteiro2012forecasting}]{Forecasting models for
+  prediction in time series}
+\label{sec:forecasting-models-for-prediction-in-time-series}
+
+\cite{carpinteiro2012forecasting} give a comparison of three
+forecasting models: a multilayer perceptron, a support vector machine,
+and a hierarchical model. After performing six experiments running
+through time series of the stock market fund on Bank of Brasil, they
+concluded that the performance of HM is better than SVM and MLP. As a
+possible explanation, they suggest that the superiority of HM can be
+due to its hierarchical architecture.
+
+%---------------------------------------------------------------------
+
+\section[\cite{krollner2010financial}]{Financial Time Series
+  Forecasting with Machine Learning Techniques: A Survey}
+\label{sec:financial-time-series-forecasting-with-machine-learning}
+
+\cite{krollner2010financial} compare 46 forecasting studies. They
+divide the papers into artificial neural network (ANN) based and
+evolutionary \& optimisation based techniques. Related to this
+division they show the amount of studies using each technique, which
+we reproduce in \autoref{tab:reviewed-papers-machine-learning}.
+
+\begin{table}[htbp]
+  \scriptsize
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{Xc} 
+    \toprule
+    \tableheadline{Technology} & \tableheadline{Number} \\ 
+    \midrule
+    ANN based & 21 \\
+    Evolutionary \& optimisation techniques & 4 \\
+    Multiple / hybrid & 15 \\
+    Other & 6 \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Reviewed papers classified by machine learning technique by
+    \cite{krollner2010financial}} 
+  \label{tab:reviewed-papers-machine-learning}
+\end{table}
+
+When it comes to the prediction periods, they categorised it in one
+day, one week, and one month ahead predictions, shown in
+\autoref{tab:reviewed-classified-time-frame}
+
+\begin{table}[htbp]
+  \scriptsize
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{Xc} 
+    \toprule
+    \tableheadline{Time-frame} & \tableheadline{Number} \\ 
+    \midrule
+    Day & 31 \\
+    Week & 3 \\
+    Month & 3 \\
+    Multiple / Other & 9 \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Reviewed papers classified by forecasting time-frame by
+    \cite{krollner2010financial}} 
+  \label{tab:reviewed-classified-time-frame} 
+\end{table}
+
+The 75\% of papers reviewed use some sort of lagged index data as
+input variables. Most commonly used parameters are daily opening,
+high, low and close prices. Also several technical indicators are
+used, been the more important: Simple moving average (SMA),
+exponential moving average (EMA), relative strength index (RSI), rate
+of change (ROC), moving average convergence / divergence (MACD) and
+William's oscillator and average true range (ATR).
+\autoref{tab:reviewed-papers-by-input-variables} displays the number
+of studies using the different input variables.
+
+\begin{table}[htbp]
+  \scriptsize
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{Xc} 
+    \toprule
+    \tableheadline{Input} & \tableheadline{Number} \\ 
+    \midrule
+    Lagged Index Data & 35 \\
+    Trading volume & 4 \\
+    Technical Indicators & 13 \\
+    Oil Price & 4 \\
+    S\&P 500 / NASDAQ /Dow Jones (non US studies) & 4 \\
+    Unemployment Rate & 1 \\
+    Money Supply & 3 \\
+    Exchange Rates & 3 \\
+    Gold Price & 3 \\
+    Short \& Long Term Interest Rates & 6 \\
+    Others & 10 \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Reviewed papers classified by input variables by
+    \cite{krollner2010financial}} 
+  \label{tab:reviewed-papers-by-input-variables}
+\end{table}
+
+The evaluation methods are diverse, and the categories used are buy \&
+hold, random walk, statistical techniques, other machine learning
+techniques , and no benchmark model. The relationship between
+categories and the studies is reproduced in
+\autoref{tab:papers-by-evaluation-models}.
+
+\begin{table}[htbp]
+  \scriptsize
+  \myfloatalign
+  \begin{tabularx}{\textwidth}{Xc} 
+    \toprule
+    \tableheadline{Evaluation Model} & \tableheadline{Number} \\ 
+    \midrule
+    Buy \& Hold & 9 \\
+    Random Walk & 6 \\
+    Statistical Techniques & 18 \\
+    Other Machine Learning Techniques & 28 \\
+    No Benchmark Model & 7 \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Reviewed papers classified by machine learning technique by
+    \cite{krollner2010financial}} 
+  \label{tab:papers-by-evaluation-models}
+\end{table}
+
+An interesting quote made by \cite{krollner2010financial} is:
+\textit{``Over 80\% of the papers report that their model outperformed
+  the benchmark model. However, most analysed studies do not consider
+  real world constraints like trading costs and splippage.``}
+
+As one of the conclusions of the review they state that artificial
+neural networks are the dominant techniques for the field of financial
+forecasting.
 
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------
