@@ -1,0 +1,2283 @@
+% State Of The Art
+
+\chapter{Implementation} % Chapter title
+
+\label{ch:implementation}
+
+%----------------------------------------------------------------------
+
+\section{Statistical variable analysis}
+\label{sec:stat-var-analysis}
+
+This section describes the basic properties of each feature we are
+using in this particular thesis. Among them we have the count of all
+variables, mean, standard deviation, min value, max value, quartiles.
+We also add the histogram to have an idea of how the distribution of
+the variable works and the boxplot that can help us determine if there
+are outliers in the dataset.
+
+\subsection{Average Block Size}
+\label{sec:avg-block-size}
+
+This variable, called avg-block-size represent the average size of the
+blocks in one day measured in MB. One real number data point each day,
+at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/avg-block-size-over-time}} 
+  \caption{Average Block Size Over Time}
+  \label{fig:avg-block-size-over-time}
+\end{figure}
+
+In \autoref{fig:avg-block-size-over-time} can be seen how the average
+block size has been increasing since the creation of Bitcoin. In 2015
+the average block size starts to approach 1 MB until the beggining of
+2016, where it starts to shrink.
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/avg-block-size-histogram}} 
+  \caption{Average Block Size Histogram}
+  \label{fig:avg-block-size-histogram}
+\end{figure}
+
+\begin{table}
+  \myfloatalign
+  \small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678$\\
+    mean   & $0.165078$\\
+    median & $0.092355$\\
+    std    & $0.209430$\\
+    min    & $0.000000$\\
+    $25$\% & $0.000899$\\
+    $50$\% & $0.092356$\\
+    $75$\% & $0.242478$\\
+    max    & $0.918519$\\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for 
+    \textit{Average Block Size}}
+  \label{tab:stats-avg-block-size}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+    {\includegraphics[width=1\linewidth]
+      {gfx/avg-block-size-boxplot}}               
+    \caption{Average Block Size Boxplot}
+    \label{fig:avg-block-size-boxplot}
+\end{figure}
+
+\clearpage
+
+
+
+%----------------------------------------------------------------------
+
+\subsection{Bitcoin Days Destroyed}
+\label{sec:bitcoin-days-destroyed}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-over-time}}
+  \caption{Bitcoin Days Destroyed Over Time}
+  \label{fig:bitcoin-days-destroyed-over-time}
+\end{figure}
+
+Bitcoin Days Destroyed is a weighted measure of aggregate economic
+activity, placing value on transacted coins in proportion to the time
+they have spent idle on the Bitcoin blockchain. For any given
+transaction, Days Destroyed is calculated by multiplying its estimated
+transaction value by the number of days since the coins within the
+transaction were last spent. Bitcoin Days Destroyed is a useful proxy
+for measuring growth in real value transacted on the Bitcoin
+blockchain over time, since it controls for rapid movement of coins
+between wallets (potentially owned by just one entity). One integer
+data point each day, at 18:15:05, spanning from 03/01/2009 to
+03/05/2016.
+
+To better understand this variable we include a quote extracted from
+\href{http://bitcoin.stackexchange.com/questions/845/what-are-bitcoin-days-destroyed}{Bitcoin
+  Beta | Stack Exchange}: 
+
+``\textit{The idea of "bitcoin days destroyed" came about because it was
+  realised that total transaction volume per day might be an
+  inappropriate measure of the level of economic activity in Bitcoin.
+  After all, someone could be sending the same money back and forth
+  between their own addresses repeatedly. If you sent the same 50 btc
+  back and forth 20 times, it would look like 1000 btc worth of
+  activity, while in fact it represents almost nothing in terms of
+  real transaction volume.}
+
+\textit{With "bitcoin days destroyed", the idea is instead to give more
+  weight to coins which haven't been spent in a while. To do this, you
+  multiply the amount of each transaction by the number of days since
+  those coins were last spent. So, 1 bitcoin that hasn't been spent in
+  100 days (1 bitcoin * 100 days) counts as much as 100 bitcoins that
+  were just spent yesterday (100 bitcoins * 1 day). Because you can
+  think of these "bitcoin days" as building up over time until a
+  transaction actually occurs, the actual measure is called "bitcoin
+  days destroyed". This is believed to give a better indication of how
+  much real economic activity is occurring on the bitcoin network.}
+
+\textit{  So how well does it work? Well, it's still not perfect, because the
+  other day I moved some coins out of a wallet they've been in for
+  several months without spending them or giving them away. And some
+  genuine businesses have very rapid turnover in bitcoins, so they're
+  not being measured well by this method. But it does do a good job of
+  filtering out the "noise" of bitcoins that are just "bouncing
+  around" without really going anywhere. The graph of overall bitcoin
+  days destroyed is believed to show that the genuine level of
+  activity in the Bitcoin economy is continually increasing--it's not
+  just one person experimenting by rapidly sending the same coins back
+  and forth, flooding the network with meaningless chatter. Looks
+  pretty good, hey?}''
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.679000e+03$ \\
+    mean   & $4.146916e+06$ \\
+    median & $2456794.0$ \\
+    std    & $7.778546e+06$ \\
+    min    & $0.000000e+00$ \\
+    25\%   & $5.017520e+05$ \\
+    50\%   & $2.456794e+06$ \\
+    75\%   & $4.745530e+06$ \\
+    max    & $1.732980e+08$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Bitcoin Days Destroyed}}
+  \label{tab:bitcoin-days-destroyed}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-histogram}}
+  \caption{Bitcoin Days Destroyed Histogram}
+  \label{fig:bitcoin-days-destroyed-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-boxplot}}
+  \caption{Bitcoin Days Destroyed Boxplot}
+  \label{fig:bitcoin-days-destroyed-boxplot}
+\end{figure}
+
+\clearpage
+
+%----------------------------------------------------------------------
+
+\subsection{Bitcoin Days Destroyed Min Month}
+\label{sec:bitcoin-days-destroyed-min-month}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-min-month-over-time}}
+  \caption{Bitcoin Days Destroyed Min Month Over Time}
+  \label{fig:bitcoin-days-destroyed-min-month-over-time}
+\end{figure}
+
+Bitcoin Days Destroyed filtered by minimum input age of 1 month. One
+integer data point each day at 18:15:05, spanning from 03/01/2009 to
+03/05/2016.  
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.679000e+03$ \\
+    mean   & $3.649039e+06$ \\
+    median & $1868139$      \\
+    std    & $7.629002e+06$ \\
+    min    & $0.000000e+00$ \\
+    25\%   & $3.028175e+05$ \\
+    50\%   & $1.868139e+06$ \\
+    75\%   & $4.001042e+06$ \\
+    max    & $1.727464e+08$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Bitcoin Days Destroyed Min Month}}
+  \label{tab:bitcoin-days-destroyed-min-month}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-min-month-histogram}}
+  \caption{Bitcoin Days Destroyed Min Month Histogram}
+  \label{fig:bitcoin-days-destroyed-min-month-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-min-month-boxplot}}
+  \caption{Bitcoin Days Destroyed Min Month Boxplot}
+  \label{fig:bitcoin-days-destroyed-min-month-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Bitcoin Days Destroyed Min Week}
+\label{sec:bitcoin-days-destroyed-min-week}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-min-week-over-time}}
+  \caption{Bitcoin Days Destroyed Min Week Over Time}
+  \label{fig:bitcoin-days-destroyed-min-week-over-time}
+\end{figure}
+
+Bitcoin Days Destroyed filtered by minimum input age of 1 week. One
+integer data point each day at 18:15:05, spanning from 03/01/2009 to
+03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.679000e+03$ \\
+    mean   & $3.947443e+06$ \\
+    median & $2210053$      \\
+    std    & $7.721971e+06$ \\
+    min    & $0.000000e+00$ \\
+    25\%   & $4.384805e+05$ \\
+    50\%   & $2.210053e+06$ \\
+    75\%   & $4.454368e+06$ \\
+    max    & $1.730718e+08$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Bitcoin Days Destroyed Min
+      Week}} 
+  \label{tab:bitcoin-days-destroyed-min-week}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-min-week-histogram}}
+  \caption{Bitcoin Days Destroyed Min Week Histogram}
+  \label{fig:bitcoin-days-destroyed-min-week-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-min-week-boxplot}}
+  \caption{Bitcoin Days Destroyed Min Week Boxplot}
+  \label{fig:bitcoin-days-destroyed-min-week-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Bitcoin Days Destroyed Min Year}
+\label{sec:bitcoin-days-destroyed-min-year}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-min-year-over-time}}
+  \caption{Bitcoin Days Destroyed Min Year Over Time}
+  \label{fig:bitcoin-days-destroyed-min-year-over-time}
+\end{figure}
+
+Bitcoin Days Destroyed filtered by minimum input age of 1 year. One
+integer data point each day at 18:15:05, spanning from 03/01/2009 to
+03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.679000e+03$ \\
+    mean   & $1.774081e+06$ \\
+    median & $416483.0$     \\
+    std    & $6.404385e+06$ \\
+    min    & $0.000000e+00$ \\
+    25\%   & $0.000000e+00$ \\
+    50\%   & $4.164830e+05$ \\
+    75\%   & $1.568172e+06$ \\
+    max    & $1.702367e+08$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Bitcoin Days Destroyed Min
+      Year}} 
+  \label{tab:bitcoin-days-destroyed-min-year}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-min-year-histogram}}
+  \caption{Bitcoin Days Destroyed Min Year Histogram}
+  \label{fig:bitcoin-days-destroyed-min-year-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-min-year-boxplot}}
+  \caption{Bitcoin Days Destroyed Min Year Boxplot}
+  \label{fig:bitcoin-days-destroyed-min-year-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Bitcoin Days Destroyed Cumulative}
+\label{sec:bitcoin-days-destroyed-cumulative}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-cumulative-over-time}}
+  \caption{Bitcoin Days Destroyed Cumulative Over Time}
+  \label{fig:bitcoin-days-destroyed-cumulative-over-time}
+\end{figure}
+
+Bitcoin Days Destroyed is a measure of the transaction volume of
+Bitcoin. If someone has 100 BTC that they received a week ago and they
+spend it then 700 bitcoin days have been destroyed. If they take those
+100BTC and send them to several addresses and then spend them then
+although the total transaction volume could be arbitrarily large the
+number of bitcoin days destroyed is still 700. One integer data point
+each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.679000e+03$ \\
+    mean   & $3.609471e+09$ \\
+    median & $2265772771.0$ \\
+    std    & $3.572547e+09$ \\
+    min    & $0.000000e+00$ \\
+    25\%   & $1.817693e+08$ \\
+    50\%   & $2.265773e+09$ \\
+    75\%   & $6.971917e+09$ \\
+    max    & $1.110959e+10$ \\ 
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Bitcoin Days Destroyed Cumulative}}
+  \label{tab:bitcoin-days-destroyed-cumulative}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-cumulative-histogram}}
+  \caption{Bitcoin Days Destroyed Cumulative Histogram}
+  \label{fig:bitcoin-days-destroyed-cumulative-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/bitcoin-days-destroyed-cumulative-boxplot}}
+  \caption{Bitcoin Days Destroyed Cumulative Boxplot}
+  \label{fig:bitcoin-days-destroyed-cumulative-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Block Size}
+\label{sec:block-size}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/block-size-over-time}}
+  \caption{Block Size OverTime}
+  \label{fig:block-size-over-time}
+\end{figure}
+
+The total size (in MB) of all block headers and transactions. Not
+including database indexes. One real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$       \\
+    mean   & $9.727391$          \\
+    median & $6.219650292785771$ \\
+    std    & $13.268846$         \\
+    min    & $0.000000$          \\
+    25\%   & $1.301186$          \\
+    50\%   & $6.219650$          \\
+    75\%   & $10.401306$         \\
+    max    & $90.202095$         \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Block Size}}
+  \label{tab:block-size}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/block-size-histogram}}
+  \caption{Block Size Histogram}
+  \label{fig:block-size-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/block-size-boxplot}}
+  \caption{Block Size Boxplot}
+  \label{fig:block-size-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Cost Per Transaction}
+\label{sec:cost-per-transaction}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/cost-per-transaction-over-time}}
+  \caption{Cost Per Transaction Over Time}
+  \label{fig:cost-per-transaction-over-time}
+\end{figure}
+
+A chart showing miners revenue divided by the number of transactions.
+One real number data point each day, at 18:15:05, spanning from
+03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$  \\
+    mean   & $12371.132188$ \\
+    median & $2531.5$       \\
+    std    & $17421.465881$ \\
+    min    & $0.000000$     \\
+    25\%   & $1.000000$     \\
+    50\%   & $2531.500000$  \\
+    75\%   & $20008.500000$ \\
+    max    & $67060.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Cost Per Transaction}}
+  \label{tab:cost-per-transaction}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/cost-per-transaction-histogram}}
+  \caption{Cost Per Transaction Histogram}
+  \label{fig:cost-per-transaction-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/cost-per-transaction-boxplot}}
+  \caption{Cost Per Transaction Boxplot}
+  \label{fig:cost-per-transaction-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Cost Per Transaction Percent}
+\label{sec:cost-per-transaction-percent}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/cost-per-transaction-percent-over-time}}
+  \caption{Cost Per Transaction Percent Over Time}
+  \label{fig:cost-per-transaction-percent-over-time}
+\end{figure}
+
+A chart showing miners revenue as percentage of the transaction
+volume. One real number data point each day, at 18:15:05, spanning
+from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$       \\
+    mean   & $23603.541449$      \\
+    median & $3.283375136886966$ \\
+    std    & $810554.930805$     \\
+    min    & $0.000000$          \\
+    25\%   & $1.580112$          \\
+    50\%   & $3.283375$          \\
+    75\%   & $9.606991$          \\
+    max    & $36500000.000000$   \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Cost Per Transaction Percent}}
+  \label{tab:cost-per-transaction-percent}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/cost-per-transaction-percent-histogram}}
+  \caption{Cost Per Transaction Percent Histogram}
+  \label{fig:cost-per-transaction-percent-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/cost-per-transaction-percent-boxplot}}
+  \caption{Cost Per Transaction Percent Boxplot}
+  \label{fig:cost-per-transaction-percent-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Difficulty}
+\label{sec:difficulty}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/difficulty-over-time}}
+  \caption{Difficulty Over Time}
+  \label{fig:difficulty-over-time}
+\end{figure}
+
+A relative measure of how difficult it is to find a new block. The
+difficulty is adjusted periodically as a function of how much hashing
+power has been deployed by the network of miners. One real number data
+point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.678000e+03$      \\
+    mean   & $1.683580e+10$      \\
+    median & $2440642.606915964$ \\
+    std    & $3.561708e+10$      \\
+    min    & $0.000000e+00$      \\
+    25\%   & $3.091737e+03$      \\
+    50\%   & $2.440643e+06$      \\
+    75\%   & $1.681846e+10$      \\
+    max    & $1.786783e+11$      \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Difficulty}}
+  \label{tab:difficulty}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/difficulty-histogram}}
+  \caption{Difficulty Histogram}
+  \label{fig:difficulty-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/difficulty-boxplot}}
+  \caption{Difficulty Boxplot}
+  \label{fig:difficulty-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Estimated Transaction Volume}
+\label{sec:estimated-transaction-volume}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/estimated-transaction-volume-over-time}}
+  \caption{Estimated Transaction Volume Over Time}
+  \label{fig:estimated-transaction-volume-over-time}
+\end{figure}
+
+The total estimated value of transactions on the Bitcoin blockchain
+(does not include coins returned to sender as change). One integer
+data point each day, at 18:15:05, spanning from 03/01/2009 to
+03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2679.000000$    \\
+    mean   & $157340.920119$  \\
+    median & $118843.0$       \\
+    std    & $282285.024788$  \\
+    min    & $0.000000$       \\
+    $25$\% & $30553.000000$   \\
+    $50$\% & $118843.000000$  \\
+    $75$\% & $210442.000000$  \\
+    max    & $5825066.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Estimated Transaction Volume}}
+  \label{tab:estimated-transaction-volume}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/estimated-transaction-volume-histogram}}
+  \caption{Estimated Transaction Volume Histogram}
+  \label{fig:estimated-transaction-volume-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/estimated-transaction-volume-boxplot}}
+  \caption{Estimated Transaction Volume Boxplot}
+  \label{fig:estimated-transaction-volume-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Estimated Transaction Volume USD}
+\label{sec:estimated-transaction-volume-usd}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/estimated-transaction-volume-usd-over-time}}
+  \caption{Estimated Transaction Volume USD Over Time}
+  \label{fig:estimated-transaction-volume-usd-over-time}
+\end{figure}
+
+The Estimated Transaction Volume in USD value. One integer data point
+each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.679000e+03$ \\
+    median & $2481424.0$    \\
+    mean   & $3.018470e+07$ \\
+    std    & $4.923048e+07$ \\
+    min    & $0.000000e+00$ \\
+    $25$\% & $5.086000e+03$ \\
+    $50$\% & $2.481424e+06$ \\
+    $75$\% & $4.761785e+07$ \\
+    max    & $5.787707e+08$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Estimated Transaction Volume USD}}
+  \label{tab:estimated-transaction-volume-usd}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/estimated-transaction-volume-usd-histogram}}
+  \caption{Estimated Transaction Volume USD Histogram}
+  \label{fig:estimated-transaction-volume-usd-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/estimated-transaction-volume-usd-boxplot}}
+  \caption{Estimated Transaction Volume USD Boxplot}
+  \label{fig:estimated-transaction-volume-usd-boxplot}
+\end{figure}
+
+\clearpage
+
+%----------------------------------------------------------------------
+
+\subsection{Euro price in USD}
+\label{sec:euro-price-in-usd}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/euro-price-in-usd-over-time}} 
+  \caption{Euro price in USD Over Time}
+  \label{fig:euro-price-in-usd-over-time}
+\end{figure}
+
+Euro price in USD provided by the European Central Bank from the
+creation of the Euro. One real data entry per day, spanning from
+04/01/1999 to 10/05/2016.
+
+This dataset has latent values. We have used interpolation in order to
+fill the missing values.
+
+As shown in \autoref{fig:euro-price-in-usd-over-time} the value of Euro
+has been above that of the USD from its creation, been the period of
+2000 through 2003 its closer price to each other. From 2003 to 2007
+the price of the Euro increased, coinciding with an increase on the
+interest imposed by the BCE. This increase in the interest of the
+credits is followed by the collapse of the housing bubble in 2007,
+where the price of the Euro kept increasing, altough the interest was
+maintained by the BCE until 2009 where the BCE started to lower it.
+The increase in the Euro price is probably due to strategies of the
+Federal Reserve to lower the price of the USD. Finally in 2015, the
+BCE lowered the interests of credits approaching the $0.0\%$, and
+that's reflected with a decrease in the price of the Euro with respect
+to USD.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count & 4443\\
+    mean  & 1.216306\\
+    median & 1.2579\\
+    std   & 0.177679\\
+    min   & 0.825200\\
+    25\%  & 1.088300\\
+    50\%  & 1.257900\\
+    75\%  & 1.345050\\
+    max   & 1.599000\\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Euro price in USD}}
+  \label{tab:euro-price-in-usd}
+\end{table}
+
+There are 62 missing values in the data which has been interpolated
+after obtaining the descriptive variables of
+\autoref{tab:euro-price-in-usd}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/euro-price-in-usd-histogram}} 
+  \caption{Euro price in USD Histogram}
+  \label{fig:euro-price-in-usd-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/euro-price-in-usd-boxplot}}
+  \caption{Euro price in USD Boxplot}
+  \label{fig:euro-price-in-usd-boxplot}
+\end{figure}
+
+\clearpage
+
+%----------------------------------------------------------------------
+
+\subsection{Hash Rate}
+\label{sec:hash-rate}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/hash-rate-over-time}}
+  \caption{Hash Rate Over Time}
+  \label{fig:hash-rate-over-time}
+\end{figure}
+
+The estimated number of giga hashes per second (billions of hashes per
+second) the Bitcoin network is performing. One real number data point
+each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.678000e+03$      \\
+    mean   & $1.265485e+08$      \\
+    median & $19063.08687085293$ \\
+    std    & $2.683517e+08$      \\
+    min    & $0.000000e+00$      \\
+    $25$\% & $2.973922e+01$      \\
+    $50$\% & $1.906309e+04$      \\
+    $75$\% & $1.250993e+08$      \\
+    max    & $1.465554e+09$      \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Hash Rate}}
+  \label{tab:hash-rate}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/hash-rate-histogram}}
+  \caption{Hash Rate Histogram}
+  \label{fig:hash-rate-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/hash-rate-boxplot}}
+  \caption{Hash Rate Boxplot}
+  \label{fig:hash-rate-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Market Capitalization}
+\label{sec:market-cap}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/market-cap-over-time}}
+  \caption{Market Capitalization Over Time}
+  \label{fig:market-cap-over-time}
+\end{figure}
+
+The total USD value of bitcoin supply in circulation, as calculated by
+the daily average market price across major exchanges. One real number
+data point each day, at 18:15:05, spanning from 03/01/2009 to
+03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.678000e+03$  \\
+    mean   & $2.072915e+09$  \\
+    median & $115624066.175$ \\
+    std    & $2.879009e+09$  \\
+    min    & $0.000000e+00$  \\
+    $25$\% & $1.005470e+06$  \\
+    $50$\% & $1.156241e+08$  \\
+    $75$\% & $3.850512e+09$  \\
+    max    & $1.390005e+10$  \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Market Capitalization}}
+  \label{tab:market-cap}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/market-cap-histogram}}
+  \caption{Market Capitalization Histogram}
+  \label{fig:market-cap-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/market-cap-boxplot}}
+  \caption{Market Capitalization Boxplot}
+  \label{fig:market-cap-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Market Price}
+\label{sec:market-price}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/market-price-over-time}}
+  \caption{Market Price Over Time}
+  \label{fig:market-price-over-time}
+\end{figure}
+
+Average USD market price across major bitcoin exchanges. One real
+number data point each day, at 18:15:05, spanning from 03/01/2009 to
+03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$ \\
+    mean   & $155.924369$  \\
+    median & $12.37856$    \\
+    std    & $218.563332$  \\
+    min    & $0.000000$    \\
+    $25$\% & $0.209250$    \\
+    $50$\% & $12.378560$   \\
+    $75$\% & $271.335000$  \\
+    max    & $1151.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Market Price}}
+  \label{tab:market-price}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/market-price-histogram}}
+  \caption{Market Price Histogram}
+  \label{fig:market-price-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/market-price-boxplot}}
+  \caption{Market Price Boxplot}
+  \label{fig:market-price-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Median Confirmation Time}
+\label{sec:median-confirmation-time}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/median-confirmation-time-over-time}}
+  \caption{Median Confirmation Time Over Time}
+  \label{fig:median-confirmation-time-over-time}
+\end{figure}
+
+The median time for a transaction to be accepted into a mined block
+and added to the public ledger (note: only includes transactions with
+miner fees). One real number data point each day, at 18:15:05,
+spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$ \\
+    mean   & $5.385540$    \\
+    median & $6.975$       \\
+    std    & $4.859709$    \\
+    min    & $0.000000$    \\
+    $25$\% & $0.000000$    \\
+    $50$\% & $6.975000$    \\
+    $75$\% & $8.500000$    \\
+    max    & $47.733333$   \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for 
+    \textit{Median Confirmation Time}}
+  \label{tab:median-confirmation-time}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/median-confirmation-time-histogram}}
+  \caption{Median Confirmation Time Histogram}
+  \label{fig:median-confirmation-time-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/median-confirmation-time-boxplot}}
+  \caption{Median Confirmation Time Boxplot}
+  \label{fig:median-confirmation-time-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Miners Revenue}
+\label{sec:miners-revenue}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/miners-revenue-over-time}}
+  \caption{Miners Revenue Over Time}
+  \label{fig:miners-revenue-over-time}
+\end{figure}
+
+Total value of coinbase block rewards and transaction fees paid to
+miners. One real number data point each day, at 18:15:05, spanning
+from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$    \\
+    mean   & $638331.424709$  \\
+    median & $85611.64705$    \\
+    std    & $911565.967412$  \\
+    min    & $0.000000$       \\
+    $25$\% & $1895.375000$    \\
+    $50$\% & $85611.647050$   \\
+    $75$\% & $1023087.365000$ \\
+    max    & $5117346.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Miners Revenue}}
+  \label{tab:miners-revenue}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/miners-revenue-histogram}}
+  \caption{Miners Revenue Histogram}
+  \label{fig:miners-revenue-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/miners-revenue-boxplot}}
+  \caption{Miners Revenue Boxplot}
+  \label{fig:miners-revenue-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Network Deficit}
+\label{sec:network-deficit}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/network-deficit-over-time}}
+  \caption{Network Deficit Over Time}
+  \label{fig:network-deficit-over-time}
+\end{figure}
+
+Shows difference between transaction fees and cost of bitcoin mining.
+One real number data point each day, at 18:15:05, spanning from
+03/01/2009 to 03/05/2016.
+
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$ \\
+    mean   & -$631395.059680$ \\
+    median & -$84958.600143$ \\
+    std    & $903713.147531$ \\
+    min    & -$5068845.988395$ \\
+    $25$\% & -$1009464.098582$ \\
+    $50$\% & -$84958.600143$ \\
+    $75$\% & -$1895.354052$ \\
+    max    & $0.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Network Deficit}}
+  \label{tab:network-deficit}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/network-deficit-histogram}}
+  \caption{Network Deficit Histogram}
+  \label{fig:network-deficit-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/network-deficit-boxplot}}
+  \caption{Network Deficit Boxplot}
+  \label{fig:network-deficit-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Number of Orphaned Blocks}
+\label{sec:n-orphaned-blocks}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-orphaned-blocks-over-time}}
+  \caption{Number of Orphaned Blocks Over Time}
+  \label{fig:n-orphaned-blocks-over-time}
+\end{figure}
+
+The total number of blocks mined but ultimately not attached to the
+main Bitcoin blockchain. One integer data point each day, at 18:15:05,
+spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$ \\
+    mean   & $0.344287$    \\
+    median & $0$           \\
+    std    & $0.849656$    \\
+    min    & $0.000000$    \\
+    $25$\% & $0.000000$    \\
+    $50$\% & $0.000000$    \\
+    $75$\% & $0.000000$    \\
+    max    & $7.000000$    \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Orphaned Blocks}}
+  \label{tab:n-orphaned-blocks}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-orphaned-blocks-histogram}}
+  \caption{Number of Orphaned Blocks Histogram}
+  \label{fig:n-orphaned-blocks-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-orphaned-blocks-boxplot}}
+  \caption{Number of Orphaned Blocks Boxplot}
+  \label{fig:n-orphaned-blocks-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Number of Transactions}
+\label{sec:n-transactions}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-over-time}}
+  \caption{Number of Transactions Over Time}
+  \label{fig:n-transactions-over-time}
+\end{figure}
+
+The number of daily confirmed Bitcoin transactions. One integer data
+point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$   \\
+    mean   & $47255.265497$  \\
+    median & $31214$         \\
+    std    & $56769.848304$  \\
+    min    & $0.000000$      \\
+    $25$\% & $501.500000$    \\
+    $50$\% & $31214.000000$  \\
+    $75$\% & $69853.000000$  \\
+    max    & $276448.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Transactions}}
+  \label{tab:n-transactions}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-histogram}}
+  \caption{Number of Transactions Histogram}
+  \label{fig:n-transactions-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-boxplot}}
+  \caption{Number of Transactions Boxplot}
+  \label{fig:n-transactions-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Number of Transactions Excluding Chains Longer Than 10000}
+\label{sec:n-transactions-excluding-chains-longer-than-10000}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-10000-over-time}}
+  \caption{Number of Transactions Excluding Chains Longer Than 10000 Over Time}
+  \label{fig:n-transactions-excluding-chains-longer-than-10000-over-time}
+\end{figure}
+
+The total number of Bitcoin transactions per day excluding those part
+of transaction chains longer that 10000. One integer data point each
+day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$   \\
+    mean   & $39117.017177$  \\
+    median & $22558$         \\
+    std    & $46391.775343$  \\
+    min    & $0.000000$      \\
+    $25$\% & $501.500000$    \\
+    $50$\% & $22558.000000$  \\
+    $75$\% & $61130.000000$  \\
+    max    & $227830.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Transactions
+      Excluding Chains Longer Than 10000}}
+  \label{tab:n-transactions-excluding-chains-longer-than-10000}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-10000-histogram}}
+  \caption{Number of Transactions Excluding Chains Longer Than 10000
+    Histogram}
+  \label{fig:n-transactions-excluding-chains-longer-than-10000-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-10000-boxplot}}
+  \caption{Number of Transactions Excluding Chains Longer Than 10000
+    Boxplot}
+  \label{fig:n-transactions-excluding-chains-longer-than-10000-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Number of Transactions Excluding Chains Longer Than 1000}
+\label{sec:n-transactions-excluding-chains-longer-than-1000}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-1000-over-time}}
+  \caption{Number of Transactions Excluding Chains Longer Than 1000
+    Over Time}
+  \label{fig:n-transactions-excluding-chains-longer-than-1000-over-time}
+\end{figure}
+
+The total number of Bitcoin transactions per day excluding those part
+of transaction chains longer that 1000. One integer data point each
+day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$ \\
+    mean   & $32665.966019$ \\
+    median & $16915$ \\
+    std    & $40035.066692$ \\
+    min    & $0.000000$ \\
+    $25$\% & $486.250000$ \\
+    $50$\% & $16915.000000$ \\
+    $75$\% & $50210.750000$ \\
+    max    & $206184.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Transactions 
+      Excluding Chains Longer Than 1000}}
+  \label{tab:n-transactions-excluding-chains-longer-than-1000}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-1000-histogram}}
+  \caption{Number of Transactions Excluding Chains Longer Than 1000
+    Histogram}
+  \label{fig:n-transactions-excluding-chains-longer-than-1000-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-1000-boxplot}}
+  \caption{Number of Transactions Excluding Chains Longer Than 1000
+    Boxplot}
+  \label{fig:n-transactions-excluding-chains-longer-than-1000-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Number of Transactions Excluding Chains Longer Than 100}
+\label{sec:n-transactions-excluding-chains-longer-than-100}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-100-over-time}}
+  \caption{Number of Transactions Excluding Chains Longer Than 100
+    Over Time}
+  \label{fig:n-transactions-excluding-chains-longer-than-100-over-time}
+\end{figure}
+
+The total number of Bitcoin transactions per day excluding those part
+of long transaction chains. There are many legitimate reasons to
+create long transaction chains; however, they may also be caused by
+coin mixing or possible attempts to manipulate transaction volume. One
+integer data point each day, at 18:15:05, spanning from 03/01/2009 to
+03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$   \\
+    mean   & $26050.881255$  \\
+    median & $12810$         \\
+    std    & $32164.862369$  \\
+    min    & $0.000000$      \\
+    $25$\% & $426.250000$    \\
+    $50$\% & $12810.000000$  \\
+    $75$\% & $39936.750000$  \\
+    max    & $187035.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Transactions 
+      Excluding Chains Longer Than 100}}
+  \label{tab:n-transactions-excluding-chains-longer-than-100}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-100-histogram}}
+  \caption{Number of Transactions Excluding Chains Longer Than 100
+    Histogram}
+  \label{fig:n-transactions-excluding-chains-longer-than-100-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-100-boxplot}}
+  \caption{Number of Transactions Excluding Chains Longer Than 100
+    Boxplot}
+  \label{fig:n-transactions-excluding-chains-longer-than-100-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Number of Transactions Excluding Chains Longer Than 10}
+\label{sec:n-transactions-excluding-chains-longer-than-10}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-10-over-time}}
+  \caption{Number of Transactions Excluding Chains Longer Than 10
+    Over Time}
+  \label{fig:n-transactions-excluding-chains-longer-than-10-over-time}
+\end{figure}
+
+The total number of Bitcoin transactions per day excluding those part
+of transaction chains longer that 10. One integer data point each day,
+at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$   \\
+    mean   & $15589.578790$  \\
+    median & $7115$          \\
+    std    & $20367.504877$  \\
+    min    & $0.000000$      \\
+    $25$\% & $337.000000$    \\
+    $50$\% & $7115.000000$   \\
+    $75$\% & $23695.500000$  \\
+    max    & $157002.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Transactions 
+      Excluding Chains Longer Than 10}}
+  \label{tab:n-transactions-excluding-chains-longer-than-10}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-10-histogram}}
+  \caption{Number of Transactions Excluding Chains Longer Than 10
+    Histogram}
+  \label{fig:n-transactions-excluding-chains-longer-than-10-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-chains-longer-than-10-boxplot}}
+  \caption{Number of Transactions Excluding Chains Longer Than 10
+    Boxplot}
+  \label{fig:n-transactions-excluding-chains-longer-than-10-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Number of Transactions Excluding Popular}
+\label{sec:n-transactions-excluding-popular}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-popular-over-time}}
+  \caption{Number of Transactions Excluding Popular
+    Over Time}
+  \label{fig:n-transactions-excluding-popular-over-time}
+\end{figure}
+
+The total number of Bitcoin transactions, excluding those involving
+any of the network's 100 most popular addresses. One integer data
+point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$   \\
+    mean   & $40400.536968$  \\
+    median & $12597.5$       \\
+    std    & $55357.260528$  \\
+    min    & $0.000000$      \\
+    $25$\% & $501.500000$    \\
+    $50$\% & $12597.500000$  \\
+    $75$\% & $63434.250000$  \\
+    max    & $262461.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Transactions 
+      Excluding Popular}}
+  \label{tab:n-transactions-excluding-popular}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-popular-histogram}}
+  \caption{Number of Transactions Excluding Popular
+    Histogram}
+  \label{fig:n-transactions-excluding-popular-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-excluding-popular-boxplot}}
+  \caption{Number of Transactions Excluding Popular
+    Boxplot}
+  \label{fig:n-transactions-excluding-popular-boxplot}
+\end{figure}
+
+\clearpage
+%----------------------------------------------------------------------
+
+\subsection{Number of Transactions Per Block}
+\label{sec:n-transactions-per-block}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-per-block-over-time}}
+  \caption{Number of Transactions Per Block
+    Over Time}
+  \label{fig:n-transactions-per-block-over-time}
+\end{figure}
+
+The average number of transactions per block. One integer data point
+each day, at 18:15:05, spanning from 03/01/2009 to 28/04/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2673.000000$ \\
+    mean   & $306.632248$  \\
+    median & $205$         \\
+    std    & $377.986965$  \\
+    min    & $1.000000$    \\
+    $25$\% & $2.000000$    \\
+    $50$\% & $205.000000$  \\
+    $75$\% & $435.000000$  \\
+    max    & $2036.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Transactions 
+      Per Block}}
+  \label{tab:n-transactions-per-block}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-per-block-histogram}}
+  \caption{Number of Transactions Per Block
+    Histogram}
+  \label{fig:n-transactions-per-block-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-per-block-boxplot}}
+  \caption{Number of Transactions Per Block
+    Boxplot}
+  \label{fig:n-transactions-per-block-boxplot}
+\end{figure}
+
+\clearpage
+%---------------------------------------------------------------------- 
+
+\subsection{Number of Total Transactions}
+\label{sec:n-transactions-total}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-total-over-time}}
+  \caption{Number of Total Transactions
+    Over Time}
+  \label{fig:n-transactions-total-over-time}
+\end{figure}
+
+Total number of transactions. One integer data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.678000e+03$ \\
+    mean   & $2.491078e+07$ \\
+    median & $6685067$      \\
+    std    & $3.308262e+07$ \\
+    min    & $1.000000e+00$ \\
+    $25$\% & $1.384448e+05$ \\
+    $50$\% & $6.685067e+06$ \\
+    $75$\% & $4.191287e+07$ \\
+    max    & $1.265496e+08$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Total
+      Transactions}}
+  \label{tab:n-transactions-total}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-total-histogram}}
+  \caption{Number of Total Transactions
+    Histogram}
+  \label{fig:n-transactions-total-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-total-boxplot}}
+  \caption{Number of Total Transactions
+    Boxplot}
+  \label{fig:n-transactions-total-boxplot}
+\end{figure}
+
+\clearpage
+%---------------------------------------------------------------------- 
+
+\subsection{Number of Unique Addresses}
+\label{sec:n-unique-addresses}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-unique-addresses-over-time}}
+  \caption{Number of Unique Addresses
+    Over Time}
+  \label{fig:n-unique-addresses-over-time}
+\end{figure}
+
+The total number of unique addresses used on the Bitcoin blockchain.
+One integer data point each day, at 18:15:05, spanning from 03/01/2009
+to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count &        $2678.000000$ \\
+    mean &        $86921.616878$ \\
+    median &        $29205.5$ \\
+    std &        $112219.880994$ \\
+    min &             $0.000000$ \\
+    $25$\% &          $609.250000$ \\
+    $50$\% &        $29205.500000$ \\
+    $75$\% &       $152308.500000$ \\
+    max &        $483756.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Number of Unique Addresses}}
+  \label{tab:n-unique-addresses}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-unique-addresses-histogram}}
+  \caption{Number of Unique Addresses
+    Histogram}
+  \label{fig:n-unique-addresses-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-unique-addresses-boxplot}}
+  \caption{Number of Unique Addresses
+    Boxplot}
+  \label{fig:n-unique-addresses-boxplot}
+\end{figure}
+
+\clearpage
+%--------------------------------------------------------------------- 
+
+\subsection{Output Volume}
+\label{sec:output-volume}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/output-volume-over-time}}
+  \caption{Output Volume
+    Over Time}
+  \label{fig:output-volume-over-time}
+\end{figure}
+
+The total value of all transaction outputs per day (includes coins
+returned to the sender as change). One real number data point each
+day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count &      $2679.000000$ \\
+    mean &    $1134859.870780$ \\
+    median &       $661019.796765$ \\
+    std &     $2333431.889695$ \\
+    min &           $0.000000$ \\
+    $25$\% &      $73233.013445$ \\
+    $50$\% &     $661019.796765$ \\
+    $75$\% &    $1286432.155226$ \\
+    max &    $45992222.558034$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Output Volume}}
+  \label{tab:output-volume}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/output-volume-histogram}}
+  \caption{Output Volume
+    Histogram}
+  \label{fig:output-volume-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/output-volume-boxplot}}
+  \caption{Output Volume
+    Boxplot}
+  \label{fig:output-volume-boxplot}
+\end{figure}
+
+\clearpage
+%--------------------------------------------------------------------- 
+
+\subsection{Standard Output Volume Poors 500}
+\label{sec:standard-and-poors-500}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/standard-and-poors-500-over-time}}
+  \caption{Standard Output Volume Poors 500
+    Over Time}
+  \label{fig:standard-and-poors-500-over-time}
+\end{figure}
+
+Six real data point entry each day, spanning from to 09/05/2016. The
+variable names are \textit{Open}, \textit{High}, \textit{Low},
+\textit{Close}, \textit{Volume}, \textit{Adj} and \textit{Close},
+representing different characteristics of the index price.
+
+From the Wikipedia: ``\textit{The Standard \& Poor's 500, often
+  abbreviated as the S\&P 500, or just "the S\&P", is an American
+  stock market index based on the market capitalizations of 500 large
+  companies having common stock listed on the NYSE or NASDAQ. The S\&P
+  500 index components and their weightings are determined by S\&P Dow
+  Jones Indices. It differs from other U.S. stock market indices, such
+  as the Dow Jones Industrial Average or the Nasdaq Composite index,
+  because of its diverse constituency and weighting methodology. It is
+  one of the most commonly followed equity indices, and many consider
+  it one of the best representations of the U.S. stock market, and a
+  bellwether for the U.S. economy. The National Bureau of Economic
+  Research has classified common stocks as a leading indicator of
+  business cycles.}''
+
+\begin{table}
+  \myfloatalign
+  \tiny
+  \begin{tabularx}{\textwidth}{XXXXXXX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Open} &
+    \tableheadline{High} & \tableheadline{Low} & \tableheadline{Close}
+    & \tableheadline{Volume} & \tableheadline{Adj Close}\\
+    \midrule 
+    count  & $16695$       & $16695$       & $16695$       & $16695$       & $1.669500e+04$ & $16695$       \\
+    mean   & $492.103240$  & $495.207861$  & $488.827423$  & $492.221084$  & $8.157494e+08$ & $492.221084$  \\
+    median & $150.910004$  & $151.619995$  & $150.240005$  & $151.039993$  & $75180000$     & $151.039993$  \\
+    std    & $566.001594$  & $569.347411$  & $562.382420$  & $566.107954$  & $1.478957e+09$ & $566.107954$  \\
+    min    & $16.660000$   & $16.660000$   & $16.660000$   & $16.660000$   & $6.800000e+05$ & $16.660000$   \\
+    $25$\% & $84.099998$   & $84.765000$   & $83.459999$   & $84.099998$   & $7.805000e+06$ & $84.099998$   \\
+    $50$\% & $150.910004$  & $151.619995$  & $150.240005$  & $151.039993$  & $7.518000e+07$ & $151.039993$  \\
+    $75$\% & $974.309998$  & $983.190002$  & $964.844971$  & $974.904999$  & $8.428500e+08$ & $974.904999$  \\
+    max    & $2130.360107$ & $2134.719971$ & $2126.060059$ & $2130.820068$ & $1.145623e+10$ & $2130.820068$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Standard Output Volume Poors 500}}
+  \label{tab:standard-and-poors-500}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/standard-and-poors-500-histogram}}
+  \caption{Standard Output Volume Poors 500
+    Histogram}
+  \label{fig:standard-and-poors-500-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/standard-and-poors-500-boxplot}}
+  \caption{Standard Output Volume Poors 500
+    Boxplot}
+  \label{fig:standard-and-poors-500-boxplot}
+\end{figure}
+
+Due to the difference in scale of the variable \textit{Volume}
+compared to the rest of variables it's not possible to see their
+boxplots in \autoref{fig:standard-and-poors-500-boxplot}. We need
+another boxplot, seen in
+\autoref{fig:standard-and-poors-500-rest-boxplot}, for the rest of the
+variables to be seen clearly.
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/standard-and-poors-500-rest-boxplot}}
+  \caption{Standard Output Volume Poors 500
+    Rest of Variables Boxplot}
+  \label{fig:standard-and-poors-500-rest-boxplot}
+\end{figure}
+
+\clearpage
+%--------------------------------------------------------------------- 
+
+\subsection{Total Bitcoins}
+\label{sec:total-bitcoins}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/total-bitcoins-over-time}}
+  \caption{Total Bitcoins
+    Over Time}
+  \label{fig:total-bitcoins-over-time}
+\end{figure}
+
+The total number of bitcoins that have already been mined; in other
+words, the current supply of bitcoins on the network. One integer data
+point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.678000e+03$ \\
+    mean   & $8.723580e+06$ \\
+    median & $9849250.0$    \\
+    std    & $4.819287e+06$ \\
+    min    & $5.000000e+01$ \\
+    $25$\% & $4.472438e+06$ \\
+    $50$\% & $9.849250e+06$ \\
+    $75$\% & $1.297915e+07$ \\
+    max    & $1.550142e+07$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Total Bitcoins}}
+  \label{tab:total-bitcoins}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/total-bitcoins-histogram}}
+  \caption{Total Bitcoins
+    Histogram}
+  \label{fig:total-bitcoins-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/total-bitcoins-boxplot}}
+  \caption{Total Bitcoins
+    Boxplot}
+  \label{fig:total-bitcoins-boxplot}
+\end{figure}
+
+\clearpage
+%--------------------------------------------------------------------- 
+
+\subsection{Trade Volume}
+\label{sec:trade-volume}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/trade-volume-over-time}}
+  \caption{Trade Volume
+    Over Time}
+  \label{fig:trade-volume-over-time}
+\end{figure}
+
+The total USD value of trading volume on major bitcoin exchanges. One
+real number data point each day, at 18:15:05, spanning from 03/01/2009
+to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2.678000e+03$  \\
+    mean   & $2.768062e+06$  \\
+    median & $529334.610415$ \\
+    std    & $5.819032e+06$  \\
+    min    & $0.000000e+00$  \\
+    $25$\% & $1.341996e+03$  \\
+    $50$\% & $5.293346e+05$  \\
+    $75$\% & $3.014521e+06$  \\
+    max    & $7.205049e+07$  \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Trade Volume}}
+  \label{tab:trade-volume}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/trade-volume-histogram}}
+  \caption{Trade Volume
+    Histogram}
+  \label{fig:trade-volume-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/trade-volume-boxplot}}
+  \caption{Trade Volume
+    Boxplot}
+  \label{fig:trade-volume-boxplot}
+\end{figure}
+
+\clearpage
+%--------------------------------------------------------------------- 
+
+\subsection{Transaction Fees}
+\label{sec:transaction-fees}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/transaction-fees-over-time}}
+  \caption{Transaction Fees
+    Over Time}
+  \label{fig:transaction-fees-over-time}
+\end{figure}
+
+The total value of all transaction fees paid to miners (not including
+the coinbase value of block rewards). One real number data point each
+day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$ \\
+    mean   & $16.273161$   \\
+    median & $12.23832$    \\
+    std    & $20.839539$   \\
+    min    & $0.000000$    \\
+    $25$\% & $0.070599$    \\
+    $50$\% & $12.238320$   \\
+    $75$\% & $25.172616$   \\
+    max    & $336.577055$  \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Transaction Fees}}
+  \label{tab:transaction-fees}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/transaction-fees-histogram}}
+  \caption{Transaction Fees
+    Histogram}
+  \label{fig:transaction-fees-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/transaction-fees-boxplot}}
+  \caption{Transaction Fees
+    Boxplot}
+  \label{fig:transaction-fees-boxplot}
+\end{figure}
+
+\clearpage
+%--------------------------------------------------------------------- 
+
+\subsection{Transaction Fees USD}
+\label{sec:transaction-fees-usd}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/transaction-fees-usd-over-time}}
+  \caption{Transaction Fees USD
+    Over Time}
+  \label{fig:transaction-fees-usd-over-time}
+\end{figure}
+
+The total value of all transaction fees paid to miners (not including
+the coinbase value of block rewards) in USD. One real number data
+point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2678.000000$   \\
+    mean   & $3506.944567$   \\
+    median & $274.790467$    \\
+    std    & $6026.088862$   \\
+    min    & $0.000000$      \\
+    $25$\% & $0.002192$      \\
+    $50$\% & $274.790467$    \\
+    $75$\% & $5384.674418$   \\
+    max    & $157676.252853$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Transaction Fees USD}}
+  \label{tab:transaction-fees-usd}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/transaction-fees-usd-histogram}}
+  \caption{Transaction Fees USD
+    Histogram}
+  \label{fig:transaction-fees-usd-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/transaction-fees-usd-boxplot}}
+  \caption{Transaction Fees USD
+    Boxplot}
+  \label{fig:transaction-fees-usd-boxplot}
+\end{figure}
+
+\clearpage
+%--------------------------------------------------------------------- 
+
+\subsection{Transactions/Trade Ratio}
+\label{sec:tx-trade-ratio}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/tx-trade-ratio-over-time}}
+  \caption{Transactions/Trade Ratio
+    Over Time}
+  \label{fig:tx-trade-ratio-over-time}
+\end{figure}
+
+Chart showing the relationship between BTC transaction volume and USD
+exchange volume. One real number data point each day, at 18:15:0,
+spanning from 03/01/2009 to 03/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $2679.000000$ \\
+    mean   & $10.863982$   \\
+    median & $5.164688$    \\
+    std    & $16.936518$   \\
+    min    & $0.000000$    \\
+    $25$\% & $1.099395$    \\
+    $50$\% & $5.164688$    \\
+    $75$\% & $13.101565$   \\
+    max    & $224.065347$  \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Transactions/Trade Ratio}}
+  \label{tab:tx-trade-ratio}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/tx-trade-ratio-histogram}}
+  \caption{Transactions/Trade Ratio
+    Histogram}
+  \label{fig:tx-trade-ratio-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/tx-trade-ratio-boxplot}}
+  \caption{Transactions/Trade Ratio
+    Boxplot}
+  \label{fig:tx-trade-ratio-boxplot}
+\end{figure}
+
+\clearpage
+%--------------------------------------------------------------------- 
+
+\subsection{Wikipedia Trend for Bitcoin}
+\label{sec:wikipedia-trend-for-bitcoin}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/wikipedia-trend-for-bitcoin-over-time}}
+  \caption{Wikipedia Trend for Bitcoin
+    Over Time}
+  \label{fig:wikipedia-trend-for-bitcoin-over-time}
+\end{figure}
+
+The particular trend used in this case is the page views of the
+Bitcoin article in the English version of Wikipedia. There are more
+advanced trends that get information from not only the views, but the
+number of edits of an article, the lines added or substracted, the
+number of unique editors, etc...
+
+We have a daily integer entry dataset ranging from 01/01/2008 till
+24/05/2016.
+
+\begin{table}
+  \myfloatalign
+  %\small
+  \begin{tabularx}{\textwidth}{XX} 
+    \toprule
+    \tableheadline{Measure} & \tableheadline{Value} \\
+    \midrule 
+    count  & $3067.000000$   \\
+    mean   & $7258.160091$   \\
+    median & $3093.0$        \\
+    std    & $24458.410959$  \\
+    min    & $0.000000$      \\
+    $25$\% & $16.000000$     \\
+    $50$\% & $3093.000000$   \\
+    $75$\% & $8044.500000$   \\
+    max    & $923659.000000$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Statistical values for \textit{Wikipedia Trend for Bitcoin}}
+  \label{tab:wikipedia-trend-for-bitcoin}
+\end{table}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/wikipedia-trend-for-bitcoin-histogram}}
+  \caption{Wikipedia Trend for Bitcoin
+    Histogram}
+  \label{fig:wikipedia-trend-for-bitcoin-histogram}
+\end{figure}
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/wikipedia-trend-for-bitcoin-boxplot}}
+  \caption{Wikipedia Trend for Bitcoin
+    Boxplot}
+  \label{fig:wikipedia-trend-for-bitcoin-boxplot}
+\end{figure}
+
+\clearpage
+%--------------------------------------------------------------------- 
+
+After analyzing the date span of each variable, we conclude that the
+interesction of all the sets is in the range between 03/01/2009 and
+28/04/2016.
+
+%\enlargethispage{2cm}
+
+%------------------------------------------------
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
