@@ -733,6 +733,7 @@ different dataset used, and different sizes of these datasets.
       issues} \\
     \midrule
     \multicolumn{2}{c}{\textbf{Hybrid techniques}}\\
+    \midrule
     GA + MLP & GA used for: finding MLP weights
     (\cite{pendharkar2004empirical, sai2007hybrid}); selecting
     features (\cite{back1996neural}); selecting features and MLP
@@ -745,7 +746,8 @@ different dataset used, and different sizes of these datasets.
     (\cite{chen2008feature, wu2007real}); selecting features and SVM
     hyper-parameters (\cite{min2006hybrid, ahn2006global}).\\
 
-    GA + k-NN & GA used for finding the appropriate k value (\cite{quintana2008early}).\\
+    GA + k-NN & GA used for finding the appropriate k value
+    (\cite{quintana2008early}).\\ 
 
     GA + NLN & GA used for finding the network topology and parameters
     (\cite{tsakonas2006bankruptcy}).\\
@@ -782,7 +784,7 @@ different dataset used, and different sizes of these datasets.
     trained using the financial data augmented with the prediction
     obtained from the MLP (\cite{huysmans2006failure}).\\
 
-    NT + MLP Feature set for MLP is augmented with Mahalanobis
+    NT + MLP & Feature set for MLP is augmented with Mahalanobis
     distance measures (\cite{markham1995combining}; features are
     transformed by applying NT (\cite{piramuthu1998using}).\\
 
@@ -791,31 +793,49 @@ different dataset used, and different sizes of these datasets.
     features and also to generate an additional input to MLP
     (\cite{lee2002credit}).\\
 
-% LR + MLP Features are selected by LR and then used in MLP (Back et al. 1996).
-% LR + FR LR and FR are combined. Fuzzy regression parameters are found by solving a linear
-% programming problem (Tseng and Lin 2005).
-% CBR and IR techniques are combined (Elhadi 2000).
-% CBR + IR
-% Ensemble techniques
-% MLP + k-NN + C4.5
-% MLP, k-NN, and C4.5 are aggregated by stacking via a new MLP. To promote diversity,
-% different techniques are used to select features for ensemble members (Shin et al. 2006).
-% MLP Ensemble of 30 bagged MLPs (Shin et al. 2006).
-% MLP Three different types of ensembles of 100 MLPs created using bagging, cross validation, or
-% AdaBoosting (West et al. 2005).
-% MLP To reduce dimensionality input features are transformed by applying PCA (Shin and Kilic
-% 2006).
-% RBF A bagged ensemble. Features are selected separately for each network trained on a separate
-% bagged data set (Chan et al. 2006).
-% RBF Diversity is promoted during the GA-based feature selection by including a diversity term in
-% the fitness function. Features are selected simultaneously for all members (Yeung et al.
-% 2007a, b).
-% DT An ensemble of DT created using the AdaBoost algorithm (Alfaro et al. 2008; Cortes et al.
-% 2007).
-% SVM Bagged ensemble of SVMs, where different ensemble members use different hyper-
-% parameters (Yu et al. 2007).
-% MLP+LDA+LR+ MARS+C4.5 Aggregation by voting and weighted sum are explored. GA is used to find the aggregation
-% weights (Olmeda and Fernandez 1997).
+    LR + MLP & Features are selected by LR and then used in MLP
+    (\cite{back1996neural}).\\ 
+
+    LR + FR & LR and FR are combined. Fuzzy regression parameters are
+    found by solving a linear programming problem
+    (\cite{tseng2005quadratic}).\\
+
+    CBR + IR & CBR and IR techniques are combined (\cite{elhadi2000bankruptcy}).\\
+
+    \midrule
+    \multicolumn{2}{c}{\textbf{Ensemble techniques}}\\
+    \midrule
+    
+    MLP + k-NN + C4.5 & MLP, k-NN, and C4.5 are aggregated by stacking
+    via a new MLP. To promote diversity, different techniques are used
+    to select features for ensemble members (\cite{shin2006using}).\\
+
+    MLP & Ensemble of 30 bagged MLPs (\cite{shin2006using}).\\
+
+    MLP & Three different types of ensembles of 100 MLPs created using
+    bagging, cross validation, or AdaBoosting (West et al. 2005).\\
+
+    MLP & To reduce dimensionality input features are transformed by
+    applying PCA (\cite{shin2006ensemble}).\\
+
+    RBF & A bagged ensemble. Features are selected separately for each
+    network trained on a separate bagged data set
+    (\cite{chan2006bankruptcy}).\\ 
+
+    RBF & Diversity is promoted during the GA-based feature selection
+    by including a diversity term in the fitness function. Features
+    are selected simultaneously for all members
+    (\cite{yeung2007bankruptcy, yeung2007multiple}).\\
+
+    DT & An ensemble of DT created using the AdaBoost algorithm
+    (Alfaro et al. 2008; Cortes et al. 2007).\\
+
+    SVM & Bagged ensemble of SVMs, where different ensemble members
+    use different hyper- parameters (Yu et al. 2007).\\
+
+    MLP+LDA+LR+ MARS+C4.5 & Aggregation by voting and weighted sum are
+    explored. GA is used to find the aggregation weights (Olmeda and
+    Fernandez 1997).\\
 
     \bottomrule
   \end{tabu}
