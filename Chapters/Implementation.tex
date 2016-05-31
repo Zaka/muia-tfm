@@ -380,13 +380,19 @@ integer data point each day at 18:15:05, spanning from 03/01/2009 to
   \label{fig:bitcoin-days-destroyed-cumulative-over-time}
 \end{figure}
 
-Bitcoin Days Destroyed is a measure of the transaction volume of
-Bitcoin. If someone has 100 BTC that they received a week ago and they
-spend it then 700 bitcoin days have been destroyed. If they take those
-100BTC and send them to several addresses and then spend them then
-although the total transaction volume could be arbitrarily large the
-number of bitcoin days destroyed is still 700. One integer data point
-each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+Bitcoin Days Destroyed Cumulative acumulates all the bitcoins days
+destroyed. That means that the increase of these variable shows the
+increase in ``real'' transactions. In
+\autoref{fig:bitcoin-days-destroyed-cumulative-over-time} we can see
+that the value of this variable keeps growing, which leads us to think
+that the ``real'' use of Bitcoin is also growin.
+
+All the ``Bitcoin Days Destroyed'' variables are useful to disciminate
+the ``real'' transaction between people and the rapid transaction
+that can be done by traders for example.
+
+The dataset is comprised of one integer data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -492,6 +498,46 @@ total ammount of transactions are increasing at that rate.
 \subsection{Cost Per Transaction}
 \label{sec:cost-per-transaction}
 
+This variable shows miners revenue (in USD) divided by the number of
+transactions. To better understand the fluctuations of \textit{Cost
+  Per Transaction} show in
+\autoref{fig:cost-per-transaction-over-time} we include the next
+definition, found
+\href{https://en.bitcoin.it/wiki/Transaction_fees}{here}:
+
+\textit{``The transaction fee is processed by and received by the
+  bitcoin miner. When a new bitcoin block is generated with a
+  successful hash, the information for all of the transactions is
+  included with the block and all transaction fees are collected by
+  that user creating the block, who is free to assign those fees to
+  himself.}
+
+\textit{Transaction fees are voluntary on the part of the person
+  making the bitcoin transaction, as the person attempting to make a
+  transaction can include any fee or none at all in the transaction.
+  On the other hand, nobody mining new bitcoins necessarily needs to
+  accept the transactions and include them in the new block being
+  created. The transaction fee is therefore an incentive on the part
+  of the bitcoin user to make sure that a particular transaction will
+  get included into the next block which is generated.''}
+
+Knowing how the fees work in Bitcoin, we can see that the cost depends
+on the will of the miner to accept or not the transaction. If we look
+at \autoref{fig:n-transactions-over-time} we can see that there is
+some correlation between the number of transactions been processed and
+the cost of each transaction. The first peek in both figures coincide
+around January/2011, after that, in mid 2011 there is a sustained
+increase in the number of transactions, which in
+\autoref{fig:cost-per-transaction-over-time} has a counterpart peek in
+the cost of transactions, probably, because a lot of people wanted to
+make transactions and the amount of miners were small. After that the
+cost per transaction lowers and doesn't have a significant increase
+till mid 2013. This increase is due to an increase in trade volume,
+that can be seen clearly in \autoref{fig:trade-volume-over-time}. Next
+to that, we see the biggest cost of cost per transaction so far, which
+took place in the end of 2013 and start of 2014. This peek also occurs
+simultaneously to a trade volume peek.
+
 \begin{figure}[bth]
   \myfloatalign
   {\includegraphics[width=1\linewidth]
@@ -500,9 +546,8 @@ total ammount of transactions are increasing at that rate.
   \label{fig:cost-per-transaction-over-time}
 \end{figure}
 
-A chart showing miners revenue divided by the number of transactions.
-One real number data point each day, at 18:15:05, spanning from
-03/01/2009 to 03/05/2016.
+The dataset is comprised of one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -556,9 +601,15 @@ One real number data point each day, at 18:15:05, spanning from
   \label{fig:cost-per-transaction-percent-over-time}
 \end{figure}
 
-A chart showing miners revenue as percentage of the transaction
-volume. One real number data point each day, at 18:15:05, spanning
-from 03/01/2009 to 03/05/2016.
+This variable shows miners revenue as percentage of the transaction
+volume. Basically what
+\autoref{fig:cost-per-transaction-percent-over-time} shows is that
+over time, the transactions fees are decreasing with respect to the
+transaction amount itself, been the median, shown in
+\autoref{tab:cost-per-transaction-percent}, $3.283375136886966\%$.
+
+The dataset is comprised of one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -2062,8 +2113,8 @@ to 03/05/2016.
 \end{figure}
 
 The total value of all transaction fees paid to miners (not including
-the coinbase value of block rewards). One real number data point each
-day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+the coinbase value of block rewards) in BTC. One real number data
+point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
