@@ -1337,7 +1337,51 @@ This data-set comprises one real number data point each day, at
   \label{fig:network-deficit-over-time}
 \end{figure}
 
-Shows difference between transaction fees and cost of bitcoin mining.
+Shows difference between transaction fees and cost of Bitcoin mining
+in USD. This definition, given by
+\href{https://blockchain.info/charts}{BlockChain.info} can be a little
+bit misleading, because it's not clear what the \textit{cost of
+  Bitcoin mining} means. After some research, we found in
+\href{http://bitcoin.stackexchange.com/questions/10230/how-is-network-deficit-calculated}{StackExchange}
+that the cost of Bitcoin mining is the reward from Bitcoin mining. So
+the network deficit, is the difference between transaction fees and
+reward for mining. There is a lot of discussion about what this
+variable represents, and how to interpret it. For example:
+
+``\textit{So at the current rate of 1 tps, the average transaction fee
+  would need to rise to \$5 worth of BTC to keep mining at its current
+  economic strength. This would drastically reduce write access to
+  Bitcoin, and might not even be achievable due to consumer choice
+  (growing preference among potential adoptees for market alternatives
+  like traditional finance, alt-blockchains, etc as the average tx fee
+  increases).}
+
+\textit{While decentralization has been the main focus of the block
+  size debate, hashrate (mining revenues) and accessibility (cost of
+  transaction) are also important metrics of network utility and
+  health, and should be taken into consideration.}
+
+\textit{The lower the maximum transaction throughput, the more
+  expensive transactions need to be to maintain current mining
+  revenues. The optimal block size limit will strike the right balance
+  between mining decentralization, miner revenue, and write
+  accessibility, and not exclude any of these factors in its focus.}''
+
+What we see in \autoref{fig:network-deficit-over-time} is that as
+mentioned before in \autoref{sec:miners-revenue}, the revenues of
+miners are mostly due to the rewards of block discovery instead of the
+fees produced in transactions. This can be interpreted as a network
+inmaturity, because miners, which are the main supporters of the
+Bitcoin network, rely mostly on the Bitcoin inflation to make profit,
+instead of the transactions and associated fees.
+
+It's easy to see the relationship between the network deficit and the
+Bitcoin market price by noticing that
+\autoref{fig:network-deficit-over-time} and
+\autoref{fig:market-price-over-time} are nearly simetrical in the X
+axis. So, the higher the price of bitcoin, the higher is the deficit
+(though is represented in negative numbers).
+
 One real number data point each day, at 18:15:05, spanning from
 03/01/2009 to 03/05/2016.
 
@@ -1349,7 +1393,7 @@ One real number data point each day, at 18:15:05, spanning from
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
     \midrule 
-    count  & $2678.000000$ \\
+    count  & $2678$ \\
     mean   & -$631395.059680$ \\
     median & -$84958.600143$ \\
     std    & $903713.147531$ \\
@@ -1357,7 +1401,7 @@ One real number data point each day, at 18:15:05, spanning from
     $25$\% & -$1009464.098582$ \\
     $50$\% & -$84958.600143$ \\
     $75$\% & -$1895.354052$ \\
-    max    & $0.000000$ \\
+    max    & $0$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Network Deficit}}
