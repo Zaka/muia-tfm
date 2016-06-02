@@ -14,12 +14,12 @@ using in this particular thesis. Among them we have the count of all
 variables, mean, standard deviation, min value, max value, quartiles.
 We also add the histogram to have an idea of how the distribution of
 the variable works and the boxplot that can help us determine if there
-are outliers in the dataset.
+are outliers in the data-set.
 
 \subsection{Average Block Size}
 \label{sec:avg-block-size}
 
-A consice definition of a block can be found
+A concise definition of a block can be found
 \href{https://en.bitcoin.it/wiki/Block}{here}: \textit{``Each block
   contains, among other things, a record of some or all recent
   transactions, and a reference to the block that came immediately
@@ -50,7 +50,7 @@ from the section \textbf{Charts} of
 In \autoref{fig:avg-block-size-over-time} can be seen how the average
 block size has been increasing since the creation of Bitcoin. In 2015
 the average block started to dangerously approach the limit of 1 MB,
-which is causing a big debate in the Bitcoin community wheather they
+which is causing a big debate in the Bitcoin community whether they
 should increase this limit or not.
 
 \begin{figure}[bth]
@@ -124,7 +124,7 @@ To better understand this variable we include a quote extracted from
   Beta | Stack Exchange}:
 
 ``\textit{The idea of "bitcoin days destroyed" came about because it
-  was realised that total transaction volume per day might be an
+  was realized that total transaction volume per day might be an
   inappropriate measure of the level of economic activity in Bitcoin.
   After all, someone could be sending the same money back and forth
   between their own addresses repeatedly. If you sent the same 50 btc
@@ -391,7 +391,7 @@ All the ``Bitcoin Days Destroyed'' variables are useful to disciminate
 the ``real'' transaction between people and the rapid transaction
 that can be done by traders for example.
 
-The dataset is comprised of one integer data point each day, at
+The dataset comprises one integer data point each day, at
 18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
@@ -546,7 +546,7 @@ simultaneously to a trade volume peek.
   \label{fig:cost-per-transaction-over-time}
 \end{figure}
 
-The dataset is comprised of one real number data point each day, at
+The dataset comprises one real number data point each day, at
 18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
@@ -556,15 +556,15 @@ The dataset is comprised of one real number data point each day, at
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
     \midrule 
-    count  & $2678.000000$  \\
-    mean   & $12371.132188$ \\
-    median & $2531.5$       \\
-    std    & $17421.465881$ \\
-    min    & $0.000000$     \\
-    25\%   & $1.000000$     \\
-    50\%   & $2531.500000$  \\
-    75\%   & $20008.500000$ \\
-    max    & $67060.000000$ \\
+    count  & $2678$ \\
+    mean   & $9.727391$    \\
+    median & $6.21965$     \\
+    std    & $13.268846$   \\
+    min    & $0$    \\
+    $25$\  & $1.301186$    \\
+    $50$\  & $6.219650$    \\
+    $75$\  & $10.401306$   \\
+    max    & $90.202095$   \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Cost Per Transaction}}
@@ -605,10 +605,12 @@ This variable shows miners revenue as percentage of the transaction
 volume. Basically what
 \autoref{fig:cost-per-transaction-percent-over-time} shows is that
 over time, the transactions fees are decreasing with respect to the
-transaction amount itself, been the median, shown in
-\autoref{tab:cost-per-transaction-percent}, $3.283375136886966\%$.
+transaction amount itself. The median, shown in
+\autoref{tab:cost-per-transaction-percent}, is $3.283375136886966\%$,
+which reflects the percent of transaction that is used mostly in all
+Bitcoin transactions.
 
-The dataset is comprised of one real number data point each day, at
+The dataset comprises one real number data point each day, at
 18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
@@ -665,8 +667,19 @@ The dataset is comprised of one real number data point each day, at
 
 A relative measure of how difficult it is to find a new block. The
 difficulty is adjusted periodically as a function of how much hashing
-power has been deployed by the network of miners. One real number data
-point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+power has been deployed by the network of miners. That can be seen
+looking at how similar are \autoref{fig:difficulty-over-time} and
+\autoref{fig:hash-rate-over-time}. The graphic representing the
+difficulty has a discrete shape, that is because the difficulty is
+adjusted automatically every 2016 blocks, and changes equally for the
+entire Bitcoin network. Until 2014, the difficulty of mining was
+very low, it started to raise probably because the trade volume in the
+end of 2013 and start of 2014 was approximately 70.000.000\$, which
+attracted professional miners with a greater processing power, those
+creating more and more blocks and augmenting the difficulty of mining.
+
+The dataset comprises one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -721,9 +734,19 @@ point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
 \end{figure}
 
 The total estimated value of transactions on the Bitcoin blockchain
-(does not include coins returned to sender as change). One integer
-data point each day, at 18:15:05, spanning from 03/01/2009 to
-03/05/2016.
+(does not include coins returned to sender as change). The transaction
+volume represented in
+\autoref{fig:estimated-transaction-volume-over-time} is very slowly
+increasing, meaning that more transactions in Bitcoin are processed.
+However, it doesn't represent the actual value of transactions,
+because people think in their local currency when trading or shopping,
+and Bitcoin's value is volatile. Is more useful the next variable,
+\textit{Estimated Transaction Volume USD} that gives as tells the
+actual value of transactions. The peak that happened in 2012 wouldn't
+occur easily today due to the current value of Bitcoin.
+
+The data-set comprises one integer data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -777,8 +800,23 @@ data point each day, at 18:15:05, spanning from 03/01/2009 to
   \label{fig:estimated-transaction-volume-usd-over-time}
 \end{figure}
 
-The Estimated Transaction Volume in USD value. One integer data point
-each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+The Estimated Transaction Volume in USD value, shown in
+\autoref{fig:estimated-transaction-volume-usd-over-time}, can be
+explained by the average value of Bitcoin, shown in
+\autoref{fig:market-price-over-time}, because nearly all the events
+are paired in the two figures. There is a small increase in estimated
+transaction volume in USD in mid 2011 at the same time than the
+average price of Bitcoin increases. Later on, in 2013 there is a
+bigger increase in estimated volume that is also reflected in the
+average price. Then we have the two biggest peaks around January of
+2014 coinciding with the higher average value of Bitcoin (also
+represented in two peaks). After that there is decrease in average
+price and estimated volume till 2016 where Bitcoin average price
+starts to increase at the same time that the estimate transaction
+volume increases.
+
+This data-set comprises one integer data point each day, at 18:15:05,
+spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -912,16 +950,25 @@ after obtaining the descriptive variables of
 \end{figure}
 
 The estimated number of giga hashes per second (billions of hashes per
-second) the Bitcoin network is performing. One real number data point
-each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+second) the Bitcoin network is performing. The chart in
+\autoref{fig:hash-rate-over-time} shows us how mining really started
+when Bitcoin raised to its highest value around 2014, reaching more
+than 1000\$ per BTC. From that point on, the processing to mining has
+increased at approximately $0.2 \times 10^9$ hashes per second, and in
+2016, at the same time that the Bitcoin price is starting to increase,
+the hash rate started to grow at $1 \times 10^9$ hashes per second in
+just a few months. 
+
+This data-set comprises one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
   %\small
-  \begin{tabularx}{\textwidth}{XX} 
+  \begin{tabularx}{\textwidth}{XX}
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
+    \midrule
     count  & $2.678000e+03$      \\
     mean   & $1.265485e+08$      \\
     median & $19063.08687085293$ \\
@@ -968,9 +1015,36 @@ each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
 \end{figure}
 
 The total USD value of bitcoin supply in circulation, as calculated by
-the daily average market price across major exchanges. One real number
-data point each day, at 18:15:05, spanning from 03/01/2009 to
-03/05/2016.
+the daily average market price across major exchanges. This variable
+is related to many others, starting with the Bitcoin market price,
+with is virtually the same as this one, the number of transactions,
+that can explain the fluctuations in the Bitcoin price and different
+events. In March 9, 2011, the Bitcoin reaches parity with USD which is
+shown in a timid growth in market capitalization followed by a
+decrease. After that there isn't a big growth until 2013, where
+several things happen, Mega, the cloud storage service, starts
+accepting Bitcoins, Internet Archive starts accepting Bitcoins, a new
+food service \href{PizzaForCoins.com}{PizzaForCoins.com} accepts
+Bitcoins as a payment for food, CoinDesk is launched by Spotify
+investor and Coinbase receives 5 million USD in funding. This, and
+several other events increase the market capitalization for Bitcoin.
+
+After that there is a decrease in market capitalization of Bitcoin,
+maybe because MtGox, the largest exchange operator at the time, was
+seized by The United States Department of Homeland Security.
+
+In the second half of 2013, various events happen that can be the
+cause of the raise of Bitcoin market capitalization, first, in August
+6th, Bitcoin is ruled currency by a Texas judge, then in August 20th,
+Bitcoin is ruled as private money in Germany, then in August 28th,
+RoboCoin, a Bitcoin ATM manufacturer, starts accepting orders. This
+can be the cause of the huge peek at the end of 2013 and start of
+2014. There are no clear events in the Bitcoin history that explain
+the period after 2014, which leads us to think that the price has been
+fluctuating due to trading strategies.
+
+This data-set comprises one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -1024,9 +1098,21 @@ data point each day, at 18:15:05, spanning from 03/01/2009 to
   \label{fig:market-price-over-time}
 \end{figure}
 
-Average USD market price across major bitcoin exchanges. One real
-number data point each day, at 18:15:05, spanning from 03/01/2009 to
-03/05/2016.
+Average USD market price across major Bitcoin exchanges.
+\autoref{fig:market-price-over-time} is identical to the one in
+\autoref{fig:market-cap-over-time} except for the scale. The same
+events that produced the market capitalization fluctuation apply to
+the market price. Added to that, the average market price across mayor
+Bitcoin exchange operators is a variable very closely related to the
+market capitalization of Bitcoin.
+
+Is important to note how volatile is the Bitcoin average price,
+ranging from nearly $0$ USD to $1100$ USD in just a year, and now, in
+2016 fluctuating in a range bigger than $10$ USD on average. This
+fluctuations, if predicted, can be very profitable for the trader. 
+
+The data-set comprises one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -1082,7 +1168,21 @@ number data point each day, at 18:15:05, spanning from 03/01/2009 to
 
 The median time for a transaction to be accepted into a mined block
 and added to the public ledger (note: only includes transactions with
-miner fees). One real number data point each day, at 18:15:05,
+miner fees). Until the end of 2011, the confirmation time is
+negligible. There is an important event that can be related to the
+growth of the median confirmation time, and that is the largest
+Bitcoin fee in a single transaction, in December 12, 171 Bitcoins was
+paids as fee in block 157235.
+
+If we look at \autoref{fig:median-confirmation-time-over-time} there
+is a peak in mid 2012, that can coincide with the increase in number
+of transactions seen in \autoref{fig:n-transactions-over-time}. After
+that even though the number of transactions is growing, there is also
+in increment in the hash rate, so the number of transactions can be
+included in blocks thanks to the amount of miners and their processing
+power.
+
+ One real number data point each day, at 18:15:05,
 spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
@@ -1139,8 +1239,51 @@ spanning from 03/01/2009 to 03/05/2016.
 \end{figure}
 
 Total value of coinbase block rewards and transaction fees paid to
-miners. One real number data point each day, at 18:15:05, spanning
-from 03/01/2009 to 03/05/2016.
+miners, expressed in USD. To understand the rewards and fees, we
+include this quote, extracted the 1st of June of 2016 from
+\href{https://en.bitcoin.it/wiki/Mining}{https://en.bitcoin.it/wiki/Mining}:
+
+\textit{``When a block is discovered, the discoverer may award
+  themselves a certain number of bitcoins, which is agreed-upon by
+  everyone in the network. Currently this bounty is 25 bitcoins; this
+  value will halve every 210,000 blocks. [...]. } 
+
+\textit{Additionally, the miner is awarded the fees paid by users
+  sending transactions. The fee is an incentive for the miner to
+  include the transaction in their block. In the future, as the number
+  of new bitcoins miners are allowed to create in each block dwindles,
+  the fees will make up a much more important percentage of mining
+  income.''}
+
+Taking the previous quote into consideration, we know that the miner
+reward is fixed, so its fluctuation will depend upon the price of the
+Bitcoin itself, therefore the resemblance between miners revenue
+(\autoref{fig:miners-revenue-over-time}) and Bitcoin price
+(\autoref{fig:market-price-over-time}).
+
+In 2016, the transaction fees represent a very small amount of the
+BTCs of the miners revenue. We can see in
+\autoref{tab:cost-per-transaction} that the average transaction has a
+value of $9.727391$. On the other hand, the average number of
+transactions per block $306.632248$. Thus the expected revenue due to
+fees of a single miner is $9.727391 \times 306.632248 = $
+$2982.7317695049683$ USD.
+
+If we analyze the revenue thanks to the reward of discovering a block
+we have that the average market price of the
+Bitcoin(\autoref{tab:market-price}) is $155.924369$ USD and the reward
+is $25$ BTC per block discovered, that makes an amount of $155.924369
+\times 25 = 3898.109225$ USD per block discovered. Added to that, we
+have to keep in mind that, as of June the $2^{nd}$, the current price
+of Bitcoin is $536.99$ USD, which makes the rewards value increase to
+$536.99 \times 25 = 13424.75$ USD per blocked discovered. We can
+conclude that nowadays, the main source of revenues for miners is the
+block discovery, but in the future, as it goes getting harder to
+discover blocks, the fees will start to be an important source of
+income for miners. 
+
+This data-set comprises one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -1675,15 +1818,15 @@ each day, at 18:15:05, spanning from 03/01/2009 to 28/04/2016.
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
     \midrule 
-    count  & $2673.000000$ \\
+    count  & $2673$ \\
     mean   & $306.632248$  \\
     median & $205$         \\
     std    & $377.986965$  \\
-    min    & $1.000000$    \\
-    $25$\% & $2.000000$    \\
-    $50$\% & $205.000000$  \\
-    $75$\% & $435.000000$  \\
-    max    & $2036.000000$ \\
+    min    & $1$    \\
+    $25$\% & $2$    \\
+    $50$\% & $205$  \\
+    $75$\% & $435$  \\
+    max    & $2036$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Number of Transactions 
