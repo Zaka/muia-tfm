@@ -523,11 +523,11 @@ definition, found
 
 Knowing how the fees work in Bitcoin, we can see that the cost depends
 on the will of the miner to accept or not the transaction. If we look
-at \autoref{fig:n-transactions-over-time} we can see that there is
-some correlation between the number of transactions been processed and
-the cost of each transaction. The first peek in both figures coincide
-around January/2011, after that, in mid 2011 there is a sustained
-increase in the number of transactions, which in
+at \autoref{fig:n-transactions-multiple-over-time} we can see that
+there is some correlation between the number of transactions been
+processed and the cost of each transaction. The first peek in both
+figures coincide around January/2011, after that, in mid 2011 there is
+a sustained increase in the number of transactions, which in
 \autoref{fig:cost-per-transaction-over-time} has a counterpart peek in
 the cost of transactions, probably, because a lot of people wanted to
 make transactions and the amount of miners were small. After that the
@@ -1053,12 +1053,12 @@ This data-set comprises one real number data point each day, at
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
     \midrule 
-    count  & $2.678000e+03$  \\
+    count  & $2.678e+03$     \\
     mean   & $2.072915e+09$  \\
     median & $115624066.175$ \\
     std    & $2.879009e+09$  \\
-    min    & $0.000000e+00$  \\
-    $25$\% & $1.005470e+06$  \\
+    min    & $0$             \\
+    $25$\% & $1.00547e+06$   \\
     $50$\% & $1.156241e+08$  \\
     $75$\% & $3.850512e+09$  \\
     max    & $1.390005e+10$  \\
@@ -1121,15 +1121,15 @@ The data-set comprises one real number data point each day, at
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
     \midrule 
-    count  & $2678.000000$ \\
-    mean   & $155.924369$  \\
-    median & $12.37856$    \\
-    std    & $218.563332$  \\
-    min    & $0.000000$    \\
-    $25$\% & $0.209250$    \\
-    $50$\% & $12.378560$   \\
-    $75$\% & $271.335000$  \\
-    max    & $1151.000000$ \\
+    count  & $2678$       \\
+    mean   & $155.924369$ \\
+    median & $12.37856$   \\
+    std    & $218.563332$ \\
+    min    & $0$          \\
+    $25$\% & $0.20925$    \\
+    $50$\% & $12.378560$  \\
+    $75$\% & $271.335$    \\
+    max    & $1151$       \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Market Price}}
@@ -1176,9 +1176,10 @@ paids as fee in block 157235.
 
 If we look at \autoref{fig:median-confirmation-time-over-time} there
 is a peak in mid 2012, that can coincide with the increase in number
-of transactions seen in \autoref{fig:n-transactions-over-time}. After
-that even though the number of transactions is growing, there is also
-in increment in the hash rate, so the number of transactions can be
+of transactions seen in
+\autoref{fig:n-transactions-multiple-over-time}. After that even
+though the number of transactions is growing, there is also in
+increment in the hash rate, so the number of transactions can be
 included in blocks thanks to the amount of miners and their processing
 power.
 
@@ -1192,15 +1193,15 @@ spanning from 03/01/2009 to 03/05/2016.
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
     \midrule 
-    count  & $2678.000000$ \\
-    mean   & $5.385540$    \\
-    median & $6.975$       \\
-    std    & $4.859709$    \\
-    min    & $0.000000$    \\
-    $25$\% & $0.000000$    \\
-    $50$\% & $6.975000$    \\
-    $75$\% & $8.500000$    \\
-    max    & $47.733333$   \\
+    count  & $2678$      \\
+    mean   & $5.38554$   \\
+    median & $6.975$     \\
+    std    & $4.859709$  \\
+    min    & $0$         \\
+    $25$\% & $0$         \\
+    $50$\% & $6.975$     \\
+    $75$\% & $8.5$       \\
+    max    & $47.733333$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for 
@@ -1548,8 +1549,24 @@ spanning from 03/01/2009 to 03/05/2016.
   \label{fig:n-transactions-per-block-over-time}
 \end{figure}
 
-The average number of transactions per block. One integer data point
-each day, at 18:15:05, spanning from 03/01/2009 to 28/04/2016.
+This variable represents the average number of transactions per block.
+The way transactions are added to the Bitcoin network is by adding
+them to a block. This operation is done by miners, that receive a fee
+(that can be zero) to do this operation. As mentioned before, today,
+miners revenue are due mostly to the discovery of new blocks instead
+of fees, nonetheless fees is another source of income. A miner can
+choose not to include transactions in the mined blocks, and that would
+go against the healthy growth of the Bitcoin network. Fortunately,
+\autoref{fig:n-transactions-per-block-over-time} shows that the amount
+of transactions per block is increasing, this way Bitcoin networks can
+keep growing relying in miners to process transactions. On top of
+that, the average amount of transactions per block since mid 2015 is
+greater than $1000$, given that the average cost per transaction is
+$9.727391$ which gives an average revenue of $9727.391$ USD per block
+for miner for this period.
+
+This data-set comprises one integer data point each day, at 18:15:05,
+spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -1607,8 +1624,17 @@ each day, at 18:15:05, spanning from 03/01/2009 to 28/04/2016.
   \label{fig:n-transactions-total-over-time}
 \end{figure}
 
-Total number of transactions. One integer data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
+
+Total number of transactions data in
+\autoref{fig:n-transactions-total-over-time} show that the growth is
+exponential. It can be seen in
+\autoref{fig:n-transactions-multiple-over-time} that the number of
+transactions per day is increasing, from that we can assume that the
+growth of accumulated number of transactions over time is going to
+increase in a nearly exponential way.
+
+This data-set comprises one integer data point each day, at 18:15:05,
+spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -1621,7 +1647,7 @@ Total number of transactions. One integer data point each day, at
     mean   & $2.491078e+07$ \\
     median & $6685067$      \\
     std    & $3.308262e+07$ \\
-    min    & $1.000000e+00$ \\
+    min    & $1$ \\
     $25$\% & $1.384448e+05$ \\
     $50$\% & $6.685067e+06$ \\
     $75$\% & $4.191287e+07$ \\
@@ -1666,9 +1692,20 @@ Total number of transactions. One integer data point each day, at
   \label{fig:n-unique-addresses-over-time}
 \end{figure}
 
-The total number of unique addresses used on the Bitcoin blockchain.
-One integer data point each day, at 18:15:05, spanning from 03/01/2009
-to 03/05/2016.
+The total number of unique addresses used on the Bitcoin blockchain. A
+unique adress, as defined by
+\href{https://en.bitcoin.it/wiki/Address}{Bitcoin.it}: ``\textit{A
+  Bitcoin address, or simply address, is an identifier of 26-35
+  alphanumeric characters, beginning with the number 1 or 3, that
+  represents a possible destination for a bitcoin payment.}'' This
+variable is closely related to the number of transactions made in the
+network. When compared,
+\autoref{fig:n-transactions-multiple-over-time} and
+\autoref{fig:n-unique-addresses-over-time} show a resemblance not only
+in the events that produce the local maximums but also in the growth.
+
+This data-set comprises one integer data point each day, at 18:15:05,
+spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -1677,15 +1714,15 @@ to 03/05/2016.
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
     \midrule 
-    count &        $2678.000000$ \\
-    mean &        $86921.616878$ \\
-    median &        $29205.5$ \\
-    std &        $112219.880994$ \\
-    min &             $0.000000$ \\
-    $25$\% &          $609.250000$ \\
-    $50$\% &        $29205.500000$ \\
-    $75$\% &       $152308.500000$ \\
-    max &        $483756.000000$ \\
+    count  & $2678$          \\
+    mean   & $86921.616878$  \\
+    median & $29205.5$       \\
+    std    & $112219.880994$ \\
+    min    & $0$             \\
+    $25$\% & $609.25$        \\
+    $50$\% & $29205.5$       \\
+    $75$\% & $152308.5$      \\
+    max    & $483756$        \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Number of Unique Addresses}}
@@ -1726,8 +1763,41 @@ to 03/05/2016.
 \end{figure}
 
 The total value of all transaction outputs per day (includes coins
-returned to the sender as change). One real number data point each
-day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
+returned to the sender as change). It's easier to understand to
+meaning of output and change in the bitcoin world with an explanation
+given by a user nicknamed \textit{DeathAndTaxes} in
+\href{https://bitcointalk.org/index.php?topic=99593.0}{Bitcointalk.org}:
+
+``\textit{Bitcoin can only create transactions by using as the input
+  an ENTIRE prior unspent output. The most important thing to realize
+  is that Bitcoin tx have inputs and outputs. The "value" of your
+  wallet is an abstraction. It is simply your client (software which
+  analyzes the wallet) taking a SUM of all the unspent outputs which
+  you have private keys for. The input of a tx is the output of a
+  PRIOR tx. You can only use unspent outputs in a new tx. Once they
+  are part of a tx they can never be used again ("spent").}
+
+\textit{Say you I send you 50 BTC (for simplicity lets assume this is
+  compromised of a single 50 BTC output). No matter how you spend that
+  the input for the tx will be 50 BTC.}
+
+\textit{Want to spend 20 BTC? Input: 50 BTC Output: 20 BTC + 30 BTC
+  "change" back to an address you control. Want to spend 1 BTC? Input:
+  50 BTC Output: 1 BTC + 49 BTC "change" back to an address you
+  control.}''
+
+Output can be due to three circumstances, large amout of transactions,
+transactions of big amount of Bitcoins, and big amount of change
+returned to sender. The peak of 2013 is clearly due to change received
+by sender as \textit{DeathAndTaxes} explains: ``\textit{In the early
+  days of Bitcoin there really was nothing to "spend" it on so most tx
+  tended to be accumulation. This resulted in most addresses having
+  very large unspent outputs. As people started "breaking" up those
+  unspent outputs in tx involving smaller amounts most of the volume
+  WAS change.}''
+
+This data-set comprises one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
@@ -1736,15 +1806,15 @@ day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
     \midrule 
-    count &      $2679.000000$ \\
-    mean &    $1134859.870780$ \\
-    median &       $661019.796765$ \\
-    std &     $2333431.889695$ \\
-    min &           $0.000000$ \\
-    $25$\% &      $73233.013445$ \\
-    $50$\% &     $661019.796765$ \\
-    $75$\% &    $1286432.155226$ \\
-    max &    $45992222.558034$ \\
+    count  & $2679$            \\
+    mean   & $1134859.87078$   \\
+    median & $661019.796765$   \\
+    std    & $2333431.889695$  \\
+    min    & $0$               \\
+    $25$\% & $73233.013445$    \\
+    $50$\% & $661019.796765$   \\
+    $75$\% & $1286432.155226$  \\
+    max    & $45992222.558034$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Output Volume}}
