@@ -1382,8 +1382,8 @@ Bitcoin market price by noticing that
 axis. So, the higher the price of bitcoin, the higher is the deficit
 (though is represented in negative numbers).
 
-One real number data point each day, at 18:15:05, spanning from
-03/01/2009 to 03/05/2016.
+This data-set comprises one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 03/05/2016.
 
 
 \begin{table}
@@ -1427,414 +1427,110 @@ One real number data point each day, at 18:15:05, spanning from
 \clearpage
 %----------------------------------------------------------------------
 
-\subsection{Number of Orphaned Blocks}
-\label{sec:n-orphaned-blocks}
+\subsection{Number of Transactions}
+\label{sec:n-transactions-multiple}
 
 \begin{figure}[bth]
   \myfloatalign
   {\includegraphics[width=1\linewidth]
-    {gfx/n-orphaned-blocks-over-time}}
-  \caption{Number of Orphaned Blocks Over Time}
-  \label{fig:n-orphaned-blocks-over-time}
+    {gfx/n-transactions-multiple-over-time}}
+  \caption{Number of Transactions Over Time}
+  \label{fig:n-transactions-multiple-over-time}
 \end{figure}
 
-The total number of blocks mined but ultimately not attached to the
-main Bitcoin blockchain. One integer data point each day, at 18:15:05,
+Here we analyze a compound set of variables: number of transactions,
+number of transactions excluding chains longer than 10, 100, 1000 and
+10000, and number of transactions excluding the 100 most popular
+addresses. 
+
+The number of transactions is defined as ``\textit{The number of daily
+  confirmed Bitcoin transactions}''. As for long chains, we include a
+quote from
+\href{http://www.ofnumbers.com/2015/01/22/slicing-data-what-comprises-blockchain-transactions/}{Tim
+  Swanson} that explains the origin of the term and why can be useful:
+``\textit{questions have arisen over a series of what some call “long
+  chains.” Last month several commentators on a popular thread on
+  Hacker News identified thousands of small transactions originating
+  from a single source. The source was continually sending
+  transactions and paid transaction fees for each of them. The reason
+  this struck many as odd as a rational actor would simply bundle the
+  transactions together to save on transaction fees.}
+
+\textit{ While there are likely different motivations for doing so,
+  one reason for why this was occurring was that the originating
+  source was attempting to delink or otherwise mix and tumble coins to
+  make it difficult to “dox” or identify the originating source. But
+  it could also be a faucet and at one point even pools paid out
+  miners using chained transactions, perhaps some still do.}''
+
+
+The number of transactions represented in blue color in
+\autoref{fig:n-transactions-multiple-over-time} show a moderated
+growth compared to that of the market price or market capitalization.
+That may be because this variable doesn't depend on the inflation of
+the Bitcoin, and there aren't exagerated fluctuation. We see that even
+the price of the Bitcoin is not at its peak in 2016, the number of
+transactions are in the higher point so far in the Bitcoin history.
+It's also possible to see the relatioship between the different curves
+excluding ``long chains'', where as the ``long chains'' are removed
+the number of transactions decrease, although the tendency is similar.
+
+Regarding \textit{number of transactions excluding popular}, is useful
+to show whether there is a dependecy of a small number of actors in
+the Bitcoin network. What we see in
+\autoref{fig:n-transactions-multiple-over-time} is that,
+\textit{number of transactions excluding popular} in yellow, is
+growing independent from the 100 most popular addresses. While until
+2014 this addresses added a substantial amount of transactions to the
+overall count, from that point on, the count between the total
+transactions and \textit{number of transactions excluding popular} is
+similar.
+
+This data-set comprises six integer data point each day, at 18:15:05,
 spanning from 03/01/2009 to 03/05/2016.
 
 \begin{table}
   \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
+  \tiny
+  \begin{tabularx}{\textwidth}{XXXXXXX} 
     \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678.000000$ \\
-    mean   & $0.344287$    \\
-    median & $0$           \\
-    std    & $0.849656$    \\
-    min    & $0.000000$    \\
-    $25$\% & $0.000000$    \\
-    $50$\% & $0.000000$    \\
-    $75$\% & $0.000000$    \\
-    max    & $7.000000$    \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Orphaned Blocks}}
-  \label{tab:n-orphaned-blocks}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-orphaned-blocks-histogram}}
-  \caption{Number of Orphaned Blocks Histogram}
-  \label{fig:n-orphaned-blocks-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-orphaned-blocks-boxplot}}
-  \caption{Number of Orphaned Blocks Boxplot}
-  \label{fig:n-orphaned-blocks-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Number of Transactions}
-\label{sec:n-transactions}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-over-time}}
-  \caption{Number of Transactions Over Time}
-  \label{fig:n-transactions-over-time}
-\end{figure}
-
-The number of daily confirmed Bitcoin transactions. One integer data
-point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678.000000$   \\
-    mean   & $47255.265497$  \\
-    median & $31214$         \\
-    std    & $56769.848304$  \\
-    min    & $0.000000$      \\
-    $25$\% & $501.500000$    \\
-    $50$\% & $31214.000000$  \\
-    $75$\% & $69853.000000$  \\
-    max    & $276448.000000$ \\
+    \tableheadline{Measure} &
+    \tableheadline{NumTransactions} &
+    \tableheadline{Excluding10} &
+    \tableheadline{Excluding100} &
+    \tableheadline{Excluding1000} &
+    \tableheadline{Excluding10000} &
+    \tableheadline{ExcludingPopular} \\
+    \midrule                                                                                     
+    count  & $2678$         & $2678$         & $2678$         & $2678$         & $2678$         & $2678$         \\
+    mean   & $47255.265497$ & $15589.57879$  & $26050.881255$ & $32665.966019$ & $39117.017177$ & $40400.536968$ \\
+    median & $31214$        & $7115$         & $12810$        & $16915$        & $22558$        & $12597.5$      \\
+    std    & $56769.848304$ & $20367.504877$ & $32164.862369$ & $40035.066692$ & $46391.775343$ & $55357.260528$ \\
+    min    & $0$            & $0$            & $0$            & $0$            & $0$            & $0$            \\
+    $25$\  & $501.5$        & $337$          & $426.25$       & $486.25$       & $501.5$        & $501.5$        \\
+    $50$\  & $31214$        & $7115$         & $12810$        & $16915$        & $22558$        & $12597.5$      \\
+    $75$\  & $69853$        & $23695.5$      & $39936.75$     & $50210.75$     & $61130$        & $63434.25$     \\
+    max    & $276448$       & $157002$       & $187035$       & $206184$       & $227830$       & $262461$       \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Number of Transactions}}
-  \label{tab:n-transactions}
+  \label{tab:n-transactions-multiple}
 \end{table}
 
 \begin{figure}[bth]
   \myfloatalign
   {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-histogram}}
+    {gfx/n-transactions-multiple-histogram}}
   \caption{Number of Transactions Histogram}
-  \label{fig:n-transactions-histogram}
+  \label{fig:n-transactions-multiple-histogram}
 \end{figure}
 
 \begin{figure}[bth]
   \myfloatalign
   {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-boxplot}}
+    {gfx/n-transactions-multiple-boxplot}}
   \caption{Number of Transactions Boxplot}
-  \label{fig:n-transactions-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Number of Transactions Excluding Chains Longer Than 10000}
-\label{sec:n-transactions-excluding-chains-longer-than-10000}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-10000-over-time}}
-  \caption{Number of Transactions Excluding Chains Longer Than 10000 Over Time}
-  \label{fig:n-transactions-excluding-chains-longer-than-10000-over-time}
-\end{figure}
-
-The total number of Bitcoin transactions per day excluding those part
-of transaction chains longer that 10000. One integer data point each
-day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678.000000$   \\
-    mean   & $39117.017177$  \\
-    median & $22558$         \\
-    std    & $46391.775343$  \\
-    min    & $0.000000$      \\
-    $25$\% & $501.500000$    \\
-    $50$\% & $22558.000000$  \\
-    $75$\% & $61130.000000$  \\
-    max    & $227830.000000$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Transactions
-      Excluding Chains Longer Than 10000}}
-  \label{tab:n-transactions-excluding-chains-longer-than-10000}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-10000-histogram}}
-  \caption{Number of Transactions Excluding Chains Longer Than 10000
-    Histogram}
-  \label{fig:n-transactions-excluding-chains-longer-than-10000-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-10000-boxplot}}
-  \caption{Number of Transactions Excluding Chains Longer Than 10000
-    Boxplot}
-  \label{fig:n-transactions-excluding-chains-longer-than-10000-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Number of Transactions Excluding Chains Longer Than 1000}
-\label{sec:n-transactions-excluding-chains-longer-than-1000}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-1000-over-time}}
-  \caption{Number of Transactions Excluding Chains Longer Than 1000
-    Over Time}
-  \label{fig:n-transactions-excluding-chains-longer-than-1000-over-time}
-\end{figure}
-
-The total number of Bitcoin transactions per day excluding those part
-of transaction chains longer that 1000. One integer data point each
-day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678.000000$ \\
-    mean   & $32665.966019$ \\
-    median & $16915$ \\
-    std    & $40035.066692$ \\
-    min    & $0.000000$ \\
-    $25$\% & $486.250000$ \\
-    $50$\% & $16915.000000$ \\
-    $75$\% & $50210.750000$ \\
-    max    & $206184.000000$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Transactions 
-      Excluding Chains Longer Than 1000}}
-  \label{tab:n-transactions-excluding-chains-longer-than-1000}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-1000-histogram}}
-  \caption{Number of Transactions Excluding Chains Longer Than 1000
-    Histogram}
-  \label{fig:n-transactions-excluding-chains-longer-than-1000-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-1000-boxplot}}
-  \caption{Number of Transactions Excluding Chains Longer Than 1000
-    Boxplot}
-  \label{fig:n-transactions-excluding-chains-longer-than-1000-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Number of Transactions Excluding Chains Longer Than 100}
-\label{sec:n-transactions-excluding-chains-longer-than-100}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-100-over-time}}
-  \caption{Number of Transactions Excluding Chains Longer Than 100
-    Over Time}
-  \label{fig:n-transactions-excluding-chains-longer-than-100-over-time}
-\end{figure}
-
-The total number of Bitcoin transactions per day excluding those part
-of long transaction chains. There are many legitimate reasons to
-create long transaction chains; however, they may also be caused by
-coin mixing or possible attempts to manipulate transaction volume. One
-integer data point each day, at 18:15:05, spanning from 03/01/2009 to
-03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678.000000$   \\
-    mean   & $26050.881255$  \\
-    median & $12810$         \\
-    std    & $32164.862369$  \\
-    min    & $0.000000$      \\
-    $25$\% & $426.250000$    \\
-    $50$\% & $12810.000000$  \\
-    $75$\% & $39936.750000$  \\
-    max    & $187035.000000$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Transactions 
-      Excluding Chains Longer Than 100}}
-  \label{tab:n-transactions-excluding-chains-longer-than-100}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-100-histogram}}
-  \caption{Number of Transactions Excluding Chains Longer Than 100
-    Histogram}
-  \label{fig:n-transactions-excluding-chains-longer-than-100-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-100-boxplot}}
-  \caption{Number of Transactions Excluding Chains Longer Than 100
-    Boxplot}
-  \label{fig:n-transactions-excluding-chains-longer-than-100-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Number of Transactions Excluding Chains Longer Than 10}
-\label{sec:n-transactions-excluding-chains-longer-than-10}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-10-over-time}}
-  \caption{Number of Transactions Excluding Chains Longer Than 10
-    Over Time}
-  \label{fig:n-transactions-excluding-chains-longer-than-10-over-time}
-\end{figure}
-
-The total number of Bitcoin transactions per day excluding those part
-of transaction chains longer that 10. One integer data point each day,
-at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678.000000$   \\
-    mean   & $15589.578790$  \\
-    median & $7115$          \\
-    std    & $20367.504877$  \\
-    min    & $0.000000$      \\
-    $25$\% & $337.000000$    \\
-    $50$\% & $7115.000000$   \\
-    $75$\% & $23695.500000$  \\
-    max    & $157002.000000$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Transactions 
-      Excluding Chains Longer Than 10}}
-  \label{tab:n-transactions-excluding-chains-longer-than-10}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-10-histogram}}
-  \caption{Number of Transactions Excluding Chains Longer Than 10
-    Histogram}
-  \label{fig:n-transactions-excluding-chains-longer-than-10-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-chains-longer-than-10-boxplot}}
-  \caption{Number of Transactions Excluding Chains Longer Than 10
-    Boxplot}
-  \label{fig:n-transactions-excluding-chains-longer-than-10-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Number of Transactions Excluding Popular}
-\label{sec:n-transactions-excluding-popular}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-popular-over-time}}
-  \caption{Number of Transactions Excluding Popular
-    Over Time}
-  \label{fig:n-transactions-excluding-popular-over-time}
-\end{figure}
-
-The total number of Bitcoin transactions, excluding those involving
-any of the network's 100 most popular addresses. One integer data
-point each day, at 18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678.000000$   \\
-    mean   & $40400.536968$  \\
-    median & $12597.5$       \\
-    std    & $55357.260528$  \\
-    min    & $0.000000$      \\
-    $25$\% & $501.500000$    \\
-    $50$\% & $12597.500000$  \\
-    $75$\% & $63434.250000$  \\
-    max    & $262461.000000$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Transactions 
-      Excluding Popular}}
-  \label{tab:n-transactions-excluding-popular}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-popular-histogram}}
-  \caption{Number of Transactions Excluding Popular
-    Histogram}
-  \label{fig:n-transactions-excluding-popular-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-excluding-popular-boxplot}}
-  \caption{Number of Transactions Excluding Popular
-    Boxplot}
-  \label{fig:n-transactions-excluding-popular-boxplot}
+  \label{fig:n-transactions-multiple-boxplot}
 \end{figure}
 
 \clearpage
