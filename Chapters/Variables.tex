@@ -16,13 +16,12 @@ We also add the histogram to have an idea of how the distribution of
 the variable works and the boxplot that can help us determine if there
 are outliers in the data-set.
 
-There are 27 variables descriptions, three of them are sets of
-variables, namely, \textit{Bitcoins Days Destroyed}, which groups 5
-individual variables, \textit{Number of Transactions}, that groups 6
+There are 16 variables descriptions, two of them are sets of
+variables, namely, \textit{Bitcoins Days Destroyed}, which groups two
 individual variables, and \textit{Standard \& Poors 500}, which groups
-another 6 individual variables. Therefore in the data-set, every
-individual member of said sets, would count as individual feature for
-learning purposes.
+another two individual variables. Therefore in the data-set, every
+individual member of said sets, would count as an individual feature
+for prediction purposes.
 
 The data-sets were obtained from a variaty of sources, but mostly from
 \href{https://blockchain.info/charts}{blockchain.info}, excluding
@@ -53,15 +52,9 @@ A concise definition of a block can be found
 
 It's clear that, over time, the size of the block is going to
 increase, because there are more and more transactions in the Bitcoin
-distributed network, due to that
+distributed network. In consequence
 \autoref{fig:avg-block-size-over-time} shows a non-stoppable
 increasing.
-
-This variable, called avg-block-size represent the average size of the
-blocks in one day measured in MB. One real number data point each day,
-at 18:15:05, spanning from 03/01/2009 to 03/05/2016. It was obtained
-from the section \textbf{Charts} of
-\href{blockchain.info}{blockchain.info}
 
 \begin{figure}[bth]
   \myfloatalign
@@ -71,36 +64,36 @@ from the section \textbf{Charts} of
   \label{fig:avg-block-size-over-time}
 \end{figure}
 
+This variable, called \textit{Average Block Size} represent the
+average size of the blocks in one day measured in MB. One real number
+data point each day, at 18:15:05, spanning from 03/01/2009 to
+28/04/2016. It was obtained from the section \textbf{Charts} of
+\href{blockchain.info}{blockchain.info}
+
+
 In \autoref{fig:avg-block-size-over-time} can be seen how the average
 block size has been increasing since the creation of Bitcoin. In 2015
 the average block started to dangerously approach the limit of 1 MB,
-which is causing a big debate in the Bitcoin community whether they
-should increase this limit or not.
+which is causing a big debate in the Bitcoin community about whether
+they should increase this limit or not. Although the average size of
+the blocks is increasing, the majority of blocks is near zero, as
+refleceted by the median in \autoref{tab:stats-avg-block-size}.
 
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/avg-block-size-histogram}} 
-  \caption{Average Block Size Histogram}
-  \label{fig:avg-block-size-histogram}
-\end{figure}
-
-\begin{table}
+\begin{table}[bth]
   \myfloatalign
   \small
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$\\
-    mean   & $0.165$\\
-    median & $0.092$\\
-    std    & $0.209$\\
-    min    & $0.000$\\
-    $25$\% & $0.000$\\
-    $50$\% & $0.092$\\
-    $75$\% & $0.242$\\
-    max    & $0.918$\\
+    \midrule
+    count  & $2673$     \\
+    mean   & $0.163963$ \\
+    std    & $0.208009$ \\
+    min    & $0$        \\
+    $25\%$ & $0.000893$ \\
+    $50\%$ & $0.092265$ \\
+    $75\%$ & $0.241909$ \\
+    max    & $0.918519$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for 
@@ -108,20 +101,29 @@ should increase this limit or not.
   \label{tab:stats-avg-block-size}
 \end{table}
 
-\begin{figure}[bth]
-  \myfloatalign
-    {\includegraphics[width=1\linewidth]
-      {gfx/avg-block-size-boxplot}}               
-    \caption{Average Block Size Boxplot}
-    \label{fig:avg-block-size-boxplot}
-\end{figure}
-
 \clearpage
 
 %----------------------------------------------------------------------
 
-\subsection{Bitcoin Days Destroyed}
+\subsection{Bitcoin Days Destroyed
+  \& Bitcoin Days Destroyed Min Year}
 \label{sec:bitcoin-days-destroyed}
+
+\textit{Bitcoin Days Destroyed} is a weighted measure of aggregate
+economic activity, placing value on transacted coins in proportion to
+the time they have spent idle on the Bitcoin blockchain. For any given
+transaction, \textit{Bitcoin Days Destroyed} is calculated by
+multiplying its estimated transaction value by the number of days
+since the coins within the transaction were last spent. It is a useful
+proxy for measuring growth in real value transacted on the Bitcoin
+blockchain over time, since it controls for rapid movement of coins
+between wallets (potentially owned by just one entity). One integer
+data point each day, at 18:15:05, spanning from 03/01/2009 to
+28/04/2016.
+
+In \autoref{fig:bitcoin-days-destroyed-over-time} we show data over
+time for \textit{Bitcoin Days Destroyed} and \textit{Bitcoin Days
+  Destroyed Min Year}.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -130,34 +132,6 @@ should increase this limit or not.
   \caption{Bitcoin Days Destroyed Over Time}
   \label{fig:bitcoin-days-destroyed-over-time}
 \end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/bitcoin-days-destroyed-over-time-rest}}
-  \caption{Bitcoin Days Destroyed Over Time without Cumulative}
-  \label{fig:bitcoin-days-destroyed-over-time-rest}
-\end{figure}
-
-Bitcoin Days Destroyed is a weighted measure of aggregate economic
-activity, placing value on transacted coins in proportion to the time
-they have spent idle on the Bitcoin blockchain. For any given
-transaction, Days Destroyed is calculated by multiplying its estimated
-transaction value by the number of days since the coins within the
-transaction were last spent. Bitcoin Days Destroyed is a useful proxy
-for measuring growth in real value transacted on the Bitcoin
-blockchain over time, since it controls for rapid movement of coins
-between wallets (potentially owned by just one entity). One integer
-data point each day, at 18:15:05, spanning from 03/01/2009 to
-03/05/2016.
-
-In \autoref{fig:bitcoin-days-destroyed-over-time} we shows data over
-time for Bitcoin Days Destroyed, Bitcoin Days Destroyed Min Month,
-Bitcoin Days Destroyed Min Week, Bitcoin Days Destroyed Min Year and
-Bitcoin Days Destroyed Cumulative. Due to scaling issues, we printed
-\autoref{fig:bitcoin-days-destroyed-over-time-rest} without Bitcoin
-Days Destroyed Cumulative in order to be able to see how the rest of
-the variables fluctuate.
 
 To better understand this set of variable we include a quote extracted
 from
@@ -198,119 +172,7 @@ from
   sending the same coins back and forth, flooding the network with
   meaningless chatter. Looks pretty good, hey?}''
 
-\begin{table}
-  \myfloatalign
-  \tiny
-  \begin{tabularx}{\textwidth}{XXXXXX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{DaysDestroyed} &
-    \tableheadline{Cumulative} &
-    \tableheadline{MinMonth} &
-    \tableheadline{MinWeek} &
-    \tableheadline{MinYear} \\
-    \midrule 
-    count  & $2.679e+03$ & $2.679e+03$ & $2.679e+03$ & $2.679e+03$ & $2.679e+03$ \\
-    median & $2.456e+06$ & $2.265e+09$ & $1.868e+06$ & $2.210e+06$ & $4.164e+05$ \\
-    mean   & $4.146e+06$ & $3.609e+09$ & $3.649e+06$ & $3.947e+06$ & $1.774e+06$ \\
-    std    & $7.778e+06$ & $3.572e+09$ & $7.629e+06$ & $7.721e+06$ & $6.404e+06$ \\
-    min    & $0$         & $0$         & $0$         & $0$         & $0$         \\
-    $25$\  & $5.017e+05$ & $1.817e+08$ & $3.028e+05$ & $4.384e+05$ & $0$         \\
-    $50$\  & $2.456e+06$ & $2.265e+09$ & $1.868e+06$ & $2.210e+06$ & $4.164e+05$ \\
-    $75$\  & $4.745e+06$ & $6.971e+09$ & $4.001e+06$ & $4.454e+06$ & $1.568e+06$ \\
-    max    & $1.732e+08$ & $1.110e+10$ & $1.727e+08$ & $1.730e+08$ & $1.702e+08$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Bitcoin Days Destroyed}}
-  \label{tab:bitcoin-days-destroyed}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/bitcoin-days-destroyed-histogram}}
-  \caption{Bitcoin Days Destroyed Histogram}
-  \label{fig:bitcoin-days-destroyed-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/bitcoin-days-destroyed-boxplot}}
-  \caption{Bitcoin Days Destroyed Boxplot}
-  \label{fig:bitcoin-days-destroyed-boxplot}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/bitcoin-days-destroyed-boxplot-rest}}
-  \caption{Bitcoin Days Destroyed Boxplot Without Cumulative}
-  \label{fig:bitcoin-days-destroyed-boxplot-rest}
-\end{figure}
-
 \clearpage
-
-%----------------------------------------------------------------------
-
-\subsection{Block Size}
-\label{sec:block-size}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/block-size-over-time}}
-  \caption{Block Size Over Time}
-  \label{fig:block-size-over-time}
-\end{figure}
-
-The total size (in MB) of all block headers and transactions. Not
-including database indexes. One real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-The total block size is increasing exponentialy as seen in
-\autoref{fig:block-size-over-time}. This basically represents that the
-total ammount of transactions are increasing at that rate.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$   \\
-    mean   & $9.727$  \\
-    median & $6.219$  \\
-    std    & $13.268$ \\
-    min    & $0$      \\
-    25\%   & $1.301$  \\
-    50\%   & $6.219$  \\
-    75\%   & $10.401$ \\
-    max    & $90.202$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Block Size}}
-  \label{tab:block-size}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/block-size-histogram}}
-  \caption{Block Size Histogram}
-  \label{fig:block-size-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/block-size-boxplot}}
-  \caption{Block Size Boxplot}
-  \label{fig:block-size-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
 
 \subsection{Cost Per Transaction}
 \label{sec:cost-per-transaction}
@@ -318,10 +180,10 @@ total ammount of transactions are increasing at that rate.
 This variable shows miners revenue (in USD) divided by the number of
 transactions. Miners revenue are a result of the transaction fees plus
 the reward for block discovery. The block discovery reward is fixed by
-the community, is up to the miner to accept any transaction regardless
-of the fee in the transaction. A miner can choose not to add any
-transaction at all to the block, or add transactions with a $0$
-BTC fee.
+the community, and is up to the miner to accept any transaction
+regardless of the fee in the transaction. A miner can choose not to
+add any transaction at all to the block, or add transactions with a
+$0$ BTC fee.
 
 \autoref{fig:cost-per-transaction-over-time} shows that in the end of
 2010 the Cost Per Transactions started to increase and had a local
@@ -329,20 +191,6 @@ maximum followed by another local maximum in mid 2011. This two peaks
 took place in a low price of Bitcoin scenario, hence probably the
 blocks were introduced with a small amount of transactions, and with a
 subtle increase in the Bitcoin price the ratio would increase.
-
-On the contrary, the two peaks of 2014 are in the highest price of the
-Bitcoin history, where the number of transactions would make little
-effect. The median transactions per block is $205$
-(\autoref{tab:n-transactions-per-block}), while the price in that
-period fluctuates between $700$
-USD and $1100$
-USD approximately. It can be noticed in
-\autoref{fig:miners-revenue-over-time} that miners made a revenue of
-$5000000$
-USD in one peak and $3000000$
-USD in the other peak, and
-\autoref{fig:n-transactions-multiple-over-time} indicates that at the
-same time, the number of transactions were $100000$ for both peaks.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -352,52 +200,47 @@ same time, the number of transactions were $100000$ for both peaks.
   \label{fig:cost-per-transaction-over-time}
 \end{figure}
 
-The dataset comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
+On the contrary, the two peaks of 2014 are in the highest price of the
+Bitcoin history, where the number of transactions would make little
+effect. Price in that period fluctuates between $700$ USD and $1100$
+USD approximately.
+
+\autoref{tab:cost-per-transaction} shows us that the median revenue is
+$6.219$ USD and the mean is $9.727$ USD. This information is later
+increased in \autoref{sec:cost-per-transaction-percent}.
 
 \begin{table}
   \myfloatalign
-  %\small
+  \tiny
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$   \\
-    mean   & $9.727$  \\
-    median & $6.219$  \\
-    std    & $13.268$ \\
-    min    & $0$      \\
-    $25$\  & $1.301$  \\
-    $50$\  & $6.219$  \\
-    $75$\  & $10.401$ \\
-    max    & $90.202$ \\
+    \midrule
+    count  & $2673$      \\
+    mean   & $9.731184$  \\
+    std    & $13.280920$ \\
+    min    & $0$         \\
+    $25\%$ & $1.295504$  \\
+    $50\%$ & $6.199964$  \\
+    $75\%$ & $10.413847$ \\
+    max    & $90.202095$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Cost Per Transaction}}
   \label{tab:cost-per-transaction}
 \end{table}
 
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/cost-per-transaction-histogram}}
-  \caption{Cost Per Transaction Histogram}
-  \label{fig:cost-per-transaction-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/cost-per-transaction-boxplot}}
-  \caption{Cost Per Transaction Boxplot}
-  \label{fig:cost-per-transaction-boxplot}
-\end{figure}
-
 \clearpage
 %----------------------------------------------------------------------
 
 \subsection{Cost Per Transaction Percent}
 \label{sec:cost-per-transaction-percent}
+
+This variable shows miners revenue as percentage of the transaction
+volume. Basically what
+\autoref{fig:cost-per-transaction-percent-over-time} shows is that
+over time, the miners revenue is decreasing with respect to the
+transaction amount itself.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -407,120 +250,26 @@ The dataset comprises one real number data point each day, at
   \label{fig:cost-per-transaction-percent-over-time}
 \end{figure}
 
-This variable shows miners revenue as percentage of the transaction
-volume. Basically what
-\autoref{fig:cost-per-transaction-percent-over-time} shows is that
-over time, the miners revenue is decreasing with respect to the
-transaction amount itself.
-
-The dataset comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
 \begin{table}
   \myfloatalign
   %\small
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$       \\
-    mean   & $23603.541$  \\
-    median & $3.283$      \\
-    std    & $810554.930$ \\
-    min    & $0$          \\
-    25\%   & $1.580$      \\
-    50\%   & $3.283$      \\
-    75\%   & $9.606$      \\
-    max    & $36500000$   \\
+    \midrule
+    count  & $2673$         \\
+    mean   & $2.364769e+04$ \\
+    std    & $8.113123e+05$ \\
+    min    & $0$            \\
+    $25\%$ & $1.583523$     \\
+    $50\%$ & $3.297002$     \\
+    $75\%$ & $9.613778$     \\
+    max    & $3.65e+07$     \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Cost Per Transaction Percent}}
   \label{tab:cost-per-transaction-percent}
 \end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/cost-per-transaction-percent-histogram}}
-  \caption{Cost Per Transaction Percent Histogram}
-  \label{fig:cost-per-transaction-percent-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/cost-per-transaction-percent-boxplot}}
-  \caption{Cost Per Transaction Percent Boxplot}
-  \label{fig:cost-per-transaction-percent-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Difficulty}
-\label{sec:difficulty}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/difficulty-over-time}}
-  \caption{Difficulty Over Time}
-  \label{fig:difficulty-over-time}
-\end{figure}
-
-A relative measure of how difficult it is to find a new block. The
-difficulty is adjusted periodically as a function of how much hashing
-power has been deployed by the network of miners. That can be seen
-looking at how similar are \autoref{fig:difficulty-over-time} and
-\autoref{fig:hash-rate-over-time}. The graphic representing the
-difficulty has a discrete shape, that is because the difficulty is
-adjusted automatically every 2016 blocks, and changes equally for the
-entire Bitcoin network. Until 2014, the difficulty of mining was
-very low, it started to raise probably because the trade volume in the
-end of 2013 and start of 2014 was approximately 70.000.000\$, which
-attracted professional miners with a greater processing power, those
-creating more and more blocks and augmenting the difficulty of mining.
-
-The dataset comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2.678e+03$   \\
-    mean   & $1.683e+10$   \\
-    median & $2440642.606$ \\
-    std    & $3.561e+10$   \\
-    min    & $0$           \\
-    25\%   & $3.091e+03$   \\
-    50\%   & $2.440e+06$   \\
-    75\%   & $1.681e+10$   \\
-    max    & $1.786e+11$   \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Difficulty}}
-  \label{tab:difficulty}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/difficulty-histogram}}
-  \caption{Difficulty Histogram}
-  \label{fig:difficulty-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/difficulty-boxplot}}
-  \caption{Difficulty Boxplot}
-  \label{fig:difficulty-boxplot}
-\end{figure}
 
 \clearpage
 %----------------------------------------------------------------------
@@ -549,7 +298,7 @@ value of transactions in USD. The peak that happened in 2012 wouldn't
 occur easily today due to the current value of Bitcoin.
 
 The data-set comprises one integer data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
+18:15:05, spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -557,16 +306,15 @@ The data-set comprises one integer data point each day, at
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2679$       \\
-    mean   & $157340.920$ \\
-    median & $118843.0$   \\
-    std    & $282285.024$ \\
-    min    & $0$          \\
-    $25$\% & $30553$      \\
-    $50$\% & $118843$     \\
-    $75$\% & $210442$     \\
-    max    & $5825066$    \\
+    \midrule
+    count  & $2673$    \\
+    mean   & $1.57171e+05$  \\
+    std    & $2.82573e+05$  \\
+    min    & $0$            \\
+    $25\%$ & $3.0108e+04$   \\
+    $50\%$ & $1.18761e+05$  \\
+    $75\%$ & $2.10153e+05$  \\
+    max    & $5.825066e+06$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Estimated Transaction Volume}}
@@ -619,7 +367,7 @@ starts to increase at the same time that the estimate transaction
 volume increases.
 
 This data-set comprises one integer data point each day, at 18:15:05,
-spanning from 03/01/2009 to 03/05/2016.
+spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -627,16 +375,15 @@ spanning from 03/01/2009 to 03/05/2016.
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2.679e+03$ \\
-    median & $2481424.0$ \\
-    mean   & $3.018e+07$ \\
-    std    & $4.923e+07$ \\
-    min    & $0$         \\
-    $25$\% & $5.086e+03$ \\
-    $50$\% & $2.481e+06$ \\
-    $75$\% & $4.761e+07$ \\
-    max    & $5.787e+08$ \\
+    \midrule
+    count  & $2673$         \\
+    mean   & $3.001727e+07$ \\
+    std    & $4.915159e+07$ \\
+    min    & $0$            \\
+    $25\%$ & $5.052e+03$    \\
+    $50\%$ & $2.462497e+06$ \\
+    $75\%$ & $4.744574e+07$ \\
+    max    & $5.787707e+08$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Estimated Transaction Volume USD}}
@@ -701,16 +448,15 @@ to USD.
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $4443$  \\
-    mean   & $1.216$ \\
-    median & $1.257$ \\
-    std    & $0.177$ \\
-    min    & $0.825$ \\
-    $25$\% & $1.088$ \\
-    $50$\% & $1.257$ \\
-    $75$\% & $1.345$ \\
-    max    & $1.599$ \\
+    \midrule
+    count & $2673$ \\
+    mean & $1.300222$ \\
+    std & $0.107355$ \\
+    min & $1.0552$ \\
+    $25\%$ & $1.2537$ \\
+    $50\%$ & $1.320167$ \\
+    $75\%$ & $1.370167$ \\
+    max & $1.512$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Euro price in USD}}
@@ -741,155 +487,6 @@ after obtaining the descriptive variables of
 
 %----------------------------------------------------------------------
 
-\subsection{Hash Rate}
-\label{sec:hash-rate}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/hash-rate-over-time}}
-  \caption{Hash Rate Over Time}
-  \label{fig:hash-rate-over-time}
-\end{figure}
-
-The estimated number of giga hashes per second (billions of hashes per
-second) the Bitcoin network is performing. The chart in
-\autoref{fig:hash-rate-over-time} shows us how mining really started
-when Bitcoin raised to its highest value around 2014, reaching more
-than 1000\$ per BTC. From that point on, the processing to mining has
-increased at approximately $0.2 \times 10^9$ hashes per second, and in
-2016, at the same time that the Bitcoin price is starting to increase,
-the hash rate started to grow at $1 \times 10^9$ hashes per second in
-just a few months. 
-
-This data-set comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX}
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule
-    count  & $2.678e+03$ \\
-    mean   & $1.265e+08$ \\
-    median & $19063.086$ \\
-    std    & $2.683e+08$ \\
-    min    & $0$         \\
-    $25$\% & $2.973e+01$ \\
-    $50$\% & $1.906e+04$ \\
-    $75$\% & $1.250e+08$ \\
-    max    & $1.465e+09$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Hash Rate}}
-  \label{tab:hash-rate}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/hash-rate-histogram}}
-  \caption{Hash Rate Histogram}
-  \label{fig:hash-rate-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/hash-rate-boxplot}}
-  \caption{Hash Rate Boxplot}
-  \label{fig:hash-rate-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Market Capitalization}
-\label{sec:market-cap}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/market-cap-over-time}}
-  \caption{Market Capitalization Over Time}
-  \label{fig:market-cap-over-time}
-\end{figure}
-
-The total USD value of bitcoin supply in circulation, as calculated by
-the daily average market price across major exchanges. This variable
-is related to many others, starting with the Bitcoin market price,
-with is virtually the same as this one, the number of transactions,
-that can explain the fluctuations in the Bitcoin price and different
-events. In March 9, 2011, the Bitcoin reaches parity with USD which is
-shown in a timid growth in market capitalization followed by a
-decrease. After that there isn't a big growth until 2013, where
-several things happen, Mega, the cloud storage service, starts
-accepting Bitcoins, Internet Archive starts accepting Bitcoins, a new
-food service \href{PizzaForCoins.com}{PizzaForCoins.com} accepts
-Bitcoins as a payment for food, CoinDesk is launched by Spotify
-investor and Coinbase receives 5 million USD in funding. This, and
-several other events increase the market capitalization for Bitcoin.
-
-After that there is a decrease in market capitalization of Bitcoin,
-maybe because MtGox, the largest exchange operator at the time, was
-seized by The United States Department of Homeland Security.
-
-In the second half of 2013, various events happen that can be the
-cause of the raise of Bitcoin market capitalization, first, in August
-6th, Bitcoin is ruled currency by a Texas judge, then in August 20th,
-Bitcoin is ruled as private money in Germany, then in August 28th,
-RoboCoin, a Bitcoin ATM manufacturer, starts accepting orders. This
-can be the cause of the huge peek at the end of 2013 and start of
-2014. There are no clear events in the Bitcoin history that explain
-the period after 2014, which leads us to think that the price has been
-fluctuating due to trading strategies.
-
-This data-set comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2.678e+03$     \\
-    mean   & $2.072e+09$     \\
-    median & $115624066.175$ \\
-    std    & $2.879e+09$     \\
-    min    & $0$             \\
-    $25$\% & $1.005e+06$     \\
-    $50$\% & $1.156e+08$     \\
-    $75$\% & $3.850e+09$     \\
-    max    & $1.390e+10$     \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Market Capitalization}}
-  \label{tab:market-cap}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/market-cap-histogram}}
-  \caption{Market Capitalization Histogram}
-  \label{fig:market-cap-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/market-cap-boxplot}}
-  \caption{Market Capitalization Boxplot}
-  \label{fig:market-cap-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
 \subsection{Market Price}
 \label{sec:market-price}
 
@@ -901,13 +498,33 @@ This data-set comprises one real number data point each day, at
   \label{fig:market-price-over-time}
 \end{figure}
 
-Average USD market price across major Bitcoin exchanges.
-\autoref{fig:market-price-over-time} is identical to the one in
-\autoref{fig:market-cap-over-time} except for the scale. The same
-events that produced the market capitalization fluctuation apply to
-the market price. Added to that, the average market price across mayor
-Bitcoin exchange operators is a variable very closely related to the
-market capitalization of Bitcoin.
+The USD value of Bitcoin, as calculated by the daily average market
+price across major exchanges. This variable is related to many others,
+starting with the number of transactions, that can explain the
+fluctuations in the Bitcoin price and different events. In March 9,
+2011, the Bitcoin reaches parity with USD which is shown in a timid
+growth in market capitalization followed by a decrease. After that
+there isn't a big growth until 2013, where several things happen,
+Mega, the cloud storage service, starts accepting Bitcoins, Internet
+Archive starts accepting Bitcoins, a new food service
+\href{PizzaForCoins.com}{PizzaForCoins.com} accepts Bitcoins as a
+payment for food, CoinDesk is launched by Spotify investor and
+Coinbase receives 5 million USD in funding. This, and several other
+events increase the market price of Bitcoin.
+
+After that there is a decrease in market price of Bitcoin, maybe
+because MtGox, the largest exchange operator at the time, was seized
+by The United States Department of Homeland Security.
+
+In the second half of 2013, various events happen that can be the
+cause of the raise of Bitcoin market price, first, in August 6th,
+Bitcoin is ruled currency by a Texas judge, then in August 20th,
+Bitcoin is ruled as private money in Germany, then in August 28th,
+RoboCoin, a Bitcoin ATM manufacturer, starts accepting orders. This
+can be the cause of the huge peek at the end of 2013 and start of
+2014. There are no clear events in the Bitcoin history that explain
+the period after 2014, which leads us to think that the price has been
+fluctuating due to trading strategies.
 
 Is important to note how volatile is the Bitcoin average price,
 ranging from nearly $0$ USD to $1100$ USD in just a year, and now, in
@@ -915,7 +532,7 @@ ranging from nearly $0$ USD to $1100$ USD in just a year, and now, in
 fluctuations, if predicted, can be very profitable for the trader. 
 
 The data-set comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
+18:15:05, spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -923,16 +540,15 @@ The data-set comprises one real number data point each day, at
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$    \\
-    mean   & $155.924$ \\
-    median & $12.378$  \\
-    std    & $218.563$ \\
-    min    & $0$       \\
-    $25$\% & $0.209$   \\
-    $50$\% & $12.378$  \\
-    $75$\% & $271.335$ \\
-    max    & $1151$    \\
+    \midrule
+    count & $2673$ \\
+    mean & $155.375541$ \\
+    std & $218.398495$ \\
+    min & $0$ \\
+    $25\%$ & $0.199$ \\
+    $50\%$ & $12.28$ \\
+    $75\%$ & $270$ \\
+    max & $1151$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Market Price}}
@@ -978,16 +594,11 @@ Bitcoin fee in a single transaction, in December 12, 171 Bitcoins was
 paids as fee in block 157235.
 
 If we look at \autoref{fig:median-confirmation-time-over-time} there
-is a peak in mid 2012, that can coincide with the increase in number
-of transactions seen in
-\autoref{fig:n-transactions-multiple-over-time}. After that even
-though the number of transactions is growing, there is also in
-increment in the hash rate, so the number of transactions can be
-included in blocks thanks to the amount of miners and their processing
-power.
+is a peak in mid 2012, that can coincide with the increase in
+\textit{Output Volume} seen in \autoref{fig:output-volume-over-time}.
 
- One real number data point each day, at 18:15:05,
-spanning from 03/01/2009 to 03/05/2016.
+The series comprises one real number data point each day, at
+18:15:05, spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -995,16 +606,15 @@ spanning from 03/01/2009 to 03/05/2016.
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$   \\
-    mean   & $5.385$  \\
-    median & $6.975$  \\
-    std    & $4.859$  \\
-    min    & $0$      \\
-    $25$\% & $0$      \\
-    $50$\% & $6.975$  \\
-    $75$\% & $8.5$    \\
-    max    & $47.733$ \\
+    \midrule
+    count & $2673$ \\
+    mean & $5.381322$ \\
+    std & $4.863176$ \\
+    min & $0$ \\
+    $25\%$ & $0$ \\
+    $50\%$ & $6.966667$ \\
+    $75\%$ & $8.5$ \\
+    max & $47.733333$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for 
@@ -1030,530 +640,6 @@ spanning from 03/01/2009 to 03/05/2016.
 
 \clearpage
 %----------------------------------------------------------------------
-
-\subsection{Miners Revenue}
-\label{sec:miners-revenue}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/miners-revenue-over-time}}
-  \caption{Miners Revenue Over Time}
-  \label{fig:miners-revenue-over-time}
-\end{figure}
-
-Total value of coinbase block rewards and transaction fees paid to
-miners, expressed in USD. To understand the rewards and fees, we
-include this quote, extracted the 1st of June of 2016 from
-\href{https://en.bitcoin.it/wiki/Mining}{Bitcoin.it}:
-
-\textit{``When a block is discovered, the discoverer may award
-  themselves a certain number of bitcoins, which is agreed-upon by
-  everyone in the network. Currently this bounty is 25 bitcoins; this
-  value will halve every 210,000 blocks. [...]. } 
-
-\textit{Additionally, the miner is awarded the fees paid by users
-  sending transactions. The fee is an incentive for the miner to
-  include the transaction in their block. In the future, as the number
-  of new bitcoins miners are allowed to create in each block dwindles,
-  the fees will make up a much more important percentage of mining
-  income.''}
-
-Taking the previous quote into consideration, we know that the miner
-reward is fixed, so its fluctuation will depend upon the price of the
-Bitcoin itself, therefore the resemblance between miners revenue
-(\autoref{fig:miners-revenue-over-time}) and Bitcoin price
-(\autoref{fig:market-price-over-time}).
-
-In 2016, the transaction fees represent a very small amount of the
-BTCs of the miners revenue. We can see in
-\autoref{tab:cost-per-transaction} that the average transaction has a
-value of $9.727$. On the other hand, the average number of
-transactions per block $306.632$. Thus the expected revenue due to
-fees of a single miner is $9.727 \times 306.632 = $
-$2982.731$ USD.
-
-If we analyze the revenue thanks to the reward of discovering a block
-we have that the average market price of the
-Bitcoin(\autoref{tab:market-price}) is $155.924$
-USD and the reward is $25$
-BTC per block discovered, that makes an amount of
-$155.924 \times 25 = 3898.109$
-USD per block discovered. Added to that, we have to keep in mind that,
-as of June the 2nd, the current price of Bitcoin is $536.99$
-USD, which makes the rewards value increase to
-$536.99 \times 25 = 13424.75$
-USD per blocked discovered. We can conclude that nowadays, the main
-source of revenues for miners is the block discovery, but in the
-future, as it goes getting harder to discover blocks, the fees will
-start to be an important source of income for miners.
-
-This data-set comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$        \\
-    mean   & $638331.424$  \\
-    median & $85611.647$   \\
-    std    & $911565.967$  \\
-    min    & $0.000$       \\
-    $25$\% & $1895.375$    \\
-    $50$\% & $85611.647$   \\
-    $75$\% & $1023087.365$ \\
-    max    & $5117346$     \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Miners Revenue}}
-  \label{tab:miners-revenue}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/miners-revenue-histogram}}
-  \caption{Miners Revenue Histogram}
-  \label{fig:miners-revenue-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/miners-revenue-boxplot}}
-  \caption{Miners Revenue Boxplot}
-  \label{fig:miners-revenue-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Network Deficit}
-\label{sec:network-deficit}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/network-deficit-over-time}}
-  \caption{Network Deficit Over Time}
-  \label{fig:network-deficit-over-time}
-\end{figure}
-
-Shows difference between transaction fees and cost of Bitcoin mining
-in USD. This definition, given by
-\href{https://blockchain.info/charts}{BlockChain.info} can be a little
-bit misleading, because it's not clear what the \textit{cost of
-  Bitcoin mining} means. After some research, we found in
-\href{http://bitcoin.stackexchange.com/questions/10230/how-is-network-deficit-calculated}{StackExchange}
-that the cost of Bitcoin mining is the reward from Bitcoin mining. So
-the network deficit, is the difference between transaction fees and
-reward for mining. There is a lot of discussion about what this
-variable represents, and how to interpret it. For example:
-
-``\textit{So at the current rate of 1 tps, the average transaction fee
-  would need to rise to \$5 worth of BTC to keep mining at its current
-  economic strength. This would drastically reduce write access to
-  Bitcoin, and might not even be achievable due to consumer choice
-  (growing preference among potential adoptees for market alternatives
-  like traditional finance, alt-blockchains, etc as the average tx fee
-  increases).}
-
-\textit{While decentralization has been the main focus of the block
-  size debate, hashrate (mining revenues) and accessibility (cost of
-  transaction) are also important metrics of network utility and
-  health, and should be taken into consideration.}
-
-\textit{The lower the maximum transaction throughput, the more
-  expensive transactions need to be to maintain current mining
-  revenues. The optimal block size limit will strike the right balance
-  between mining decentralization, miner revenue, and write
-  accessibility, and not exclude any of these factors in its focus.}''
-
-What we see in \autoref{fig:network-deficit-over-time} is that as
-mentioned before in \autoref{sec:miners-revenue}, the revenues of
-miners are mostly due to the rewards of block discovery instead of the
-fees produced in transactions. This can be interpreted as a network
-inmaturity, because miners, which are the main supporters of the
-Bitcoin network, rely mostly on the Bitcoin inflation to make profit,
-instead of the transactions and associated fees.
-
-It's easy to see the relationship between the network deficit and the
-Bitcoin market price by noticing that
-\autoref{fig:network-deficit-over-time} and
-\autoref{fig:market-price-over-time} are nearly simetrical in the X
-axis. So, the higher the price of bitcoin, the higher is the deficit
-(though is represented in negative numbers).
-
-This data-set comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
-
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$         \\
-    mean   & -$631395.059$  \\
-    median & -$84958.600$   \\
-    std    & $903713.147$   \\
-    min    & -$5068845.988$ \\
-    $25$\% & -$1009464.098$ \\
-    $50$\% & -$84958.600$   \\
-    $75$\% & -$1895.354$    \\
-    max    & $0$            \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Network Deficit}}
-  \label{tab:network-deficit}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/network-deficit-histogram}}
-  \caption{Network Deficit Histogram}
-  \label{fig:network-deficit-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/network-deficit-boxplot}}
-  \caption{Network Deficit Boxplot}
-  \label{fig:network-deficit-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Number of Transactions}
-\label{sec:n-transactions-multiple}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-multiple-over-time}}
-  \caption{Number of Transactions Over Time}
-  \label{fig:n-transactions-multiple-over-time}
-\end{figure}
-
-Here we analyze a compound set of variables: number of transactions,
-number of transactions excluding chains longer than 10, 100, 1000 and
-10000, and number of transactions excluding the 100 most popular
-addresses. 
-
-The number of transactions is defined as ``\textit{The number of daily
-  confirmed Bitcoin transactions}''. As for long chains, we include a
-quote from
-\href{http://www.ofnumbers.com/2015/01/22/slicing-data-what-comprises-blockchain-transactions/}{Tim
-  Swanson} that explains the origin of the term and why can be useful:
-``\textit{questions have arisen over a series of what some call “long
-  chains.” Last month several commentators on a popular thread on
-  Hacker News identified thousands of small transactions originating
-  from a single source. The source was continually sending
-  transactions and paid transaction fees for each of them. The reason
-  this struck many as odd as a rational actor would simply bundle the
-  transactions together to save on transaction fees.}
-
-\textit{ While there are likely different motivations for doing so,
-  one reason for why this was occurring was that the originating
-  source was attempting to delink or otherwise mix and tumble coins to
-  make it difficult to “dox” or identify the originating source. But
-  it could also be a faucet and at one point even pools paid out
-  miners using chained transactions, perhaps some still do.}''
-
-
-The number of transactions represented in blue color in
-\autoref{fig:n-transactions-multiple-over-time} show a moderated
-growth compared to that of the market price or market capitalization.
-That may be because this variable doesn't depend on the inflation of
-the Bitcoin, and there aren't exagerated fluctuation. We see that even
-the price of the Bitcoin is not at its peak in 2016, the number of
-transactions are in the higher point so far in the Bitcoin history.
-It's also possible to see the relatioship between the different curves
-excluding ``long chains'', where as the ``long chains'' are removed
-the number of transactions decrease, although the tendency is similar.
-
-Regarding \textit{number of transactions excluding popular}, is useful
-to show whether there is a dependecy of a small number of actors in
-the Bitcoin network. What we see in
-\autoref{fig:n-transactions-multiple-over-time} is that,
-\textit{number of transactions excluding popular} in yellow, is
-growing independent from the 100 most popular addresses. While until
-2014 this addresses added a substantial amount of transactions to the
-overall count, from that point on, the count between the total
-transactions and \textit{number of transactions excluding popular} is
-similar.
-
-This data-set comprises six integer data point each day, at 18:15:05,
-spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  \tiny
-  \begin{tabularx}{\textwidth}{XXXXXXX} 
-    \toprule
-    \tableheadline{Measure} &
-    \tableheadline{NumTransactions} &
-    \tableheadline{Ex-10} &
-    \tableheadline{Ex-100} &
-    \tableheadline{Ex-1000} &
-    \tableheadline{Ex-10000} &
-    \tableheadline{Ex-Popular} \\
-    \midrule                                                                                     
-    count  & $2678$      & $2678$      & $2678$      & $2678$      & $2678$      & $2678$      \\
-    mean   & $47255.265$ & $15589.578$ & $26050.881$ & $32665.966$ & $39117.017$ & $40400.536$ \\
-    median & $31214$     & $7115$      & $12810$     & $16915$     & $22558$     & $12597.5$   \\
-    std    & $56769.848$ & $20367.504$ & $32164.862$ & $40035.066$ & $46391.775$ & $55357.260$ \\
-    min    & $0$         & $0$         & $0$         & $0$         & $0$         & $0$         \\
-    $25$\  & $501.5$     & $337$       & $426.25$    & $486.25$    & $501.5$     & $501.5$     \\
-    $50$\  & $31214$     & $7115$      & $12810$     & $16915$     & $22558$     & $12597.5$   \\
-    $75$\  & $69853$     & $23695.5$   & $39936.75$  & $50210.75$  & $61130$     & $63434.25$  \\
-    max    & $276448$    & $157002$    & $187035$    & $206184$    & $227830$    & $262461$    \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Transactions}}
-  \label{tab:n-transactions-multiple}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-multiple-histogram}}
-  \caption{Number of Transactions Histogram}
-  \label{fig:n-transactions-multiple-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-multiple-boxplot}}
-  \caption{Number of Transactions Boxplot}
-  \label{fig:n-transactions-multiple-boxplot}
-\end{figure}
-
-\clearpage
-%----------------------------------------------------------------------
-
-\subsection{Number of Transactions Per Block}
-\label{sec:n-transactions-per-block}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-per-block-over-time}}
-  \caption{Number of Transactions Per Block
-    Over Time}
-  \label{fig:n-transactions-per-block-over-time}
-\end{figure}
-
-This variable represents the average number of transactions per block.
-The way transactions are added to the Bitcoin network is by adding
-them to a block. This operation is done by miners, that receive a fee
-(that can be zero) to do this operation. As mentioned before, today,
-miners revenue are due mostly to the discovery of new blocks instead
-of fees, nonetheless fees is another source of income. A miner can
-choose not to include transactions in the mined blocks, and that would
-go against the healthy growth of the Bitcoin network. Fortunately,
-\autoref{fig:n-transactions-per-block-over-time} shows that the amount
-of transactions per block is increasing, this way Bitcoin networks can
-keep growing relying in miners to process transactions. On top of
-that, the average amount of transactions per block since mid 2015 is
-greater than $1000$, given that the average cost per transaction is
-$9.727$ which gives an average revenue of $9727.391$ USD per block
-for miner for this period.
-
-This data-set comprises one integer data point each day, at 18:15:05,
-spanning from 03/01/2009 to 28/04/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2673$    \\
-    mean   & $306.632$ \\
-    median & $205$     \\
-    std    & $377.986$ \\
-    min    & $1$       \\
-    $25$\% & $2$       \\
-    $50$\% & $205$     \\
-    $75$\% & $435$     \\
-    max    & $2036$    \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Transactions 
-      Per Block}}
-  \label{tab:n-transactions-per-block}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-per-block-histogram}}
-  \caption{Number of Transactions Per Block
-    Histogram}
-  \label{fig:n-transactions-per-block-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-per-block-boxplot}}
-  \caption{Number of Transactions Per Block
-    Boxplot}
-  \label{fig:n-transactions-per-block-boxplot}
-\end{figure}
-
-\clearpage
-%---------------------------------------------------------------------- 
-
-\subsection{Number of Total Transactions}
-\label{sec:n-transactions-total}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-total-over-time}}
-  \caption{Number of Total Transactions
-    Over Time}
-  \label{fig:n-transactions-total-over-time}
-\end{figure}
-
-
-Total number of transactions data in
-\autoref{fig:n-transactions-total-over-time} show that the growth is
-exponential. It can be seen in
-\autoref{fig:n-transactions-multiple-over-time} that the number of
-transactions per day is increasing, from that we can assume that the
-growth of accumulated number of transactions over time is going to
-increase in a nearly exponential way.
-
-This data-set comprises one integer data point each day, at 18:15:05,
-spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2.678e+03$ \\
-    mean   & $2.491e+07$ \\
-    median & $6685067$   \\
-    std    & $3.308e+07$ \\
-    min    & $1$         \\
-    $25$\% & $1.384e+05$ \\
-    $50$\% & $6.685e+06$ \\
-    $75$\% & $4.191e+07$ \\
-    max    & $1.265e+08$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Total
-      Transactions}}
-  \label{tab:n-transactions-total}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-total-histogram}}
-  \caption{Number of Total Transactions
-    Histogram}
-  \label{fig:n-transactions-total-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-transactions-total-boxplot}}
-  \caption{Number of Total Transactions
-    Boxplot}
-  \label{fig:n-transactions-total-boxplot}
-\end{figure}
-
-\clearpage
-%---------------------------------------------------------------------- 
-
-\subsection{Number of Unique Addresses}
-\label{sec:n-unique-addresses}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-unique-addresses-over-time}}
-  \caption{Number of Unique Addresses
-    Over Time}
-  \label{fig:n-unique-addresses-over-time}
-\end{figure}
-
-The total number of unique addresses used on the Bitcoin blockchain. A
-unique adress, as defined by
-\href{https://en.bitcoin.it/wiki/Address}{Bitcoin.it}: ``\textit{A
-  Bitcoin address, or simply address, is an identifier of 26-35
-  alphanumeric characters, beginning with the number 1 or 3, that
-  represents a possible destination for a bitcoin payment.}'' This
-variable is closely related to the number of transactions made in the
-network. When compared,
-\autoref{fig:n-transactions-multiple-over-time} and
-\autoref{fig:n-unique-addresses-over-time} show a resemblance not only
-in the events that produce the local maximums but also in the growth.
-
-This data-set comprises one integer data point each day, at 18:15:05,
-spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$       \\
-    mean   & $86921.616$  \\
-    median & $29205.5$    \\
-    std    & $112219.880$ \\
-    min    & $0$          \\
-    $25$\% & $609.25$     \\
-    $50$\% & $29205.5$    \\
-    $75$\% & $152308.5$   \\
-    max    & $483756$     \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Number of Unique Addresses}}
-  \label{tab:n-unique-addresses}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-unique-addresses-histogram}}
-  \caption{Number of Unique Addresses
-    Histogram}
-  \label{fig:n-unique-addresses-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/n-unique-addresses-boxplot}}
-  \caption{Number of Unique Addresses
-    Boxplot}
-  \label{fig:n-unique-addresses-boxplot}
-\end{figure}
-
-\clearpage
-%--------------------------------------------------------------------- 
 
 \subsection{Output Volume}
 \label{sec:output-volume}
@@ -1602,7 +688,7 @@ by sender as \textit{DeathAndTaxes} explains: ``\textit{In the early
   WAS change.}''
 
 This data-set comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
+18:15:05, spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -1610,16 +696,15 @@ This data-set comprises one real number data point each day, at
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2679$         \\
-    mean   & $1134859.870$  \\
-    median & $661019.796$   \\
-    std    & $2333431.889$  \\
-    min    & $0$            \\
-    $25$\% & $73233.013$    \\
-    $50$\% & $661019.796$   \\
-    $75$\% & $1286432.155$  \\
-    max    & $45992222.558$ \\
+    \midrule
+    count & $2673$ \\
+    mean & $1.132389e+06$ \\
+    std & $2.335428e+06$ \\
+    min & $0$ \\
+    $25\%$ & $7.302892e+04$ \\
+    $50\%$ & $6.551777e+05$ \\
+    $75\%$ & $1.283682e+06$ \\
+    max & $4.599222e+07$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Output Volume}}
@@ -1654,7 +739,7 @@ This data-set comprises one real number data point each day, at
   \myfloatalign
   {\includegraphics[width=1\linewidth]
     {gfx/standard-and-poors-500-over-time}}
-  \caption{Standard Output Volume Poors 500
+  \caption{Standard \& Poors 500
     Over Time}
   \label{fig:standard-and-poors-500-over-time}
 \end{figure}
@@ -1676,20 +761,6 @@ From the
   classified common stocks as a leading indicator of business cycles.}
 
 \textit{[...]}
-
-\textit{On August 12, 1982, the index closed at 102.42.}
-
-\textit{The index reached a relative intraday high—which was not
-  exceeded for over seven years—of 1,552.87, on March 24, 2000, during
-  the dot-com bubble. The index then declined by approximately 50\%,
-  to 768.63, on October 10, 2002, during the stock market downturn of
-  2002. On May 30, 2007, the S\&P 500 closed at 1,530.23, to set its
-  first all-time closing high in more than seven years. Although the
-  index achieved a new all-time intraday high on October 11, 2007, at
-  1,576.09, following a record close of 1,565.15 on October 9, the
-  index finished 2007 at 1,468.36 points—just below its 1999 annual
-  close. Less than a month later, it dropped to 1,400, and would not
-  see similar levels again for five years.}
 
 \textit{In mid-2007, the subprime mortgage crisis spread to the wider
   U.S. financial sector. The resulting situation became acute in
@@ -1737,27 +808,30 @@ From the
   year. At the close of 2015, the index hit 2,043.94, down 0.73\% for
   the year.}''
 
+It can be observed in \autoref{fig:standard-and-poors-500-over-time}
+the events described in the previous quote. Besides that, variable
+\textit{Close} has a linear increasing trend which can probably be
+explained because of the inflation, while the volume is a random walk,
+following no apparent trend or seasonality.
+
 \begin{table}
   \myfloatalign
   \tiny
-  \begin{tabularx}{\textwidth}{XXXXXXX} 
+  \begin{tabularx}{\textwidth}{XXX} 
     \toprule
-    \tableheadline{Measure} & \tableheadline{Open} &
-    \tableheadline{High} & \tableheadline{Low} & \tableheadline{Close}
-    & \tableheadline{Volume} & \tableheadline{Adj Close}\\
-    \midrule 
-    count  & $16695$    & $16695$    & $16695$    & $16695$    & $1.669e+04$ & $16695$    \\
-    mean   & $492.103$  & $495.207$  & $488.827$  & $492.221$  & $8.157e+08$ & $492.221$  \\
-    median & $150.910$  & $151.619$  & $150.240$  & $151.039$  & $75180000$  & $151.039$  \\
-    std    & $566.001$  & $569.347$  & $562.382$  & $566.107$  & $1.478e+09$ & $566.107$  \\
-    min    & $16.660$   & $16.660$   & $16.660$   & $16.660$   & $6.800e+05$ & $16.660$   \\
-    $25$\% & $84.099$   & $84.765$   & $83.459$   & $84.099$   & $7.805e+06$ & $84.099$   \\
-    $50$\% & $150.910$  & $151.619$  & $150.240$  & $151.039$  & $7.518e+07$ & $151.039$  \\
-    $75$\% & $974.309$  & $983.190$  & $964.844$  & $974.904$  & $8.428e+08$ & $974.904$  \\
-    max    & $2130.360$ & $2134.719$ & $2126.060$ & $2130.820$ & $1.145e+10$ & $2130.820$ \\
+    \tableheadline{Measure} & \tableheadline{SP500-Close} & \tableheadline{SP500-Volume} \\
+    \midrule
+    count  & $2673$        & $2673$    \\
+    mean   & $1503.979515$ & $4.000942e+09$ \\
+    std    & $395.164083$  & $1.122921e+09$ \\
+    min    & $676.530029$  & $5.362e+08$    \\
+    $25\%$ & $1178.339966$ & $3.299395e+09$ \\
+    $50\%$ & $1406.290039$ & $3.78247e+09$  \\
+    $75\%$ & $1898.293335$ & $4.50811e+09$  \\
+    max    & $2130.820068$ & $1.061781e+10$ \\
     \bottomrule
   \end{tabularx}
-  \caption{Statistical values for \textit{Standard Output Volume Poors 500}}
+  \caption{Statistical values for \textit{Standard \& Poors 500}}
   \label{tab:standard-and-poors-500}
 \end{table}
 
@@ -1765,7 +839,7 @@ From the
   \myfloatalign
   {\includegraphics[width=1\linewidth]
     {gfx/standard-and-poors-500-histogram}}
-  \caption{Standard Output Volume Poors 500
+  \caption{Standard \& Poors 500
     Histogram}
   \label{fig:standard-and-poors-500-histogram}
 \end{figure}
@@ -1774,101 +848,12 @@ From the
   \myfloatalign
   {\includegraphics[width=1\linewidth]
     {gfx/standard-and-poors-500-boxplot}}
-  \caption{Standard Output Volume Poors 500
-    Boxplot}
+  \caption{Standard \& Poors 500 Boxplot}
   \label{fig:standard-and-poors-500-boxplot}
 \end{figure}
 
-Due to the difference in scale of the variable \textit{Volume}
-compared to the rest of variables it's not possible to see their
-boxplots in \autoref{fig:standard-and-poors-500-boxplot}. We need
-another boxplot, seen in
-\autoref{fig:standard-and-poors-500-rest-boxplot}, for the rest of the
-variables to be seen clearly.
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/standard-and-poors-500-rest-boxplot}}
-  \caption{Standard Output Volume Poors 500
-    Rest of Variables Boxplot}
-  \label{fig:standard-and-poors-500-rest-boxplot}
-\end{figure}
-
-This data-set comprises six real data point entry each day, spanning
-from 03/01/1950 to 09/05/2016. The variable names are \textit{Open},
-\textit{High}, \textit{Low}, \textit{Close}, \textit{Volume},
-\textit{Adj} and \textit{Close}, representing different
-characteristics of the index price.
-
-\clearpage
-%--------------------------------------------------------------------- 
-
-\subsection{Total Bitcoins}
-\label{sec:total-bitcoins}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/total-bitcoins-over-time}}
-  \caption{Total Bitcoins
-    Over Time}
-  \label{fig:total-bitcoins-over-time}
-\end{figure}
-
-The total number of bitcoins that have already been mined; in other
-words, the current supply of bitcoins on the network. First we have to
-know that, according to the \href{}{Wikipedia} ``The bitcoin protocol
-specifies that the reward for adding a block will be halved every
-210000 blocks (approximately every four years). Eventually, the reward
-will decrease to zero, and the limit of 21 million bitcoins will be
-reached circa 2140; the record keeping will then be rewarded by
-transaction fees solely.'' The growth of bitcoin amount will decrease
-every time the difficulty increases, been 21 million the upper limit.
-This change in difficulty depend on the blocks discovered by miners.
-
-This data-set comprises one integer data point each day, at 18:15:05,
-spanning from 03/01/2009 to 03/05/2016.
-
-\begin{table}
-  \myfloatalign
-  %\small
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2.678e+03$ \\
-    mean   & $8.723e+06$ \\
-    median & $9849250$   \\
-    std    & $4.819e+06$ \\
-    min    & $5.000e+01$ \\
-    $25$\% & $4.472e+06$ \\
-    $50$\% & $9.849e+06$ \\
-    $75$\% & $1.297e+07$ \\
-    max    & $1.550e+07$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for \textit{Total Bitcoins}}
-  \label{tab:total-bitcoins}
-\end{table}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/total-bitcoins-histogram}}
-  \caption{Total Bitcoins
-    Histogram}
-  \label{fig:total-bitcoins-histogram}
-\end{figure}
-
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/total-bitcoins-boxplot}}
-  \caption{Total Bitcoins
-    Boxplot}
-  \label{fig:total-bitcoins-boxplot}
-\end{figure}
+This data-set comprises one real data point entry each day, spanning
+from 03/01/2009 to 28/04/2016.
 
 \clearpage
 %--------------------------------------------------------------------- 
@@ -1901,7 +886,7 @@ volume decreases, meaning that people are interested in the Bitcoin
 exchange when its price fluctuates.
 
 This data-set comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
+18:15:05, spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -1909,16 +894,15 @@ This data-set comprises one real number data point each day, at
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2.678e+03$  \\
-    mean   & $2.768e+06$  \\
-    median & $529334.610$ \\
-    std    & $5.819e+06$  \\
-    min    & $0$          \\
-    $25$\% & $1.341e+03$  \\
-    $50$\% & $5.293e+05$  \\
-    $75$\% & $3.014e+06$  \\
-    max    & $7.205e+07$  \\
+    \midrule
+    count & $2673$ \\
+    mean & $2.770230e+06$ \\
+    std & $5.824188e+06$ \\
+    min & $0$ \\
+    $25\%$ & $1.295198e+03$ \\
+    $50\%$ & $5.252163e+05$ \\
+    $75\%$ & $3.016445e+06$ \\
+    max & $7.205049e+07$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Trade Volume}}
@@ -1961,14 +945,13 @@ This data-set comprises one real number data point each day, at
 The total value of all transaction fees paid to miners (not including
 the coinbase value of block rewards) in BTC. This variable depends on
 the amount of transactions and the amount of fee paid per transaction.
-If we look at Number of Transactions in
-\autoref{fig:n-transactions-multiple-over-time} and Transactions Fees
-in \autoref{fig:transaction-fees-over-time} we can see that even there
-is an increase in the Number of Transactions near the peaks, the
-height of those peaks is not comparable, in consequence we can assume
-that at least those peaks are not due entirely to the number of
-transactions made. We can see that there is some relationship with the
-market price in \autoref{fig:market-price-over-time}, reflecting how
+If we look at Transactions Fees in
+\autoref{fig:transaction-fees-over-time} we can see that even there is
+an increase in the Number of Transactions near the peaks, the height
+of those peaks is not comparable, in consequence we can assume that at
+least those peaks are not due entirely to the number of transactions
+made. We can see that there is some relationship with the market price
+in \autoref{fig:market-price-over-time}, reflecting how
 ``\textit{eager}'' is the user to have the transaction accepted. This
 relationship is not in the sense that the peaks appear simultaneously
 in the charts, but the peaks of Transaction Fees procede those of
@@ -1978,7 +961,7 @@ they fix the price of the fee in USD instead of BTC producing those
 rises.
 
 This data-set comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
+18:15:05, spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -1986,16 +969,15 @@ This data-set comprises one real number data point each day, at
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$    \\
-    mean   & $16.273$  \\
-    median & $12.238$  \\
-    std    & $20.839$  \\
-    min    & $0$       \\
-    $25$\% & $0.070$   \\
-    $50$\% & $12.238$  \\
-    $75$\% & $25.172$  \\
-    max    & $336.577$ \\
+    \midrule
+    count & $2673$ \\
+    mean & $16.222035$ \\
+    std & $20.824067$ \\
+    min & $0$ \\
+    $25\%$ & $0.07$ \\
+    $50\%$ & $12.216862$ \\
+    $75\%$ & $25.134819$ \\
+    max & $336.577055$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Transaction Fees}}
@@ -2053,7 +1035,7 @@ transaction volume is due to number of transactions more than amount
 of Bitcoin per transaction.
 
 This data-set comprises one real number data point each day, at
-18:15:05, spanning from 03/01/2009 to 03/05/2016.
+18:15:05, spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -2061,16 +1043,15 @@ This data-set comprises one real number data point each day, at
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2678$       \\
-    mean   & $3506.944$   \\
-    median & $274.790$    \\
-    std    & $6026.088$   \\
-    min    & $0$          \\
-    $25$\% & $0.002$      \\
-    $50$\% & $274.790$    \\
-    $75$\% & $5384.674$   \\
-    max    & $157676.252$ \\
+    \midrule
+    count & $2673$ \\
+    mean & $3476.856463$ \\
+    std & $5990.380532$ \\
+    min & $0$ \\
+    $25\%$ & $0.001244$ \\
+    $50\%$ & $273.841916$ \\
+    $75\%$ & $5344.867164$ \\
+    max & $157676.252853$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Transaction Fees USD}}
@@ -2124,7 +1105,7 @@ Bitcoin as a currency between individuals, this may be the cause of
 the raise of this ratio since the end of 2015.
 
 This data-set comprises one real number data point each day, at
-18:15:0, spanning from 03/01/2009 to 03/05/2016.
+18:15:0, spanning from 03/01/2009 to 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -2132,16 +1113,15 @@ This data-set comprises one real number data point each day, at
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $2679$    \\
-    mean   & $10.863$  \\
-    median & $5.164$   \\
-    std    & $16.936$  \\
-    min    & $0$       \\
-    $25$\% & $1.099$   \\
-    $50$\% & $5.164$   \\
-    $75$\% & $13.101$  \\
-    max    & $224.065$ \\
+    \midrule
+    count & $2673$ \\
+    mean & $10.738774$ \\
+    std & $16.705812$ \\
+    min & $0$ \\
+    $25\%$ & $1.082618$ \\
+    $50\%$ & $5.117229$ \\
+    $75\%$ & $12.978190$ \\
+    max & $224.065347$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Transactions/Trade Ratio}}
@@ -2210,8 +1190,8 @@ page of The Economist. In November, the 3rd, Bitcoin sign is accepted
 into Unicode. This are all events that may have produced many visits
 to the Bitcoin Wikipedia page.
 
-This data-set comprises one integer per day ranging from 01/01/2008
-till 24/05/2016.
+This data-set comprises one integer per day ranging from 03/01/2009
+till 28/04/2016.
 
 \begin{table}
   \myfloatalign
@@ -2219,16 +1199,15 @@ till 24/05/2016.
   \begin{tabularx}{\textwidth}{XX} 
     \toprule
     \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule 
-    count  & $3067$      \\
-    mean   & $7258.160$  \\
-    median & $3093$      \\
-    std    & $24458.410$ \\
-    min    & $0$         \\
-    $25$\% & $16$        \\
-    $50$\% & $3093$      \\
-    $75$\% & $8044.5$    \\
-    max    & $923659$    \\
+    \midrule
+    count & $2673$ \\
+    mean & $8168.301160$ \\
+    std & $25977.892265$ \\
+    min & $0$ \\
+    $25\%$ & $86$ \\
+    $50\%$ & $4173$ \\
+    $75\%$ & $8585$ \\
+    max & $923659$ \\
     \bottomrule
   \end{tabularx}
   \caption{Statistical values for \textit{Wikipedia Trend for Bitcoin}}
