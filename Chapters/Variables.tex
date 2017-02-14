@@ -39,72 +39,71 @@ more history than Bitcoin. After analyzing the date span of each
 variable, we conclude that the interesction of all the sets is in the
 range between 2009-01-03 and 2016-04-28.
 
-\subsection{Average Block Size}
-\label{sec:avg-block-size}
+% \subsection{Average Block Size}
+% \label{sec:avg-block-size}
 
-A concise definition of a block can be found
-\href{https://en.bitcoin.it/wiki/Block}{here}: \textit{``Each block
-  contains, among other things, a record of some or all recent
-  transactions, and a reference to the block that came immediately
-  before it. It also contains an answer to a difficult-to-solve
-  mathematical puzzle - the answer to which is unique to each
-  block.''}
+% A concise definition of a block can be found
+% \href{https://en.bitcoin.it/wiki/Block}{here}: \textit{``Each block
+%   contains, among other things, a record of some or all recent
+%   transactions, and a reference to the block that came immediately
+%   before it. It also contains an answer to a difficult-to-solve
+%   mathematical puzzle - the answer to which is unique to each
+%   block.''}
 
-It's clear that, over time, the size of the block is going to
-increase, because there are more and more transactions in the Bitcoin
-distributed network. In consequence
-\autoref{fig:avg-block-size-over-time} shows a non-stoppable
-increasing.
+% It's clear that, over time, the size of the block is going to
+% increase, because there are more and more transactions in the Bitcoin
+% distributed network. In consequence
+% \autoref{fig:avg-block-size-over-time} shows a non-stoppable
+% increasing.
 
-\begin{figure}[bth]
-  \myfloatalign
-  {\includegraphics[width=1\linewidth]
-    {gfx/avg-block-size-over-time}} 
-  \caption{\textit{Average block size} chart}
-  \label{fig:avg-block-size-over-time}
-\end{figure}
+% \begin{figure}[bth]
+%   \myfloatalign
+%   {\includegraphics[width=1\linewidth]
+%     {gfx/avg-block-size-over-time}} 
+%   \caption{\textit{Average block size} chart}
+%   \label{fig:avg-block-size-over-time}
+% \end{figure}
 
-This variable, called \textit{Average Block Size} represent the
-average size of the blocks in one day measured in MB. One real number
-data point each day, at 18:15:05, spanning from 03/01/2009 to
-28/04/2016. It was obtained from the section \textbf{Charts} of
-\href{blockchain.info}{blockchain.info}
+% This variable, called \textit{Average Block Size} represent the
+% average size of the blocks in one day measured in MB. One real number
+% data point each day, at 18:15:05, spanning from 03/01/2009 to
+% 28/04/2016. It was obtained from the section \textbf{Charts} of
+% \href{blockchain.info}{blockchain.info}
 
 
-In \autoref{fig:avg-block-size-over-time} can be seen how the average
-block size has been increasing since the creation of Bitcoin. In 2015
-the average block started to dangerously approach the limit of 1 MB,
-which is causing a big debate in the Bitcoin community about whether
-they should increase this limit or not. Although the average size of
-the blocks is increasing, the majority of blocks is near zero, as
-refleceted by the median in \autoref{tab:stats-avg-block-size}.
+% In \autoref{fig:avg-block-size-over-time} can be seen how the average
+% block size has been increasing since the creation of Bitcoin. In 2015
+% the average block started to dangerously approach the limit of 1 MB,
+% which is causing a big debate in the Bitcoin community about whether
+% they should increase this limit or not. Although the average size of
+% the blocks is increasing, the majority of blocks is near zero, as
+% refleceted by the median in \autoref{tab:stats-avg-block-size}.
 
-\begin{table}[bth]
-  \myfloatalign
-  \tiny
-  \begin{tabularx}{\textwidth}{XX} 
-    \toprule
-    \tableheadline{Measure} & \tableheadline{Value} \\
-    \midrule
-    count  & $2673$     \\
-    mean   & $0.163963$ \\
-    std    & $0.208009$ \\
-    min    & $0$        \\
-    $25\%$ & $0.000893$ \\
-    $50\%$ & $0.092265$ \\
-    $75\%$ & $0.241909$ \\
-    max    & $0.918519$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Statistical values for 
-    \textit{Average block size}}
-  \label{tab:stats-avg-block-size}
-\end{table}
+% \begin{table}[bth]
+%   \myfloatalign
+%   \tiny
+%   \begin{tabularx}{\textwidth}{XX} 
+%     \toprule
+%     \tableheadline{Measure} & \tableheadline{Value} \\
+%     \midrule
+%     count  & $2673$     \\
+%     mean   & $0.163963$ \\
+%     std    & $0.208009$ \\
+%     min    & $0$        \\
+%     $25\%$ & $0.000893$ \\
+%     $50\%$ & $0.092265$ \\
+%     $75\%$ & $0.241909$ \\
+%     max    & $0.918519$ \\
+%     \bottomrule
+%   \end{tabularx}
+%   \caption{Statistical values for 
+%     \textit{Average block size}}
+%   \label{tab:stats-avg-block-size}
+% \end{table}
 
-%----------------------------------------------------------------------
+% %----------------------------------------------------------------------
 
-\subsection{Bitcoin Days Destroyed
-  \& Bitcoin Days Destroyed Min Year}
+\subsection{Bitcoin Days Destroyed}
 \label{sec:bitcoin-days-destroyed}
 
 \textit{Bitcoin Days Destroyed} is a weighted measure of aggregate
@@ -120,8 +119,7 @@ data point each day, at 18:15:05, spanning from 03/01/2009 to
 28/04/2016.
 
 In \autoref{fig:bitcoin-days-destroyed-over-time} we show data over
-time for \textit{Bitcoin Days Destroyed} and \textit{Bitcoin Days
-  Destroyed Min Year}.
+time for \textit{Bitcoin Days Destroyed}.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -131,8 +129,7 @@ time for \textit{Bitcoin Days Destroyed} and \textit{Bitcoin Days
   \label{fig:bitcoin-days-destroyed-over-time}
 \end{figure}
 
-To better understand this set of variable we include a quote extracted
-from
+To better understand this variable we include a quote extracted from
 \href{http://bitcoin.stackexchange.com/questions/845/what-are-bitcoin-days-destroyed}{Bitcoin
   Beta | Stack Exchange}:
 
@@ -302,31 +299,58 @@ current value of Bitcoin.
 
 %----------------------------------------------------------------------
 
-\subsection{Estimated Transaction Volume USD}
-\label{sec:estimated-transaction-volume-usd}
+% \subsection{Estimated Transaction Volume USD}
+% \label{sec:estimated-transaction-volume-usd}
 
 
-The Estimated Transaction Volume in USD value, shown in
-\autoref{fig:estimated-transaction-volume-usd-over-time}, can be
-explained by the average value of Bitcoin, shown in
-\autoref{fig:market-price-over-time}, because nearly all the events
-are paired in the two figures. There is a small increase in estimated
-transaction volume in USD in mid 2011 at the same time than the
-average price of Bitcoin increases. Later on, in 2013 there is a
-bigger increase in estimated volume that is also reflected in the
-average price. Then we have the two biggest peaks around January of
-2014 coinciding with the highest average value of Bitcoin (also
-represented in two peaks). After that there is decrease in average
-price and estimated volume till 2016 where Bitcoin average price
-starts to increase at the same time that the estimate transaction
-volume increases.
+% The Estimated Transaction Volume in USD value, shown in
+% \autoref{fig:estimated-transaction-volume-usd-over-time}, can be
+% explained by the average value of Bitcoin, shown in
+% \autoref{fig:market-price-over-time}, because nearly all the events
+% are paired in the two figures. There is a small increase in estimated
+% transaction volume in USD in mid 2011 at the same time than the
+% average price of Bitcoin increases. Later on, in 2013 there is a
+% bigger increase in estimated volume that is also reflected in the
+% average price. Then we have the two biggest peaks around January of
+% 2014 coinciding with the highest average value of Bitcoin (also
+% represented in two peaks). After that there is decrease in average
+% price and estimated volume till 2016 where Bitcoin average price
+% starts to increase at the same time that the estimate transaction
+% volume increases.
+
+% \begin{figure}[bth]
+%   \myfloatalign
+%   {\includegraphics[width=1\linewidth]
+%     {gfx/estimated-transaction-volume-usd-over-time}}
+%   \caption{\textit{Estimated transaction volume USD} chart}
+%   \label{fig:estimated-transaction-volume-usd-over-time}
+% \end{figure}
+
+% %----------------------------------------------------------------------
+
+\subsection{Difficulty}
+\label{sec:difficulty}
+
+
+This variable depicts a relative measure of how difficult it is to
+find a new block. The \textit{Difficulty} is adjusted periodically as
+a function of how much hashing power has been deployed by the network
+of miners. \autoref{fig:difficulty-over-time} displays the difficulty
+values over time. It can be noticed the staggered nature of the
+values, that is because the \textit{Difficulty} is adjusted
+automatically every 2016 blocks, and changes equally for the entire
+Bitcoin network. Until 2014, the difficulty of mining was very low, it
+started to raise probably because the trade volume in the end of 2013
+and start of 2014 was approximately 70.000.000\$, which attracted
+professional miners with a greater processing power, those creating
+more and more blocks and augmenting the difficulty of mining.
 
 \begin{figure}[bth]
   \myfloatalign
   {\includegraphics[width=1\linewidth]
-    {gfx/estimated-transaction-volume-usd-over-time}}
-  \caption{\textit{Estimated transaction volume USD} chart}
-  \label{fig:estimated-transaction-volume-usd-over-time}
+    {gfx/difficulty-over-time}}
+  \caption{\textit{Difficulty} chart}
+  \label{fig:difficulty-over-time}
 \end{figure}
 
 %----------------------------------------------------------------------
@@ -459,7 +483,30 @@ is a peak in mid 2012, that can coincide with the increase in
   \label{fig:median-confirmation-time-over-time}
 \end{figure}
 
-%----------------------------------------------------------------------
+% ----------------------------------------------------------------------
+
+\subsection{Number of Transactions}
+\label{sec:n-transactions-multiple}
+
+Here we analyze \textit{Number of transactions}, which is defined as
+``\textit{The number of daily confirmed Bitcoin transactions}''. The
+\textit{Number of transactions} represented in
+\autoref{fig:n-transactions-over-time} show a moderated
+growth compared to that of the market price. That may be because this
+variable doesn't depend on the inflation of the Bitcoin, and there
+aren't exagerated fluctuation. We see that even the price of the
+Bitcoin is not at its peak in 2016, the \textit{Number of
+  transactions} are at its higher point so far in the Bitcoin history.
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/n-transactions-over-time}}
+  \caption{\textit{Number of transactions} chart}
+  \label{fig:n-transactions-over-time}
+\end{figure}
+
+% ----------------------------------------------------------------------
 
 \subsection{Output Volume}
 \label{sec:output-volume}
