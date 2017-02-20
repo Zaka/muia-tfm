@@ -39,70 +39,6 @@ more history than Bitcoin. After analyzing the date span of each
 variable, we conclude that the interesction of all the sets is in the
 range between 2009-01-03 and 2016-04-28.
 
-% \subsection{Average Block Size}
-% \label{sec:avg-block-size}
-
-% A concise definition of a block can be found
-% \href{https://en.bitcoin.it/wiki/Block}{here}: \textit{``Each block
-%   contains, among other things, a record of some or all recent
-%   transactions, and a reference to the block that came immediately
-%   before it. It also contains an answer to a difficult-to-solve
-%   mathematical puzzle - the answer to which is unique to each
-%   block.''}
-
-% It's clear that, over time, the size of the block is going to
-% increase, because there are more and more transactions in the Bitcoin
-% distributed network. In consequence
-% \autoref{fig:avg-block-size-over-time} shows a non-stoppable
-% increasing.
-
-% \begin{figure}[bth]
-%   \myfloatalign
-%   {\includegraphics[width=1\linewidth]
-%     {gfx/avg-block-size-over-time}} 
-%   \caption{\textit{Average block size} chart}
-%   \label{fig:avg-block-size-over-time}
-% \end{figure}
-
-% This variable, called \textit{Average Block Size} represent the
-% average size of the blocks in one day measured in MB. One real number
-% data point each day, at 18:15:05, spanning from 03/01/2009 to
-% 28/04/2016. It was obtained from the section \textbf{Charts} of
-% \href{blockchain.info}{blockchain.info}
-
-
-% In \autoref{fig:avg-block-size-over-time} can be seen how the average
-% block size has been increasing since the creation of Bitcoin. In 2015
-% the average block started to dangerously approach the limit of 1 MB,
-% which is causing a big debate in the Bitcoin community about whether
-% they should increase this limit or not. Although the average size of
-% the blocks is increasing, the majority of blocks is near zero, as
-% refleceted by the median in \autoref{tab:stats-avg-block-size}.
-
-% \begin{table}[bth]
-%   \myfloatalign
-%   \tiny
-%   \begin{tabularx}{\textwidth}{XX} 
-%     \toprule
-%     \tableheadline{Measure} & \tableheadline{Value} \\
-%     \midrule
-%     count  & $2673$     \\
-%     mean   & $0.163963$ \\
-%     std    & $0.208009$ \\
-%     min    & $0$        \\
-%     $25\%$ & $0.000893$ \\
-%     $50\%$ & $0.092265$ \\
-%     $75\%$ & $0.241909$ \\
-%     max    & $0.918519$ \\
-%     \bottomrule
-%   \end{tabularx}
-%   \caption{Statistical values for 
-%     \textit{Average block size}}
-%   \label{tab:stats-avg-block-size}
-% \end{table}
-
-% %----------------------------------------------------------------------
-
 \subsection{Bitcoin Days Destroyed}
 \label{sec:bitcoin-days-destroyed}
 
@@ -916,6 +852,48 @@ into Unicode. This are all events that may have produced many visits
 to the Bitcoin Wikipedia page.
 
 %--------------------------------------------------------------------- 
+
+\section{Feature subset selection}
+\label{sec:feature-selection}
+
+The process of feature subset selection used in this thesis is
+composed of two steps. One where we choose a set of variables with PCA
+which is going to be used by all the experimentation process. Later
+on, and embedded in all experiments performed there is a Wrapper FSS
+process.
+
+Wrapper FSS is a greedy algorithm, also called a forward feature
+selection. In each iteration a model is produced with a subset which
+initially is composed of one variable. In each iteration of the
+algorithm the variable that minimizes the error produced is added to
+selected features. If in a iteration a variable selected doesn't
+minimize the error of the selected features the algorithm has
+finished.
+
+The features presented in \autoref{sec:stat-var-analysis} where
+obtained by running a PCA over 41 variables selecting the 17 that
+added more information to the prediction.
+
+We can see in \autoref{fig:explained-variance} an ordered
+representation of the \textit{Explained variance} of the dimensions
+obtained by performing PCA over the original data-set. This
+information is what led us to choose 17 as the dimensions that has
+some meaningful information to predict the Bitcoin price.
+
+\begin{figure}[bth]
+  \myfloatalign
+  {\includegraphics[width=1\linewidth]
+    {gfx/explained-variance}}
+  \caption{\textit{Explained variance} of PCA dimensions.}
+  \label{fig:explained-variance}
+\end{figure}
+
+After PCA we applied Wrapper Feature Subset Selection(WFSS). The
+selection produced by WFSS depends on the model used and the
+particular parameters used for the model.
+
+The results of WFSS and the parameters used are explained
+in \autoref{ch:experiment}.
 
 %\enlargethispage{2cm}
 
