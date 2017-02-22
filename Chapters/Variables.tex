@@ -856,11 +856,18 @@ to the Bitcoin Wikipedia page.
 \section{Feature subset selection}
 \label{sec:feature-selection}
 
-The process of feature subset selection used in this thesis is
+The process of feature subset selection (FSS) used in this thesis is
 composed of two steps. One where we choose a set of variables with PCA
-which is going to be used by all the experimentation process. Later
-on, and embedded in all experiments performed there is a Wrapper FSS
-process.
+(\cite{pearson1901liii}) which is going to be our feature super-set
+for all the models. Later on, for selecting per-model subsets a
+Wrapper FSS technique (\cite{kohavi1997wrappers}) is used.
+
+This approach to FSS has been taken because wrapper methods select the
+best features (\cite{inza2004filter, kumari2011filter}) and, at the
+same time, they are more computationally expensive than filter
+methods. We came out with the mixed approach of selecting a super-set
+with PCA, which is computationally cheap and then we selected the
+final subsets with a wrapper method.
 
 Wrapper FSS is a greedy algorithm, also called a forward feature
 selection. In each iteration a model is produced with a subset which
@@ -887,10 +894,6 @@ some meaningful information to predict the Bitcoin price.
   \caption{\textit{Explained variance} of PCA dimensions.}
   \label{fig:explained-variance}
 \end{figure}
-
-After PCA we applied Wrapper Feature Subset Selection(WFSS). The
-selection produced by WFSS depends on the model used and the
-particular parameters used for the model.
 
 The results of WFSS and the parameters used are explained
 in \autoref{ch:experiment}.
