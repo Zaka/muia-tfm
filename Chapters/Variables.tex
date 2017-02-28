@@ -1,13 +1,13 @@
 % Variables
 
-\chapter{Variables and methods to predict the BTC price} % Chapter title
+% \chapter{Variables and methods to predict the BTC price} % Chapter title
 
-\label{ch:variables}
+% \label{ch:variables}
 
 %----------------------------------------------------------------------
 
-\section{Statistical variable analysis}
-\label{sec:stat-var-analysis}
+\chapter{Statistical variable analysis}
+\label{ch:stat-var-analysis}
 
 This section describes the basic properties of each feature we are
 using in this particular thesis. Among them we have the count of all
@@ -39,7 +39,7 @@ more history than Bitcoin. After analyzing the date span of each
 variable, we conclude that the interesction of all the sets is in the
 range between 2009-01-03 and 2016-04-28.
 
-\subsection{Bitcoin Days Destroyed}
+\section{Bitcoin Days Destroyed}
 \label{sec:bitcoin-days-destroyed}
 
 \textit{Bitcoin Days Destroyed} is a weighted measure of aggregate
@@ -105,7 +105,7 @@ To better understand this variable we include a quote extracted from
 
 % ----------------------------------------------------------------------
 
-\subsection{Cost Per Transaction}
+\section{Cost Per Transaction}
 \label{sec:cost-per-transaction}
 
 This variable shows miners revenue (in USD) divided by the number of
@@ -163,7 +163,7 @@ later increased in \autoref{sec:cost-per-transaction-percent}.
 
 %----------------------------------------------------------------------
 
-\subsection{Cost Per Transaction Percent}
+\section{Cost Per Transaction Percent}
 \label{sec:cost-per-transaction-percent}
 
 This variable shows miners revenue as percentage of the transaction
@@ -208,7 +208,7 @@ because the sole income for miners will be transaction fees.
 
 %----------------------------------------------------------------------
 
-\subsection{Estimated Transaction Volume}
+\section{Estimated Transaction Volume}
 \label{sec:estimated-transaction-volume}
 
 
@@ -235,7 +235,7 @@ current value of Bitcoin.
 
 %----------------------------------------------------------------------
 
-% \subsection{Estimated Transaction Volume USD}
+% \section{Estimated Transaction Volume USD}
 % \label{sec:estimated-transaction-volume-usd}
 
 
@@ -264,7 +264,7 @@ current value of Bitcoin.
 
 % %----------------------------------------------------------------------
 
-\subsection{Difficulty}
+\section{Difficulty}
 \label{sec:difficulty}
 
 
@@ -291,7 +291,7 @@ more and more blocks and augmenting the difficulty of mining.
 
 %----------------------------------------------------------------------
 
-\subsection{Euro price in USD}
+\section{Euro price in USD}
 \label{sec:euro-price-in-usd}
 
 
@@ -323,7 +323,7 @@ to USD.
 
 %----------------------------------------------------------------------
 
-\subsection{Market Price}
+\section{Market Price}
 \label{sec:market-price}
 
 
@@ -396,7 +396,7 @@ be very profitable for the trader.
 
 %----------------------------------------------------------------------
 
-\subsection{Median Confirmation Time}
+\section{Median Confirmation Time}
 \label{sec:median-confirmation-time}
 
 The median time for a transaction to be accepted into a mined block
@@ -421,7 +421,7 @@ is a peak in mid 2012, that can coincide with the increase in
 
 % ----------------------------------------------------------------------
 
-\subsection{Number of Transactions}
+\section{Number of Transactions}
 \label{sec:n-transactions-multiple}
 
 Here we analyze \textit{Number of transactions}, which is defined as
@@ -444,7 +444,7 @@ Bitcoin is not at its peak in 2016, the \textit{Number of
 
 % ----------------------------------------------------------------------
 
-\subsection{Output Volume}
+\section{Output Volume}
 \label{sec:output-volume}
 
 The total value of all transaction outputs per day (includes coins
@@ -497,7 +497,7 @@ by sender as \textit{DeathAndTaxes} explains: ``\textit{In the early
 
 %--------------------------------------------------------------------- 
 
-\subsection{Standard \& Poors 500}
+\section{Standard \& Poors 500}
 \label{sec:standard-and-poors-500}
 
 
@@ -607,7 +607,7 @@ can analyze \autoref{tab:standard-and-poors-500}.
 
 % ---------------------------------------------------------------------
 
-\subsection{Total Bitcoins}
+\section{Total Bitcoins}
 \label{sec:total-bitcoins}
 
 The total number of bitcoins that have already been mined; in other
@@ -633,7 +633,7 @@ discovered by miners.
 
 %--------------------------------------------------------------------- 
 
-\subsection{Trade Volume}
+\section{Trade Volume}
 \label{sec:trade-volume}
 
 The total USD value of trading volume on major Bitcoin exchanges.
@@ -664,7 +664,7 @@ exchange when its price fluctuates.
 
 %--------------------------------------------------------------------- 
 
-\subsection{Transaction Fees}
+\section{Transaction Fees}
 \label{sec:transaction-fees}
 
 The total value of all transaction fees paid to miners (not including
@@ -697,7 +697,7 @@ rises.
 
 %--------------------------------------------------------------------- 
 
-\subsection{Transaction Fees USD}
+\section{Transaction Fees USD}
 \label{sec:transaction-fees-usd}
 
 The total value of all transaction fees paid to miners (not including
@@ -753,7 +753,7 @@ per transaction.
 
 %--------------------------------------------------------------------- 
 
-\subsection{Transactions/Trade Ratio}
+\section{Transactions/Trade Ratio}
 \label{sec:tx-trade-ratio}
 
 \textit{TxTradeRatio} (\autoref{fig:tx-trade-ratio-over-time})
@@ -782,7 +782,7 @@ the raise of this ratio since the end of 2015.
 
 %--------------------------------------------------------------------- 
 
-\subsection{Wikipedia Trend for Bitcoin}
+\section{Wikipedia Trend for Bitcoin}
 \label{sec:wikipedia-trend-for-bitcoin}
 
 The particular trend used in this case is the page views per day of
@@ -853,8 +853,8 @@ to the Bitcoin Wikipedia page.
 
 %--------------------------------------------------------------------- 
 
-\section{Feature subset selection}
-\label{sec:feature-selection}
+\chapter{Feature subset selection}
+\label{ch:feature-selection}
 
 The process of feature subset selection (FSS) used in this thesis is
 composed of two steps. One where we choose a set of variables with PCA
@@ -877,7 +877,7 @@ selected features. If in a iteration a variable selected doesn't
 minimize the error of the selected features the algorithm has
 finished.
 
-The features presented in \autoref{sec:stat-var-analysis} where
+The features presented in \autoref{ch:stat-var-analysis} where
 obtained by running a PCA over 41 variables selecting the 17 that
 added more information to the prediction.
 
@@ -896,7 +896,7 @@ some meaningful information to predict the Bitcoin price.
 \end{figure}
 
 The results of WFSS and the parameters used are explained
-in \autoref{ch:experiment}.
+in \autoref{part:experiment}.
 
 %\enlargethispage{2cm}
 
