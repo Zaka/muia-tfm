@@ -38,20 +38,11 @@ prediction} \\ \hat{X} & \leftarrow \text{De-normalized prediction} \\
   \end{aligned}
 \end{equation}
 
-After the pre-processing, and to avoid over-fitting we have used
-\textit{time series cross-validation} proposed by
-\cite{robjhyndman2010}. The particular implementation of this
-technique used uses a test partition of size 1, which we call $x_{t +
-1}$ and a train partition composed of all the elements from the
-$1095$-th to the $t$-th. The details about why we used $1095$-th as
-the first element and the overall technique can be found in
-\autoref{part:implementation}.
-
 The layout of the network is the \textit{fully connected recurrent
 neural network} which is shown in \autoref{fig:rnn-topology}.
 
 \begin{figure}[bth] \myfloatalign
-{\includegraphics[width=.5\linewidth] {gfx/rnn-topology}}
+{\includegraphics[width=.4\linewidth] {gfx/rnn-topology}}
   \caption{\textit{RNN} topology.}
   \label{fig:rnn-topology}
 \end{figure}
@@ -61,8 +52,20 @@ is composed of another neuron per instances, and the output is
 composed of only one neuron. More details related to \textit{RNNs} can
 be found in \autoref{part:method-technique}.
 
+After the pre-processing, and to avoid over-fitting we have used
+\textit{time series cross-validation} proposed by
+\cite{robjhyndman2010}. The particular implementation of this
+technique used uses a test partition of size 1, which we call $x_{t +
+1}$ and a train partition composed of all the elements from the
+$1095$-th to the $t$-th. The details about why we used $1095$-th as
+the first element and the overall technique can be found in
+\autoref{part:implementation}.
+
 \chapter{Experimental Results}
 \label{ch:experimental-results}
+
+\section{Results introduction}
+\label{sec:result-presentation}
 
 In this section we present the results of the experiments performed.
 We decided that we would compare the performance of \textit{RNN} with
@@ -70,12 +73,12 @@ a traditional method such as \textit{VAR}.
 
 Both \autoref{fig:predictions-subplots} and \autoref{fig:predictions}
 represent a day ahead prediction of the Bitcoin price, compared to the
-actual Bitcoin price, shown in the variable \textit{MarketPrice}. Is
-the same information presented in two different ways to allow the
+actual Bitcoin price, shown in the variable \textit{MarketPrice}. It
+is the same information presented in two different ways to allow the
 viewer to see the particular values of each one in
 \autoref{fig:predictions-subplots}, and, on the other side, to be able
 to compare closely the values of the two models and
-\textit{MarketPrice} the viewer can use \autoref{fig:predictions}.
+\textit{MarketPrice} in \autoref{fig:predictions}.
 
 \begin{figure}[bth] \myfloatalign {\includegraphics[width=1\linewidth]
 {gfx/predictions-subplots}}
@@ -88,29 +91,38 @@ Although the shapes of the charts are similar, it can be noticed how
 \textit{RNN} takes more instances to learn certain patterns, like the
 one present in the first quarter of 2013, where \textit{RNN} doesn't
 have the spike that \textit{VAR} and \textit{MarketPrice} do have.
-
-It can also be noticed in \autoref{fig:predictions} that \textit{RNN}
-has a delay compared to \textit{VAR} and \textit{MarketPrice}. This
-can give as the intuition that \textit{RNN} learning rate is lower
-than \textit{VAR}. But all this observation are mere thoughts but are
-not a measure the correct measure to quantify the goodness of
-prediction models and neither is a suitable technique to compare
-prediction models.
+This behavior is better perceived in the upper-right chart of
+\autoref{fig:predictions}.
 
 \begin{figure}[bth]
   \myfloatalign {
     \includegraphics[width=1\linewidth]
     {gfx/predictions}}
-  \caption{Predictions models and \textit{MarketPrice} true values in
+  \caption{Prediction models and \textit{MarketPrice} true values in
     the same chart.}
   \label{fig:predictions}
 \end{figure}
+
+\textit{RNN} has a tendency to have lower values than those of
+\textit{VAR} and \textit{MarketPrice}. When the change in the price is
+high \textit{RNN} doesn't change at the same pace while \textit{VAR}
+follows the tendency better. On the other hand, when the \textit{BTC}
+price decreases, there are some times that \textit{VAR} makes a big
+descent after \textit{MarketPrice} decreases. It can be observed in
+the upper-right and lower-right charts of \autoref{fig:predictions}.
+
+\section{Accuracy measures}
+\label{sec:accuracy-measures}
 
 The main accuracy measure used is \textit{mean absolute error (MAE)},
 shown in \autoref{eq:mae-expression}, averages the absolute error
 produced for every prediction done with a particular model. This error
 measure has the characteristic of represent quantities in the same
 unit as the original variable and that is easily understandable.
+
+When the fluctuation of the \textit{BTC} price are low, \textit{RNN}
+is closer to \textit{MarketPrice} than \textit{VAR}, which can be seen
+in \autoref{fig:comparison-histogram-prediction-errors}.
 
 \begin{equation}
   \begin{aligned}
@@ -135,6 +147,15 @@ gives us different information about the same data we can see in
 because \textit{RNN} errors are bigger and at the same time it has
 less small errors. That can be clearly seen in
 \autoref{fig:comparison-histogram-prediction-errors}.
+
+\begin{figure}[bth]
+  \myfloatalign {
+    \includegraphics[width=1\linewidth]
+    {gfx/comparison-histogram-prediction-errors}}
+  \caption{Histogram of \textit{RNN} absolute errors and \textit{VAR}
+    absolute errors.}
+  \label{fig:comparison-histogram-prediction-errors}
+\end{figure}
 
 \begin{equation}
   \begin{aligned}
@@ -203,36 +224,162 @@ of \textit{VAR} which can be understood as \textit{RNN} being closer
 to $1$, so it's a worse forecasting technique than \textit{VAR} that
 is closer to $0$.
 
+\section{Errors analysis}
+\label{sec:errors-analysis}
 
-[[[Analysis]]]
+\autoref{fig:comparison-errors} shows an important information to be
+able to understand how do the two prediction models studied behave.
 
-\begin{figure}[bth] \myfloatalign {\includegraphics[width=1\linewidth]
-{gfx/comparison-mae-with-diffs}}
-  \caption{Comparison of \textit{VAR}-MAE value with
-\textit{MarketPrice} first difference values.}
-  \label{fig:comparison-mae-with-diffs}
+\begin{figure}[bth]
+  \myfloatalign
+  {
+    \includegraphics[width=1\linewidth]
+    {gfx/comparison-errors}}
+  \caption{Error graphs.}
+  \label{fig:comparison-errors}
 \end{figure}
 
-\begin{figure}[bth] \myfloatalign {\includegraphics[width=1\linewidth]
-{gfx/comparison-var-mae-with-var-absolute-error}}
-  \caption{Comparison \textit{VAR}-MAE with absolute \textit{VAR}
-errors.}
-  \label{fig:comparison-var-mae-with-var-absolute-error}
+First off we can see the comparison between the \textit{MAE}'s of each
+model and the fluctuation (formally know as first difference or
+\textit{Diff(1)}) of the \textit{BTC} price. It's important to note
+that for the two models the \textit{MAE} is mostly beneath the daily
+fluctuation of \textit{BTC}, which tells us the the error is
+relatively small to predict the \textit{MarketPrice}.
+
+In the two lower graphs of \autoref{fig:comparison-errors} we see a
+comparison of model's \textit{MAE} and absolute errors. The errors of
+\textit{RNN} are located around two events of huge change of the
+\textit{MarketPrice}. There the errors of \textit{RNN} are higher than
+those of \textit{VAR}. That's the reason why \textit{RNN} as higher
+penalties for bigger errors and those higher \textit{MSE} than
+\textit{VAR}. On the contrary, in the rest of the time series
+the errors of \textit{VAR} exceed those of \textit{RNN}, which is the
+reason why \textit{RNN's} \textit{MAE} is lower than \textit{VAR's}.
+
+Regarding the errors probability distribution we would benefit from it
+to be normal, because that way we would be able to establish a
+confidence interval with the normal distribution parameters with the
+expression in \autoref{eq:confidence-interval}.
+
+\begin{equation}
+  \begin{aligned}
+    \label{eq:confidence-interval}
+    \textit{Confidence interval} & =
+    [ \hat{x} - 2 \sigma, \hat{x} + 2 \sigma ]
+  \end{aligned}
+\end{equation}
+
+In \autoref{fig:normal-fitted-to-errors} we can see the shape of the
+error's histograms plotted along a fitted normal distribution.
+Visually the shape of the normalized histograms resembles that of the
+fitted normal distributions but we need more evidence. Hence we've run
+several normality tests in order to ensure that the distribution of
+the errors can be considered to be normal.
+
+\begin{figure}[bth]
+  \myfloatalign
+  {
+    \includegraphics[width=1\linewidth]
+    {gfx/normal-fitted-to-errors}}
+  \caption{Normal fitted to prediction errors.}
+  \label{fig:normal-fitted-to-errors}
 \end{figure}
 
-\begin{figure}[bth] \myfloatalign {\includegraphics[width=1\linewidth]
-{gfx/comparison-rnn-mae-with-rnn-absolute-error}}
-  \caption{Comparison \textit{RNN}-MAE with absolute \textit{RNN}
-errors.}
-  \label{fig:comparison-var-mae-with-var-absolute-error}
-\end{figure}
+In \autoref{tab:normality-test-results} we can see the results of all
+the normality tests performed, namely \textit{skewness test},
+\textit{kurtosis test}, and \textit{D’Agostino and Pearson's
+  ``omnibus'' test}.
 
-\begin{figure}[bth] \myfloatalign {\includegraphics[width=1\linewidth]
-{gfx/comparison-histogram-prediction-errors}}
-  \caption{Histogram of \textit{RNN} absolute errors and \textit{VAR}
-absolute errors.}
-  \label{fig:comparison-histogram-prediction-errors}
-\end{figure}
+\textbf{Skewness} (\cite{d1970transformation}) - Is a measure of the
+asymmetry of the probability distribution of a random variable about
+its mean. In other words, skewness tells you the amount and direction
+of skew (departure from horizontal symmetry). The skewness value can
+be positive or negative, or even undefined. If skewness is $0$, the
+data are perfectly symmetrical, although it is quite unlikely for
+real-world data. As a general rule of thumb:
+
+\begin{itemize}
+\item If skewness is less than -1 or greater than 1, the distribution
+  is highly skewed.
+\item  If skewness is between -1 and -0.5 or between 0.5
+  and 1, the distribution is moderately skewed. 
+\item If skewness is between
+  -0.5 and 0.5, the distribution is approximately symmetric.
+\end{itemize}
+
+The mathematical expression of the skewness measure is defined in
+\autoref{eq:skewness-measure}.
+
+\begin{equation}
+  \begin{aligned}
+    \label{eq:skewness-measure}
+    \textit{Skewness Measure} & = \frac{m_3}{m_2^{3/2}}
+  \\
+  m_k & = \frac{1}{n} \displaystyle\sum_{i=1}^n (x_i - \bar{x} )^k
+  \end{aligned}
+\end{equation}
+
+\begin{table}[bth]
+  \myfloatalign
+  \small
+  \begin{tabularx}{\textwidth}{Xcc}
+    \toprule \tableheadline{Type of test} &
+    \tableheadline{Statistic test value}
+    & \tableheadline{P-Value} \\
+    \midrule
+    \textit{VAR Skewness test} & $-23.33$ & $1.85e-120$ \\
+    \textit{RNN Skewness test} & $41.34$ & $0.0$ \\
+    \textit{VAR Kurtosis test} & $21.33$ & $5.34e-101$ \\
+    \textit{RNN Kurtosis test} & $25.09$ & $5.38e-139$ \\
+    \textit{VAR D’Agostino and Pearson omnibus test} & $999.81$ & $7.80e-218$ \\
+    \textit{RNN D’Agostino and Pearson omnibus test} & $2339.06$ & $0.0$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Normality test results}
+  \label{tab:normality-test-results}
+\end{table}
+
+We can see by the results of the test in
+\autoref{tab:normality-test-results} that the distribution of the
+errors of the two models are skewed. 
+
+\textbf{Kurtosis} (\cite{anscombe1983distribution}) - This measure is
+informative about the tail behavior of a series. Kurtosis tells the
+height and sharpness of the central peak, relative to that of a
+standard bell curve. The mathematical expression is shown
+in \autoref{eq:kurtosis-measure}.
+
+\begin{equation}
+  \begin{aligned}
+    \label{eq:kurtosis-measure}
+    \textit{Kurtosis Measure} & =
+    \frac{m_4}{m_2^2} - 3 \\
+      m_k & = \frac{1}{n} \displaystyle\sum_{i=1}^n (x_i - \bar{x} )^k
+  \end{aligned}
+\end{equation}
+
+\textbf{D’Agostino and Pearson omnibus} (\cite{d1971omnibus,
+  d1973tests}) - This test is a combination of skewness and kurtosis,
+called \textit{``omnibus''} test. The mathematical expression is
+\autoref{eq:omnibus-measure}. The distribution of the
+\textit{``omnibus''} measure  is approximately a $\chi^2$ distribution
+with two degrees of freedom under the null hypothesis that the sample
+was drawn from a population with normally distributed values.
+
+\begin{equation}
+  \begin{aligned}
+    \label{eq:omnibus-measure}
+    \textit{Omnibus Measure} & =
+    ((\frac{m_3}{m_2^{3/2}})^2 + (\frac{m_4}{m_2^2})^2\\
+    m_k & = \frac{1}{n} \displaystyle\sum_{i=1}^n (x_i - \bar{x} )^k
+  \end{aligned}
+\end{equation}
+
+Given that the null hypothesis is that the samples in the errors set
+are drawn from a normal distribution and the p-values are less than
+0.01, the aforementioned null hypothesis gets rejected. In light of
+this results we can't conclude that the errors are normally
+distributed.
 
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------
@@ -242,5 +389,7 @@ absolute errors.}
 
 %------------------------------------------------
 
-%%% Local Variables: %%% mode: latex %%% TeX-master: "../main" %%%
-End:
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
