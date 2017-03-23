@@ -1,8 +1,108 @@
 % Method-Technique
 
-\chapter{Methods \& Techniques}
+\chapter{Introduction}
+\label{ch:introduction}
 
-\label{ch:method-technique}
+\chapter{Vector Autoregression}
+\label{ch:vector-autoregression}
+
+\textit{Vector autoregressive models (VAR)} is a multivariate
+prediction technique where in order to predict a value for each
+variable is necessary to take into account the past values of the
+variable and of other variables involved in the model. In \textit{VAR}
+all variables are interdependent, which means that all variables
+depend on the other variables involved in the multivariate system.
+This interdependent systems are known in econometric as
+\textit{endogenous}.
+
+\textit{VAR} is a generalization of \textit{Autoregressive Models
+  (AR)} applied to a vector of time series. Lets analyze the
+mathematical expression of a \textit{first order VAR}, or simply
+\textit{VAR(1)} for a bivariate system defined in \autoref{eq:var}.
+
+\begin{equation}
+  \begin{aligned}
+    \label{eq:var}
+    y_{1,t} & = c_1 + \phi_{11,1} y_{1,t-1} + \phi_{12,1} y_{2,t-1} +
+    e_{1,t} \\
+    y_{2,t} & = c_2 + \phi_{21,1} y_{1,t-1} + \phi_{22,1} y_{2,t-1} +
+    e_{2,t} 
+  \end{aligned}
+\end{equation}
+
+In this particular example $y_{i, t}$ describes the variable $i$ in
+the temporal instant $t$. This equations define the relationship
+between the two variables involved. As the name suggests
+\textit{VAR(1)} takes into account only the first lag of each
+variable, where $c_i$ is a constant offset and $\phi_{ij,l}$ is the
+influence of variable $y_j$ on variable $y_j$ in the $l$-th lag.
+
+The generalized \textit{VAR(p)} expression would be
+\autoref{eq:var-generalized}.
+
+\begin{equation}
+  \begin{aligned}
+    \label{eq:var-generalized}
+    \mathbf{y_t} = \mathbf{c} + \displaystyle\sum_{i=1}^p
+    \pmb{\phi_i} \mathbf{y_{t-i}} + \pmb{\epsilon_t}
+  \end{aligned}
+\end{equation}
+
+
+If the time series is stationary, we can predict their values by
+directly fitting a \textit{VAR} to the data. On the other hand, if the
+series is non-stationary we take differences to transform the time
+series into a stationary one, and then, fit a \textit{VAR} to the
+differenciated data. In both cases the model parameters are estimated
+by \textit{OLS} per equation.
+
+The predictions are generated recursively. \textit{VAR} generates a
+prediction for each one of the variables involved in the model. Lets
+take the \textit{VAR(1)} described in \autoref{eq:var}. \textit{VAR}
+would estimate the parameters $\phi_{ij,l}$ and $c_i$ for $y_{i,t}$
+such that $i \in \{1,2\}$ and $t = T$. Once the parameters has been
+estimated by \textit{OLS} is possible to create the prediction
+equations. \autoref{eq:var-prediction-1} describes the prediction
+equation for $h=1$
+
+\begin{equation}
+  \begin{aligned}
+    \label{eq:var-prediction-1}
+    \hat{y}_{1,T+1|T} & = \hat{c}_1 + \hat{\phi}_{11,1} y_{1,T} +
+    \hat{\phi}_{12,1} y_{2,T} \\ 
+    \hat{y}_{2,T+1|T} & = \hat{c}_2 + \hat{\phi}_{21,1} y_{1,T} +
+    \hat{\phi}_{22,1} y_{2,T}
+  \end{aligned}
+\end{equation}
+
+\autoref{eq:var-prediction-1} is very similar to \autoref{eq:var}
+except that the parameters has been replaced by its estimated values
+and the error has been replaced by zero.
+
+If the horizon we want to use is $h = 2$, the equation would be
+\autoref{eq:var-prediction-2} where the values for past values of the
+variable are replaced by predictions of those values.
+
+\begin{equation}
+  \begin{aligned}
+    \label{eq:var-prediction-2}
+    \hat{y}_{1,T+2|T} & = \hat{c}_1 + \hat{\phi}_{11,1} \hat{y}_{1,T+1} +
+    \hat{\phi}_{12,1} \hat{y}_{2,T+1} \\ 
+    \hat{y}_{2,T+2|T} & = \hat{c}_2 + \hat{\phi}_{21,1} \hat{y}_{1,T+1} +
+    \hat{\phi}_{22,1} \hat{y}_{2,T+1}
+  \end{aligned}
+\end{equation}
+
+In \textit{VAR} there are two parameters needed for fitting a model.
+One is the number of variables, denoted by $K$, and the other one is
+the number of lags or $p$. The number of parameters to be estimated in
+a \textit{VAR} is $K + p K^2$ or $1 + p K$ per equation. For
+\autoref{eq:var} there are two variables, i.e. $K=2$, and only the
+first lag is used, i.e. $p=1$, that makes a total of parameters to be
+estimated of $2 + 1 \times 2^2 = 6$.
+
+\chapter{Recurrent Neural Networks}
+\label{ch:recurrent-neural-networks}
 
 
 

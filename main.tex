@@ -116,7 +116,7 @@
 \cleardoublepage\include{FrontBackMatter/Contents} % Contents, list of
                                 % figures/tables/listings and acronyms 
 
-\cleardoublepage
+%\cleardoublepage
 
 \pagenumbering{arabic} % Arabic page numbering for thesis content (1,
                        % 2, 3, etc) 
@@ -130,46 +130,46 @@
 %	THESIS CONTENT - CHAPTERS
 %----------------------------------------------------------------------
 
-% \ctparttext{You can put some informational part preamble text here.
-%   Illo principalmente su nos. Non message \emph{occidental}
-%   angloromanic da. Debitas effortio simplificate sia se, auxiliar
-%   summarios da que, se avantiate publicationes via. Pan in terra
-%   summarios, capital interlingua se que. Al via multo esser specimen,
-%   campo responder que da. Le usate medical addresses pro, europa
-%   origine sanctificate nos
-%   se.} % Text on the Part 1 page describing the content in Part 1
-
-% \part{Introduction} % First part of the thesis
-
-% \include{Chapters/Introduction} % Chapter 1
-
-\cleardoublepage % Empty page before the start of the next part
-
-%------------------------------------------------
-% Text on the Part 2 page describing the content in Part 2
 \ctparttext{Where we introduce the problem we want to solve, explore
   the state-of-the-art of related articles and get an overview of how
   to tackle the solution.}
-
+\cleardoublepage
+\cleardoublepage
+\cleardoublepage
+\cleardoublepage
 \part{Introduction} % Second part of the thesis
 \label{part:introduction}
 \include{Chapters/Introduction}
 
-\part{Variables and methods to predict the BTC price}
+\cleardoublepage % Empty page before the start of the next part
+
+\part{Variables to predict the BTC price}
 \label{part:variables}
 \include{Chapters/Variables}
+
+\cleardoublepage % Empty page before the start of the next part
 
 \part{Methods \& Techniques}
 \label{part:method-technique}
 \include{Chapters/Method-Technique}
 
+\cleardoublepage % Empty page before the start of the next part
+
 \part{Implementation}
 \label{part:implementation}
 \include{Chapters/Implementation}
 
+\cleardoublepage % Empty page before the start of the next part
+
+
+\ctparttext{Where we present the results of the experiments performed
+  and then analyze and compare the model's performance.}
+
 \part{Experiment}
 \label{part:experiment}
 \include{Chapters/Experiment}
+
+\cleardoublepage % Empty page before the start of the next part
 
 \part{Discussion}
 \label{part:discussion}
