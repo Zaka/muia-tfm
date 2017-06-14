@@ -54,6 +54,44 @@ between wallets (potentially owned by just one entity). One integer
 data point each day, at 18:15:05, spanning from 03/01/2009 to
 28/04/2016.
 
+To better understand this variable we include a quote extracted from
+\href{http://bitcoin.stackexchange.com/questions/845/what-are-bitcoin-days-destroyed}{Bitcoin
+Beta | Stack Exchange}:
+
+``\textit{The idea of "bitcoin days destroyed" came about because it
+was realized that total transaction volume per day might be an
+inappropriate measure of the level of economic activity in Bitcoin.
+After all, someone could be sending the same money back and forth
+between their own addresses repeatedly. If you sent the same 50 btc
+back and forth 20 times, it would look like 1000 btc worth of
+activity, while in fact it represents almost nothing in terms of real
+transaction volume.}
+
+\textit{With "bitcoin days destroyed", the idea is instead to give
+more weight to coins which haven't been spent in a while. To do this,
+you multiply the amount of each transaction by the number of days
+since those coins were last spent. So, 1 bitcoin that hasn't been
+spent in 100 days (1 bitcoin * 100 days) counts as much as 100
+bitcoins that were just spent yesterday (100 bitcoins * 1 day).
+Because you can think of these "bitcoin days" as building up over time
+until a transaction actually occurs, the actual measure is called
+"bitcoin days destroyed". This is believed to give a better indication
+of how much real economic activity is occurring on the bitcoin
+network.}
+
+\textit{ So how well does it work? Well, it's still not perfect,
+because the other day I moved some coins out of a wallet they've been
+in for several months without spending them or giving them away. And
+some genuine businesses have very rapid turnover in bitcoins, so
+they're not being measured well by this method. But it does do a good
+job of filtering out the "noise" of bitcoins that are just "bouncing
+around" without really going anywhere. The graph of overall bitcoin
+days destroyed is believed to show that the genuine level of activity
+in the Bitcoin economy is continually increasing--it's not just one
+person experimenting by rapidly sending the same coins back and forth,
+flooding the network with meaningless chatter. Looks pretty good,
+hey?}''
+
 In \autoref{fig:bitcoin-days-destroyed-over-time} we show data over
 time for \textit{Bitcoin Days Destroyed}.
 
@@ -65,43 +103,6 @@ time for \textit{Bitcoin Days Destroyed}.
   \label{fig:bitcoin-days-destroyed-over-time}
 \end{figure}
 
-To better understand this variable we include a quote extracted from
-\href{http://bitcoin.stackexchange.com/questions/845/what-are-bitcoin-days-destroyed}{Bitcoin
-  Beta | Stack Exchange}:
-
-``\textit{The idea of "bitcoin days destroyed" came about because it
-  was realized that total transaction volume per day might be an
-  inappropriate measure of the level of economic activity in Bitcoin.
-  After all, someone could be sending the same money back and forth
-  between their own addresses repeatedly. If you sent the same 50 btc
-  back and forth 20 times, it would look like 1000 btc worth of
-  activity, while in fact it represents almost nothing in terms of
-  real transaction volume.}
-
-\textit{With "bitcoin days destroyed", the idea is instead to give
-  more weight to coins which haven't been spent in a while. To do
-  this, you multiply the amount of each transaction by the number of
-  days since those coins were last spent. So, 1 bitcoin that hasn't
-  been spent in 100 days (1 bitcoin * 100 days) counts as much as 100
-  bitcoins that were just spent yesterday (100 bitcoins * 1 day).
-  Because you can think of these "bitcoin days" as building up over
-  time until a transaction actually occurs, the actual measure is
-  called "bitcoin days destroyed". This is believed to give a better
-  indication of how much real economic activity is occurring on the
-  bitcoin network.}
-
-\textit{ So how well does it work? Well, it's still not perfect,
-  because the other day I moved some coins out of a wallet they've
-  been in for several months without spending them or giving them
-  away. And some genuine businesses have very rapid turnover in
-  bitcoins, so they're not being measured well by this method. But it
-  does do a good job of filtering out the "noise" of bitcoins that are
-  just "bouncing around" without really going anywhere. The graph of
-  overall bitcoin days destroyed is believed to show that the genuine
-  level of activity in the Bitcoin economy is continually
-  increasing--it's not just one person experimenting by rapidly
-  sending the same coins back and forth, flooding the network with
-  meaningless chatter. Looks pretty good, hey?}''
 
 % ----------------------------------------------------------------------
 
@@ -391,7 +392,7 @@ that the price has been fluctuating due to trading strategies.
 Is important to note how volatile is the Bitcoin average price,
 ranging from nearly $0$ USD to $1151$ USD in just a year (see
 \autoref{tab:market-price}), and now, in 2016 fluctuating in a range
-bigger than $10$ USD on average. This fluctuations, if predicted, can
+bigger than $10$ USD on average. These fluctuations, if predicted, can
 be very profitable for the trader.
 
 %----------------------------------------------------------------------
@@ -856,36 +857,37 @@ to the Bitcoin Wikipedia page.
 \chapter{Feature subset selection}
 \label{ch:feature-selection}
 
-The process of feature subset selection (FSS) used in this thesis is
-composed of two steps. One where we choose a set of variables with PCA
+The process of \textit{feature subset selection (FSS)} used in this
+thesis is composed of two steps. One where we choose a set of
+variables with \textit{principal component analysis (PCA)}
 (\cite{pearson1901liii}) which is going to be our feature super-set
 for all the models. Later on, for selecting per-model subsets a
-Wrapper FSS technique (\cite{kohavi1997wrappers}) is used.
+\textit{Wrapper FSS (WFSS)} technique (\cite{kohavi1997wrappers}) is used.
 
-This approach to FSS has been taken because wrapper methods select the
-best features (\cite{inza2004filter, kumari2011filter}) and, at the
-same time, they are more computationally expensive than filter
-methods. We came out with the mixed approach of selecting a super-set
-with PCA, which is computationally cheap and then we selected the
-final subsets with a wrapper method.
+This approach to \textit{FSS} has been taken because wrapper methods
+select the best features (\cite{inza2004filter, kumari2011filter})
+and, at the same time, they are more computationally expensive than
+filter methods. We came out with the mixed approach of selecting a
+super-set with \textit{PCA}, which is computationally cheap and then
+we selected the final subsets with a wrapper method.
 
-Wrapper FSS is a greedy algorithm, also called a forward feature
-selection. In each iteration a model is produced with a subset which
-initially is composed of one variable. In each iteration of the
+\textit{WFSS} is a greedy algorithm, also called a forward
+feature selection. In each iteration a model is produced with a subset
+which initially is composed of one variable. In each iteration of the
 algorithm the variable that minimizes the error produced is added to
 selected features. If in a iteration a variable selected doesn't
 minimize the error of the selected features the algorithm has
 finished.
 
 The features presented in \autoref{ch:stat-var-analysis} where
-obtained by running a PCA over 41 variables selecting the 17 that
-added more information to the prediction.
+obtained by running a \textit{PCA} over 41 variables selecting the 18
+that added more information to the prediction.
 
 We can see in \autoref{fig:explained-variance} an ordered
 representation of the \textit{Explained variance} of the dimensions
-obtained by performing PCA over the original data-set. This
+obtained by performing \textit{PCA} over the original data-set. This
 information is what led us to choose 17 as the dimensions that has
-some meaningful information to predict the Bitcoin price.
+some meaningful information to predict the \textit{Bitcoin} price.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -895,8 +897,8 @@ some meaningful information to predict the Bitcoin price.
   \label{fig:explained-variance}
 \end{figure}
 
-The results of WFSS and the parameters used are explained
-in \autoref{part:experiment}.
+The results of \textit{WFSS} and the parameters used are explained in
+\autoref{part:experiment}.
 
 %\enlargethispage{2cm}
 
