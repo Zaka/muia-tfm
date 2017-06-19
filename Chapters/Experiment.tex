@@ -144,10 +144,18 @@ comprised of two variables, namely \textit{market price} and
 \section{Results introduction}
 \label{sec:result-presentation}
 
-In this section we present the results of the experiments performed.
-We decided that we would compare the performance of \textit{recurrent
-neural network (RNN)} with a traditional method such as \textit{vector
-autoregression (VAR)}.
+In this section we present the results for four experiments to compare
+the performance of two different models \textit{recurrent neural
+network (RNN)} and \textit{vector autoregression (VAR)}, being
+\textit{RNN} configured in three different ways. The first one, called
+simply \textbf{RNN}, is a \textit{RNN} with one \textit{recurrent
+neuron} as input and using all the 18 features selected by
+\textit{PCA}. The second is an \textit{RNN} with 8 \textit{recurrent
+neurons} as inputs and using only the two features selected by
+\textit{WFSS}, this configuration is called \textbf{RNN 8}. The third
+configuration used is called \textbf{RNN 20}, with 20
+\textit{recurrent neurons} as inputs and using the two features
+selected by \textit{WFSS}.
 
 Both \autoref{fig:predictions-subplots} and \autoref{fig:predictions}
 represent a day ahead prediction of the Bitcoin price, compared to the
@@ -162,17 +170,28 @@ to compare closely the values of the two models and
   \myfloatalign {
     \includegraphics[width=1\linewidth]
     {gfx/prediction-subplots}}
-  \caption{Predictions models and \textit{MarketPrice} true values in
+  \caption{Prediction models and \textit{MarketPrice} true values in
     separate charts.}
   \label{fig:predictions-subplots}
 \end{figure}
 
 Although the shapes of the charts are similar, it can be noticed how
-\textit{RNN} takes more instances to learn certain patterns, like the
-one present in the first quarter of 2013, where \textit{RNN} doesn't
-have the spike that \textit{VAR} and \textit{MarketPrice} do have.
-This behavior is better perceived in the upper-right chart of
-\autoref{fig:predictions}.
+\textit{RNN} takes more instances to learn certain patterns. We can
+see that \textbf{RNN} performs better than \textbf{RNN 8}. In this
+particular case, more features help to learn more rapidly from the
+data. But when we increase the number of \textit{recurrent input
+  neurons}, which is the same as saying that we increase the window of
+the input time series, we get better results without resorting to the
+use of more features. There is a comparison of forecast accuracy
+measures that reflect the intuitions observed before in
+\autoref{tab:forecast-accuracy-measures}.
+
+\textit{RNN}, with the exception of \textbf{RNN 20}, has a tendency to
+predict lower values than those predicted by \textit{VAR} and
+\textit{MarketPrice}. When the change in the price is high
+\textit{RNN} doesn't change at the same pace while \textit{VAR}
+follows the tendency better. This behavior is better perceived in the
+upper-right and lower-left chart of \autoref{fig:predictions}.
 
 \begin{figure}[bth]
   \myfloatalign {
@@ -183,19 +202,35 @@ This behavior is better perceived in the upper-right chart of
   \label{fig:predictions}
 \end{figure}
 
-\textit{RNN} has a tendency to have lower values than those of
-\textit{VAR} and \textit{MarketPrice}. When the change in the price is
-high \textit{RNN} doesn't change at the same pace while \textit{VAR}
-follows the tendency better.
-
 \section{Accuracy measures}
 \label{sec:accuracy-measures}
 
+\begin{table}[bth]
+  \myfloatalign
+  \tiny
+  \begin{tabularx}{\textwidth}{Xcccc}
+    \toprule \tableheadline{Measure Type}
+    & \tableheadline{RNN Value}
+    & \tableheadline{RNN 8 WFSS Value}
+    & \tableheadline{RNN 20 WFSS Value}
+    & \tableheadline{VAR Value} \\
+    \midrule
+    \textit{Mean absolute error (MAE)} & $5.4$ & $6.53$ & $4.51$ &  $7.62$ \\
+    \textit{Mean squared error (MSE)} & $638.55$ & $1282.43$ & $189.5$ & $325.60$ \\
+    \textit{Mean absolute percentage error (MAPE)} & $3.19$ & $2.39$ & $3.7$ & $2.79$ \\
+    \textit{Theil's U statistic} & $0.47$ & $0.08$ & $0.01$ & $0.03$ \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Forecast accuracy measures}
+  \label{tab:forecast-accuracy-measures}
+\end{table}
+
 The main accuracy measure used is \textit{mean absolute error (MAE)},
-shown in \autoref{eq:mae-expression}, averages the absolute error
-produced for every prediction done with a particular model. This error
-measure has the characteristic of represent quantities in the same
-unit as the original variable and that is easily understandable.
+shown in \autoref{eq:mae-expression}. \textit{MAE} averages the
+absolute error produced for every prediction done with a particular
+model. This error measure has the characteristic of representing
+quantities in the same unit as the original variable and that is
+easily understandable.
 
 When the fluctuation of the \textit{BTC} price are low, \textit{RNN}
 is closer to \textit{MarketPrice} than \textit{VAR}, which can be seen
@@ -209,19 +244,17 @@ in \autoref{fig:comparison-histogram-prediction-errors}.
   \end{aligned}
 \end{equation}
 
-In \autoref{tab:forecast-accuracy-measures} we present another error
-measures to compare the predictions made by \textit{VAR} and
-\textit{RNN}. The next accuracy measure to \textit{MAE} is
-\textit{mean squared error (MSE)}, shown in
-\autoref{eq:mse-expression}, which doesn't present the prediction
+The next accuracy measure is \textit{mean squared error (MSE)}, shown
+in \autoref{eq:mse-expression}, which doesn't present the prediction
 errors in the same unit, but has the feature of giving more importance
-to bigger errors, than smaller ones. To see how this two measures
-gives us different information about the same data we can see in
+to bigger errors than smaller ones. To see how this two measures gives
+us different information about the same data we can see in
 \autoref{tab:forecast-accuracy-measures} that, while \textit{RNN}'s
 \textit{MAE} is lower than \textit{VAR}'s \textit{MAE}, the
-\textit{RNN}'s \textit{MSE} is bigger than \textit{VAR}'s. That is
-because \textit{RNN} errors are bigger and at the same time it has
-less small errors. That can be clearly seen in
+\textit{RNN}'s \textit{MSE} for \textbf{RNN} and \textbf{RNN 8} is
+bigger than \textit{VAR}'s. That is because for \textbf{RNN} and
+\textbf{RNN 8} big errors are bigger and at the same time it has less
+small errors. That can be clearly seen in
 \autoref{fig:comparison-histogram-prediction-errors}.
 
 \begin{figure}[bth]
@@ -241,26 +274,6 @@ less small errors. That can be clearly seen in
   \end{aligned}
 \end{equation}
 
-\begin{table}[bth]
-  \myfloatalign
-  \tiny
-  \begin{tabularx}{\textwidth}{Xcccc}
-    \toprule \tableheadline{Measure Type}
-    & \tableheadline{RNN Value}
-    & \tableheadline{RNN 8 Value}
-    & \tableheadline{RNN 20 Value}
-    & \tableheadline{VAR Value} \\
-    \midrule
-    \textit{Mean absolute error (MAE)} & $5.4$ & $6.53$ & $4.51$ &  $7.62$ \\
-    \textit{Mean squared error (MSE)} & $638.55$ & $1282.43$ & $189.5$ & $325.60$ \\
-    \textit{Mean absolute percentage error (MAPE)} & $3.19$ & $2.39$ & $3.7$ & $2.79$ \\
-    \textit{Theil's U statistic} & $0.47$ & $0.08$ & $0.01$ & $0.03$ \\
-    \bottomrule
-  \end{tabularx}
-  \caption{Forecast accuracy measures}
-  \label{tab:forecast-accuracy-measures}
-\end{table}
-
 Another accuracy measure used is \textit{mean absolute percentage
 error (MAPE)}, defined in \autoref{eq:mape-expression}. This measure
 is useful when there are several scales, for example if the models are
@@ -276,7 +289,7 @@ negative errors than on positive errors.
   \end{aligned}
 \end{equation}
 
-Finally we \textit{Theil's U statistic} which is defined in
+Finally we include \textit{Theil's U statistic} which is defined in
 \autoref{eq:theils-u-statistic}. This measure compares a forecast
 model to the actual model. Is the ratio of the 1-step-ahead
 \textit{MSE} for a given forecast relative to that of a random walk
@@ -296,10 +309,16 @@ technique is worse than guessing.
 \end{equation}
 
 We can see in \autoref{tab:forecast-accuracy-measures} that the value
-of \textit{Theil's U statistic} for \textit{RNN} is greater than that
-of \textit{VAR} which can be understood as \textit{RNN} being closer
-to $1$, so it's a worse forecasting technique than \textit{VAR} that
-is closer to $0$.
+of \textit{Theil's U statistic} for all the models is less than one,
+hence we can assume that this models are better forecasting techniques
+than guessing.
+
+\textbf{RNN 8} is the closest to one followed by \textbf{RNN}, then
+\textbf{VAR} and finally \textbf{RNN 20}. We can observe here, as well
+as in the charts and previous forecasting accuracy measures, that the
+number of features selected and the number of \textit{recurrent input
+neurons} are two parameters that have a big impact on the performance
+of the \textit{RNN} model.
 
 \section{Errors analysis}
 \label{sec:errors-analysis}
@@ -326,12 +345,14 @@ relatively small to predict the \textit{MarketPrice}.
 In the two lower graphs of \autoref{fig:comparison-errors} we see a
 comparison of model's \textit{MAE} and absolute errors. The errors of
 \textit{RNN} are located around two events of huge change of the
-\textit{MarketPrice}. There the errors of \textit{RNN} are higher than
-those of \textit{VAR}. That's the reason why \textit{RNN} as higher
-penalties for bigger errors and those higher \textit{MSE} than
-\textit{VAR}. On the contrary, in the rest of the time series
-the errors of \textit{VAR} exceed those of \textit{RNN}, which is the
-reason why \textit{RNN's} \textit{MAE} is lower than \textit{VAR's}.
+\textit{MarketPrice}. There the errors of \textbf{RNN 20} are lower
+than those of \textit{VAR}, but those of \textbf{RNN} and \textbf{RNN
+  8} are larger. That's the reason why \textbf{RNN} and \textbf{RNN 8}
+have larger \textit{MSE} than \textit{VAR}, while \textbf{RNN 20} has
+lower \textit{MSE} than \textit{VAR}, because bigger errors are
+penalized. Besides, in the rest of the time series the errors of
+\textit{VAR} exceed those of \textit{RNN}, which is the reason why
+\textit{RNN's} \textit{MAE} is lower than \textit{VAR's}.
 
 Regarding the errors probability distribution we would benefit from it
 to be normal, because that way we would be able to establish a
@@ -404,11 +425,11 @@ The mathematical expression of the skewness measure is defined in
     & \tableheadline{P-Value} \\
     \midrule
     \textit{VAR Skewness test} & $-24.11$ & $1.69e-128$ \\
-    \textit{RNN Skewness test} & $38.29$ & $0.0$ \\
+    \textit{RNN 20 WFSS Skewness test} & $38.29$ & $0.0$ \\
     \textit{VAR Kurtosis test} & $22.39$ & $4.57e-111$ \\
-    \textit{RNN Kurtosis test} & $24.55$ & $3.84e-133$ \\
+    \textit{RNN 20 WFSS Kurtosis test} & $24.55$ & $3.84e-133$ \\
     \textit{VAR D’Agostino and Pearson omnibus test} & $1083.04$ & $6.61e-236$ \\
-    \textit{RNN D’Agostino and Pearson omnibus test} & $2069.63$ & $0.0$ \\
+    \textit{RNN 20 WFSS D’Agostino and Pearson omnibus test} & $2069.63$ & $0.0$ \\
     \bottomrule
   \end{tabularx}
   \caption{Normality test results}
@@ -512,10 +533,10 @@ range than for the original range in
 
 \begin{table}[bth]
   \myfloatalign
-  \small
+  \tiny
   \begin{tabularx}{\textwidth}{Xcc}
     \toprule \tableheadline{Measure Type} &
-    \tableheadline{RNN 20 Value}
+    \tableheadline{RNN 20 WFSS Value}
     & \tableheadline{VAR Value} \\
     \midrule
     \textit{Mean absolute error (MAE)} & $5.67$ & $9.85$ \\
