@@ -3,15 +3,15 @@
 \chapter{Experimental Setup}
 \label{ch:experimental-setup}
 
-For the experimentation phase we have used a Intel Core i7-6700HQ CPU
+For the experimentation phase we have used an Intel Core i7-6700HQ CPU
 @ 2.60GHz, with 16GB of RAM, and a Cuda enabled Nvidia GeForce GTX
 960M graphic card.
 
-The data-set previously described in \autoref{part:variables} has been
-pre-processed. This process consisted in narrowing down the data to
-the same date range. Later the missing values where filled with
-interpolated values. Finally the data-set has been normalized using a
-standard score described in \autoref{eq:standard-score}.
+The data-set previously described in \autoref{ch:stat-var-analysis}
+has been pre-processed. This process consisted in narrowing down the
+data to the same date range. Later the missing values where filled
+with interpolated values. Finally the data-set has been normalized
+using a standard score described in \autoref{eq:standard-score}.
 
 \begin{equation}
   \begin{aligned}
@@ -38,20 +38,68 @@ prediction} \\ \hat{X} & \leftarrow \text{De-normalized prediction} \\
   \end{aligned}
 \end{equation}
 
-The layout of the network is the \textit{fully connected recurrent
-neural network} which is shown in \autoref{fig:rnn-topology}.
+We have conducted three different experiments for the \textit{neural
+network} prediction model, each one with it's own layout, which we are
+going to explain below.
+
+For the first experiment, the topology is the one shown in
+\autoref{fig:rnn-1-topology}. We used all 18 features selected by
+\textit{PCA} which are fed to the \textit{RNN} neuron. This 18
+features are fed to the \textit{RNN} neuron, which also feds itself
+with it's output. The output of the \textit{RNN} neuron is the output
+of the first experiment's \textit{recurrent neural network}.
 
 \begin{figure}[bth] \myfloatalign
-{\includegraphics[width=.4\linewidth] {gfx/rnn-topology}}
-  \caption{\textit{Recurrent neural network (RNN)} topology.}
-  \label{fig:rnn-topology}
+  {
+    \includegraphics[width=1\linewidth]
+    {gfx/rnn_1_topology}
+  }
+  \caption{First experiments \textit{RNN} topology.}
+  \label{fig:rnn-1-topology}
 \end{figure}
 
-The first layer is composed of 1 neuron per instance, the hidden layer
-is composed of another neuron per instances, and the output is
-composed of only one neuron. More details related to \textit{recurrent
-neural networks (RNN)} can be found in
-\autoref{part:method-technique}.
+For the second and the third experiment, the features used are those
+selected by \textit{WFSS}, which are \textit{total bitcoins} and
+\textit{market price}. The second experiments layout which is shown in
+\autoref{fig:rnn-8-topology} has as input layer two neurons for each
+timestep. In the second layer, the first hidden layer, there are eight
+\textit{RNN} neurons, one per timestep. Each one of those \textit{RNN}
+neurons represent a timestep and is fed with the two corresponding
+inputs and the previous timestep, which is the previous \textit{RNN}
+neuron. After the \textit{RNN} hidden layer, there is an \textit{ANN}
+hidden layer, with four neurons, fed by each one of the eight
+\textit{RNN} neurons. Finally there is a single \textit{ANN} which
+gives the output.
+
+\begin{figure}[bth]
+  \myfloatalign
+  {
+    \includegraphics[width=1\linewidth]
+    {gfx/rnn_8_topology}}
+  \caption{Second experiment \textit{RNN} topology.}
+  \label{fig:rnn-8-topology}
+\end{figure}
+
+Just as in the second experiment, in the third we have four layers in
+total, with one for the input, another one for the output and two
+hidden layers. They are distributed similarly as those of the second
+experiment. In the first layer there are two neurons for each
+timestep, but in this third experiment we have 20 \textit{RNN}
+neurons, fed by the two corresponding input neurons and the previous
+timestep. After the \textit{RNN} hidden layer comes another
+\textit{ANN} layer with 10 \textit{fully connected} neurons. Each one
+of the \textit{ANN} neurons are fed by all the \textit{RNN} neurons of
+the previous layer. Finally there is the output \textit{ANN} neuron.
+The layout can be seen in \autoref{fig:rnn-20-topology}.
+
+\begin{figure}[bth]
+  \myfloatalign
+  {
+    \includegraphics[width=1\linewidth]
+    {gfx/rnn_20_topology}}
+  \caption{Third experiment \textit{RNN} topology.}
+  \label{fig:rnn-20-topology}
+\end{figure}
 
 After the pre-processing, and to avoid over-fitting we have used
 \textit{time series cross-validation} proposed by
@@ -68,7 +116,7 @@ features and the other is the lags of each variable. For the features
 used, as mentioned in \autoref{ch:feature-selection}, we used a
 \textit{principal component analysis (PCA)} to select a subset of 18
 features out of the original 41. After that, using \textit{wrapper
-  feature subset selection (WFSS)} we choose a subset of those 18
+  feature subset selection (WFSS)} we chose a subset of those 18
 features previously selected. The size and the particular features
 selected in the last subset depends on the model used and the
 parameters chosen. Considering this, we will explain first how did we
@@ -78,17 +126,17 @@ choose the lag parameter and then how that choice affected
 To set the lag parameter we have built an automated system to choose
 from several information criteria available in the \textbf{vars}
 package. This information criteria are, \textit{Akaike's information
-criteria (AIC)} by \cite{akaike1974new}, \textit{bayesian information
-criteria (BIC)} by \cite{schwarz1978estimating}, \textit{final
-prediction error (FPE)} by \cite{akaike1973infor} and
+  criteria (AIC)} by \cite{akaike1974new}, \textit{bayesian
+  information criteria (BIC)} by \cite{schwarz1978estimating},
+\textit{final prediction error (FPE)} by \cite{akaike1973infor} and
 \textit{Hannan–Quinn information criterion (HQC)} by
 \cite{hannan1979determination}. Once we have the lag parameter chosen
-by the information criteria aforementioned, we order in ascending
+by the aforementioned information criteria, we order in ascending
 order the set of lags obtained and select the first one, then perform
 a \textit{Portmanteau's} test to check that the residuals are
-uncorrelated. If the null hypothesis of no serial correlation is
-rejected we choose the next lag obtained. This process continues until
-the null hypothesis is not rejected.
+uncorrelated. If the null hypothesis of \textit{no serial correlation}
+is rejected we choose the next lag obtained. This process continues
+until the null hypothesis is not rejected.
 
 Once we have the lag parameter we perform a \textit{WFSS} to obtain a
 feature subset. In the specific case of \textit{VAR}, the \textit{FSS}
@@ -100,27 +148,26 @@ In the case of \textit{RNN}, there are multiple parameters to choose,
 one of theme is the number of \textit{epochs}. Each \textit{epoch} is
 a single pass on the entire data set to update the weights of the
 network. In \textit{neural networks} the training process can be
-stopped when the solution (weights and biases) have converged or after
-a certain number of \textit{epochs}. In our case we chose to stop
-after 1000 \textit{epochs} for the final results, and 10
-\textit{epochs} for the \textit{WFSS} process. This has distorted the
-results, as the parameters for \textit{WFSS} are different from the
-parameters used in the final model building. This was done this way
-because we don't have enough computing power to run \textit{WFSS} with
-1000 \textit{epochs}, which would take an estimate of 72 days in a
-single computer. Although the results has been distorted, they are
-good enough to take them into the study as good approximations.
+stopped when the solution (weights and biases) has converged or after
+a certain number of \textit{epochs}. In our case we chose to stop when
+the solution has converged. But due to the computational cost of each
+experiment, for the \textit{WFSS} phase we chose a fixed amount of 10
+\textit{epochs}, which distorted the results, as the parameters for
+\textit{WFSS} are different from the parameters used in the final
+model building. This was done this way because we estimated the time
+it would took to run all the \textit{WFSS} experiments in a single
+computer would be 72 days, which is beyond the scope of this project.
+Although the results has been distorted, they are good enough to take
+them into the study as good approximations.
 
 Another parameters are the number of \textit{hidden layers} and the
 number of neurons in each \textit{hidden layer}. There isn't a
 heuristic to choose the number of layers and neurons, and the more
 layers and neurons you have, the more computational power you need to
-learn the network parameters. We have chosen to use one single hidden
-layer with as many neurons as \textit{timesteps} used in the
-\textit{RNN}. Since we used \textit{time series cross validation
-  (TSCV)} to validate the results and obtain the error measures, the
-\textit{timesteps} used vary from 1095 to 2673, thus the number of
-hidden neurons vary in the same way.
+learn the network parameters. As we shown before, we have chosen to
+experiment with three different layouts to see how they compare and
+observe how the changes in the model accuracy with the change of
+certain parameters.
 
 Learning rate is another parameter that controls the size of weight
 and bias changes in learning of the training algorithm. \textit{Keras}
@@ -138,24 +185,28 @@ using a number of \textit{epochs} equal to 10, in order to run the
 experiment in a reasonable amount of time. The subset obtained is
 comprised of two variables, namely \textit{market price} and
 \textit{total Bitcoins}.
+
 \chapter{Experimental Results}
 \label{ch:experimental-results}
 
 \section{Results introduction}
 \label{sec:result-presentation}
 
+% TODO: Here we are
+
 In this section we present the results for four experiments to compare
 the performance of two different models \textit{recurrent neural
-network (RNN)} and \textit{vector autoregression (VAR)}, being
-\textit{RNN} configured in three different ways. The first one, called
-simply \textbf{RNN}, is a \textit{RNN} with one \textit{recurrent
-neuron} as input and using all the 18 features selected by
-\textit{PCA}. The second is an \textit{RNN} with 8 \textit{recurrent
-neurons} as inputs and using only the two features selected by
-\textit{WFSS}, this configuration is called \textbf{RNN 8}. The third
-configuration used is called \textbf{RNN 20}, with 20
-\textit{recurrent neurons} as inputs and using the two features
-selected by \textit{WFSS}.
+  network (RNN)} and \textit{vector autoregression (VAR)}, being
+\textit{RNN} configured in three different ways. The first
+\textit{RNN} configuration, previously introduced in
+\autoref{ch:experimental-setup}, called simply \textbf{RNN}, is a
+\textit{RNN} with the 18 features selected by \textit{PCA} as input
+which feed one single \textit{recurrent neuron}. The second is an
+\textit{RNN} with 8 \textit{recurrent neurons} and uses only the two
+features selected by \textit{WFSS} as input, this configuration is
+called \textbf{RNN 8}. The third configuration used is called
+\textbf{RNN 20}, with 20 \textit{recurrent neurons} and also uses the
+two features selected by \textit{WFSS}.
 
 Both \autoref{fig:predictions-subplots} and \autoref{fig:predictions}
 represent a day ahead prediction of the Bitcoin price, compared to the
@@ -390,7 +441,7 @@ the normality tests performed, namely \textit{skewness test},
 
 \textbf{Skewness} (\cite{d1970transformation}) - Is a measure of the
 asymmetry of the probability distribution of a random variable about
-its mean. In other words, skewness tells you the amount and direction
+it's mean. In other words, skewness tells you the amount and direction
 of skew (departure from horizontal symmetry). The skewness value can
 be positive or negative, or even undefined. If skewness is $0$, the
 data are perfectly symmetrical, although it is quite unlikely for
@@ -451,12 +502,12 @@ components of \textit{kurtosis}? It is basically because
 \textit{kurtosis} represents a movement of mass that does not affect
 the variance. Consider the case of positive \textit{kurtosis}, where
 heavier tails are often accompanied by a higher peak. Note that if
-mass is simply moved from the shoulders of a distribution to its
+mass is simply moved from the shoulders of a distribution to it's
 tails, then the variance will also be larger. To leave the variance
 unchanged, one must also move mass from the shoulders to the center,
 which gives a compensating decrease in the variance and a peak. For
 negative \textit{kurtosis}, the variance will be unchanged if mass is
-moved from the tails and center of the distribution to its shoulders,
+moved from the tails and center of the distribution to it's shoulders,
 thus resulting in light tails and flatness. The mathematical
 expression is shown in \autoref{eq:kurtosis-measure}.
 
