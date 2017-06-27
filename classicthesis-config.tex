@@ -30,7 +30,12 @@
                                 % the line below. If your editor does
                                 % not support utf8 use another editor! 
 \usepackage{inputenc}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
 %---------------------------------------------------------------------
 %	DOCUMENT VARIABLES
 %	Fill in the lines below to enter your information into the
@@ -208,6 +213,7 @@ belowcaptionskip=.75\baselineskip % Space after the "Listing #:
 
 \PassOptionsToPackage{pdftex,hyperfootnotes=false,pdfpagelabels}{hyperref}
 \usepackage{hyperref}  % backref linktocpage pagebackref
+\newcommand{\algorithmautorefname}{Algorithm}
 \pdfcompresslevel=9
 \pdfadjustspacing=1
 
