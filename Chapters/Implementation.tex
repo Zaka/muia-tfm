@@ -148,12 +148,64 @@ def tscv(dataset, model):
 
     end = i
     test_pos = i + 1
+
+  return overall_error
 \end{code}
 
 \chapter{Wrapper Feature Subset Selection}
 \label{ch:wfss}
 
-\cite{kohavi1997wrappers}
+\textit{Feature subset selection} techniques are divided in two
+categories \textit{filter} techniques and \textit{wrapper} techniques.
+\textit{Filter} techniques are applied over the dataset to extract the
+features an give the same \textit{feature subset} as result regardless
+of the model used in the prediction process. One example of this
+category es \textit{principal component analysis}. On the other hand,
+wrapper techniques are applied embedding the model in the assessment
+process of the \textit{feature subset} selected. Basically a
+\textit{feature subset} is selected, then a model is fitted to to that
+subset. Then the model is assessed and compared to another
+\textit{feature subset}.
+
+We have used \textit{wrapper feature subset selection (WFSS)}
+introduced by \cite{kohavi1997wrappers}. We used a variant of
+\textit{WFSS} that reduces the search space by using a greedy strategy
+to find the \textit{feature subset selection}. This version of
+\textit{WFSS} doesn't guarantee to get the subset with the best
+performance, however it gets a good result in less time.
+\autoref{lst:wfss-pseudo-code} describes with a \textit{Python}-like
+pseudo code how the version of \textit{WFSS} we've implemented works.
+
+\begin{code}[language = Python, frame = single,
+  caption = {\textit{WFSS} pseudo code},
+  label = lst:wfss-pseudo-code,
+  captionpos = b][bth]
+def wfss(dataset, model):
+  not_sel = dataset.get_features() # Not selected features
+  sel = [] # Selected features
+  overall_error = *infinity* # Assign a big number
+  
+  while not is_empty(not_sel):
+    # Select candidate
+    cand_error = *infinity* # Assign a big number
+    for cand in not_sel:
+      new_error = assess_features(concat(sel, cand))
+      if cand_error > new_error:
+        selected_candidate = cand
+        cand_error = new_error
+
+    if not overall_error > new_error:
+      # Stop if the new candidate doesn't
+      # improve the assessment of the
+      # previously selected candidates
+      break
+    else:
+      overall_error = new_error
+      sel.append(selected_candidate)
+      not_sel.remove(selected_candidate)
+
+  return sel
+\end{code}
 
 % Present the pseudo-code and then a Python version without all the
 % details
