@@ -33,6 +33,7 @@
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 
+
 \makeatletter
 \def\BState{\State\hskip-\ALG@thistlm}
 \makeatother
@@ -206,6 +207,15 @@ breaklines=true, % Force the code to stay in the confines of the listing box
 belowcaptionskip=.75\baselineskip % Space after the "Listing #:
                                 % Desciption" text and the listing box 
 }
+
+\lstnewenvironment{code}[1][]%
+{
+   \noindent
+   \minipage{\linewidth} 
+   \vspace{0.5\baselineskip}
+   \lstset{basicstyle=\ttfamily\footnotesize,frame=single,#1}}
+{\endminipage}
+
 
 %---------------------------------------------------------------------
 %	HYPERREFERENCES
