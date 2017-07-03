@@ -4,8 +4,66 @@
 
 \label{ch:discussion}
 
+In this project we had the purpose of comparing two predictive models,
+i.e. \textit{vector autoregression (VAR)} traditionally used in
+econometric and \textit{recurrent neural network (RNN)} developed in
+the area of \textit{artificial intelligence} that is increasingly been
+used in a wider spectrum of fields. The two prediction techniques have
+been applied to the one day ahead prediction of the \textit{Bitcoin}
+price to measure their performance.
 
+Once we have finished the experimentation we observe that the behavior
+of \textit{VAR} in pronounced changes of the \textit{Bitcoin}'s
+\textit{market price} is similar to that of \textit{RNN}. Although
+\textit{RNN} compares better to \textit{VAR} when feed with more
+elements of the \textit{time-series}.
 
+Is worth mentioning that \textit{RNN} improves significantly as the
+number of inputs neurons increases in such a way that some error
+measures as \textit{mean squared error (MSE)} and \textit{Theil's $U$
+statistic} move from performing worse than \textit{VAR} to performing
+better.
+
+\textit{RNN} are black-box models. There is no explicit form to
+explain and analyze the relationship between inputs and outputs. This
+causes difficulty in interpreting results from the networks. Besides
+there are no structured methods today to identify what network
+structure can best approximate the function, mapping the inputs to
+outputs. Hence, the tedious experiments and trial-and-error procedures
+are often used.
+
+The results obtained in the experiment support the intuition that
+non-linear models perform better than linear ones in prediction. At
+the same time linear models have less computational cost than
+non-linear models, this is because the number of different functions
+that can be represented by linear models is far less than the ones
+that non-linear models can represent. In terms of computational cost
+\textit{VAR} performs approximately 10 times better
+
+As to the features that better predict the \textit{Bitcoin}'s price,
+we observed that the only two variables that where selected by the
+different \textit{feature subset selection} techniques and models
+where \textit{total bitcoins} and \textit{market price}. It has to be
+taken into account that \textit{wrapper feature subset selection
+(WFSS)} is an heuristic technique that doesn't guarantee the optimum
+subset of features because the algorithm can get stuck in local
+optima.
+
+Possible ideas that arise from this study and the experiments that we
+have run would be:
+
+\begin{itemize}
+\item Include new features, trying to explore new currencies or maybe
+  include social media information through sentiment analysis.
+\item Another approach to obtain better performance results can be
+  reached by using different variants of the models used, such as
+  \textit{vector autoregressive moving-average models (VARMA)} or
+  \textit{vector autoregressive integrated moving average (VARIMA)}
+  variants of \textit{VAR}, or \textit{long short-term memory (LSTM)}
+  and \textit{gated recurrent units (GRU)} variants of \textit{VAR}.
+  Even new models can be tested in order to check how they predict the
+  \textit{Bitcoin} price.
+\end{itemize}
 
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------
