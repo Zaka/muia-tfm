@@ -45,25 +45,6 @@
 % packages - make sure to edit this file 
 \input{classicthesis-config}
 
-\usepackage[norefs]{refcheck}
-
-%%% Infrastructure
-%%% Code to include the \autoref references in the refcheck checking
-\makeatletter
-\newcommand{\refcheckize}[1]{%
-  \expandafter\let\csname @@\string#1\endcsname#1%
-  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
-    \csname @@\string#1\endcsname{##1}\wrtusdrf{##1}}%
-  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
-}
-\makeatother
-%%%
-
-%%% Now we add the reference commands we want refcheck to be aware of
-\refcheckize{\autoref}
-
-
-
 \addbibresource{tfm.bib} % The file housing your bibliography
 %\addbibresource[label=ownpubs]{Self_Publications.bib} % Uncomment for
 %optional self-publications 
@@ -116,7 +97,7 @@
 \cleardoublepage\include{FrontBackMatter/Contents} % Contents, list of
                                 % figures/tables/listings and acronyms 
 
-%\cleardoublepage
+\cleardoublepage
 
 \pagenumbering{arabic} % Arabic page numbering for thesis content (1,
                        % 2, 3, etc) 
@@ -133,15 +114,15 @@
 \ctparttext{Where we introduce the problem we want to solve, explore
   the state-of-the-art of related articles and get an overview of how
   to tackle the solution.}
-\cleardoublepage
-\cleardoublepage
-\cleardoublepage
-\cleardoublepage
+ \cleardoublepage
+% \cleardoublepage
+% \cleardoublepage
+% \cleardoublepage
 \part{Introduction} % Second part of the thesis
 \label{part:introduction}
 \include{Chapters/Introduction}
 
-\cleardoublepage % Empty page before the start of the next part
+% \cleardoublepage % Empty page before the start of the next part
 
 \ctparttext{Where we explain the variables selected to study, their
 interest for this project, and how we selected them.}
@@ -149,7 +130,7 @@ interest for this project, and how we selected them.}
 \label{part:variables}
 \include{Chapters/Variables}
 
-\cleardoublepage % Empty page before the start of the next part
+% \cleardoublepage % Empty page before the start of the next part
 
 \ctparttext{Where we talk about the models used to predict the
   \textit{Bitcoin} price and their characteristics.}
@@ -157,7 +138,7 @@ interest for this project, and how we selected them.}
 \label{part:method-technique}
 \include{Chapters/Method-Technique}
 
-\cleardoublepage % Empty page before the start of the next part
+% \cleardoublepage % Empty page before the start of the next part
 
 \ctparttext{Where we explain what tools did we built and what third
 party ones did we use in order to complete the experiments designed.}
@@ -165,7 +146,7 @@ party ones did we use in order to complete the experiments designed.}
 \label{part:implementation}
 \include{Chapters/Implementation}
 
-\cleardoublepage % Empty page before the start of the next part
+% \cleardoublepage % Empty page before the start of the next part
 
 \ctparttext{Where we present the results of the experiments performed
   and then analyze and compare the model's performance.}
@@ -173,7 +154,7 @@ party ones did we use in order to complete the experiments designed.}
 \label{part:experiment}
 \include{Chapters/Experiment}
 
-\cleardoublepage % Empty page before the start of the next part
+% \cleardoublepage % Empty page before the start of the next part
 
 \ctparttext{Where we discuss what we have learned in this project and
 what future works can be derived from the present..}
@@ -181,7 +162,7 @@ what future works can be derived from the present..}
 \label{part:discussion}
 \include{Chapters/Discussion}
 
-\cleardoublepage % Empty page before the start of the next part
+% \cleardoublepage % Empty page before the start of the next part
 
 %----------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES

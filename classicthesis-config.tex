@@ -22,17 +22,31 @@
 %	CHARACTER ENCODING
 %---------------------------------------------------------------------
 
-\PassOptionsToPackage{utf8}{inputenc} % Set the encoding of your
-                                % files. UTF-8 is the only sensible
-                                % encoding nowadays. If you can't read
-                                % äöüßáéçèê∂åëæƒÏ€ then change the
-                                % encoding setting in your editor, not
-                                % the line below. If your editor does
-                                % not support utf8 use another editor! 
+% Set the encoding of your files. UTF-8 is the only sensible encoding
+% nowadays. If you can't read äöüßáéçèê∂åëæƒÏ€ then change the
+% encoding setting in your editor, not the line below. If your editor
+% does not support utf8 use another editor!
+\PassOptionsToPackage{utf8}{inputenc} 
+ 
 \usepackage{inputenc}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
+\usepackage[norefs]{refcheck}
 
+%%% Infrastructure
+%%% Code to include the \autoref references in the refcheck checking
+\makeatletter
+\newcommand{\refcheckize}[1]{%
+  \expandafter\let\csname @@\string#1\endcsname#1%
+  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
+    \csname @@\string#1\endcsname{##1}\wrtusdrf{##1}}%
+  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+}
+\makeatother
+%%%
+
+%%% Now we add the reference commands we want refcheck to be aware of
+\refcheckize{\autoref}
 
 \makeatletter
 \def\BState{\State\hskip-\ALG@thistlm}
