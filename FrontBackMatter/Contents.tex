@@ -3,24 +3,24 @@
 \refstepcounter{dummy}
 
 \pdfbookmark[1]{\contentsname}{tableofcontents} % Bookmark name
-                                % visible in a PDF viewer 
+                                % visible in a PDF viewer
 
 \setcounter{tocdepth}{2} % Depth of sections to include in the table
-                         % of contents - currently up to subsections 
+                         % of contents - currently up to subsections
 
 \setcounter{secnumdepth}{3} % Depth of sections to number in the text
-                            % itself - currently up to subsubsections 
+                            % itself - currently up to subsubsections
 
 \manualmark
 \markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}}
-\tableofcontents 
+\tableofcontents
 \automark[section]{chapter}
 \renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\enspace\spacedlowsmallcaps{#1}}}
 
 \clearpage
 
-\begingroup 
+\begingroup
 \let\clearpage\relax
 \let\cleardoublepage\relax
 \let\cleardoublepage\relax
@@ -31,9 +31,9 @@
 
 \refstepcounter{dummy}
 %\addcontentsline{toc}{chapter}{\listfigurename} % Uncomment if you
-%would like the list of figures to appear in the table of contents 
+%would like the list of figures to appear in the table of contents
 \pdfbookmark[1]{\listfigurename}{lof} % Bookmark name visible in a PDF
-                                % viewer 
+                                % viewer
 
 \listoffigures
 
@@ -46,15 +46,15 @@
 
 \refstepcounter{dummy}
 %\addcontentsline{toc}{chapter}{\listtablename} % Uncomment if you
-%would like the list of tables to appear in the table of contents 
+%would like the list of tables to appear in the table of contents
 \pdfbookmark[1]{\listtablename}{lot} % Bookmark name visible in a PDF
-                                % viewer 
+                                % viewer
 
 \listoftables
-        
+
 \vspace{8ex}
 \newpage
-    
+
 %---------------------------------------------------------------------
 %	List of Listings
 %---------------------------------------------------------------------
@@ -62,24 +62,24 @@
 \refstepcounter{dummy}
 %\addcontentsline{toc}{chapter}{\lstlistlistingname} % Uncomment if
 %you would like the list of listings to appear in the table of
-%contents 
+%contents
 \pdfbookmark[1]{\lstlistlistingname}{lol} % Bookmark name visible in a
-                                % PDF viewer 
+                                % PDF viewer
 
-\lstlistoflistings 
+\lstlistoflistings
 
 \vspace{8ex}
 \newpage
-       
+
 %---------------------------------------------------------------------
 %	Acronyms
 %---------------------------------------------------------------------
 
 \refstepcounter{dummy}
 %\addcontentsline{toc}{chapter}{Acronyms} % Uncomment if you would
-%like the acronyms to appear in the table of contents 
+%like the acronyms to appear in the table of contents
 \pdfbookmark[1]{Acronyms}{acronyms} % Bookmark name visible in a PDF
-                                % viewer 
+                                % viewer
 
 \markboth{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Acronyms}}
 
@@ -98,40 +98,60 @@
   \acro{CFLANN}{Cascaded functional link ANN}
   \acro{CHF}{Swiss Franc}
   \acro{CNY}{Chinese Renminbi}
+  \acro{DA}{Discriminant Analysis}
   \acro{DRPNN}{Dynamic ridge polynomial neural network}
+  \acro{ECB}{European Central Bank}
   \acro{EMA}{Exponential moving average}
   \acro{FA}{Factor analysis}
   \acro{FLANN}{Functional link ANN}
+  \acro{FSI}{Financial Stability Institute}
   \acro{FSS}{Feature Subset Selection}
   \acro{FTSE}{Financial Times Stock Exchange}
   \acro{GA}{Genetic Algorithms}
   \acro{GLM}{General Linear Models}
+  \acro{GRU}{Gated Recurrent Unit}
   \acro{HM}{Hierarchical Model}
+  \acro{LDA}{Linear Discriminant Analysis}
   \acro{LMS}{Least mean square}
   \acro{LM}{Levenberg-Marquardt}
   \acro{LR}{Logistic regression}
+  \acro{LS-SVM}{Least Squares Support Vector Machine}
+  \acro{LSTM}{Long Short-Term Memory}
   \acro{MACD}{moving average convergence/divergence}
+  \acro{MAE}{Mean Absolute Error}
+  \acro{MDA}{Multivariable Discriminant Analysis}
   \acro{MLP}{Multilayer Perceptron}
+  \acro{MSPE}{Mean Squared Prediction Error}
   \acro{NASDAQ}{National Association of Securities Dealers Automated Quotations}
   \acro{NN}{Neural network}
+  \acro{NYSE}{New York Stock Exchange}
   \acro{OLS}{Ordinary least square}
   \acro{PCA}{Principal Component Analysis}
   \acro{PNN}{Probabilistic Neural Network}
+  \acro{PSO}{Particle Swarm Optimization}
+  \acro{RMSE}{Root Mean Square Error}
   \acro{RNN}{Recurrent neural networks}
   \acro{ROC}{Rate of change}
   \acro{RPROB}{Resilient propagation}
   \acro{RSI}{Relative strength index}
+  \acro{RS}{Rough Sets}
   \acro{SMA}{Simple moving average}
+  \acro{SP500}{Standard \& Poor's 500}
   \acro{SVM}{Support Vector Machine}
   \acro{TXN}{Transaction/s}
   \acro{USD}{United States Dollar}
+  \acro{VARIMA}{Vector Autoregressive Integrated Moving Average}
+  \acro{VARMA}{Vector Autoregressive Moving-Average Models}
   \acro{VAR}{Vector Autoregression }
   \acro{WFSS}{Wrapper Feature Subset Selection}
+  \acro{AIC}{Akaike's Information Criteria}
+  \acro{BIC}{Bayesian Information Criteria}
+  \acro{FPE}{Final Prediction Error}
+  \acro{HQC}{Hannan–Quinn Information Criterion}
+  \acro{}{}
+  \acro{}{}
+\end{acronym}
 
-  % \acro{}{}
-  % \acro{}{}
-\end{acronym}  
-                   
 \endgroup
 %%% Local Variables:
 %%% mode: latex

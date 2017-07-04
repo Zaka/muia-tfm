@@ -116,7 +116,7 @@ features and the other is the lags of each variable. For the features
 used, as mentioned in \autoref{ch:feature-selection}, we used a
 \textit{principal component analysis (PCA)} to select a subset of 18
 features out of the original 41. After that, using \textit{wrapper
-  feature subset selection (WFSS)} we chose a subset of those 18
+feature subset selection (WFSS)} we chose a subset of those 18
 features previously selected. The size and the particular features
 selected in the last subset depends on the model used and the
 parameters chosen. Considering this, we will explain first how did we
@@ -126,9 +126,9 @@ choose the lag parameter and then how that choice affected
 To set the lag parameter we have built an automated system to choose
 from several information criteria available in the \textbf{vars}
 package. This information criteria are, \textit{Akaike's information
-  criteria (AIC)} by \cite{akaike1974new}, \textit{bayesian
-  information criteria (BIC)} by \cite{schwarz1978estimating},
-\textit{final prediction error (FPE)} by \cite{akaike1973infor} and
+criteria (AIC)} by \cite{akaike1974new}, \textit{bayesian information
+criteria (BIC)} by \cite{schwarz1978estimating}, \textit{final
+prediction error (FPE)} by \cite{akaike1973infor} and
 \textit{Hannan–Quinn information criterion (HQC)} by
 \cite{hannan1979determination}. Once we have the lag parameter chosen
 by the aforementioned information criteria, we order in ascending
@@ -141,8 +141,8 @@ until the null hypothesis is not rejected.
 Once we have the lag parameter we perform a \textit{WFSS} to obtain a
 feature subset. In the specific case of \textit{VAR}, the \textit{FSS}
 obtained comprises the variables \textit{market price, Euro price in
-  USD, cost per transaction percent, S\&P 500 volume, estimated
-  transaction volume and S\&P 500 close}.
+USD, cost per transaction percent, S\&P 500 volume, estimated
+transaction volume and S\&P 500 close}.
 
 In the case of \textit{RNN}, there are multiple parameters to choose,
 one of theme is the number of \textit{epochs}. Each \textit{epoch} is
@@ -196,7 +196,7 @@ comprised of two variables, namely \textit{market price} and
 
 In this section we present the results for four experiments to compare
 the performance of two different models \textit{recurrent neural
-  network (RNN)} and \textit{vector autoregression (VAR)}, being
+network (RNN)} and \textit{vector autoregression (VAR)}, being
 \textit{RNN} configured in three different ways. The first
 \textit{RNN} configuration, previously introduced in
 \autoref{ch:experimental-setup}, called simply \textbf{RNN}, is a
@@ -210,12 +210,12 @@ two features selected by \textit{WFSS}.
 
 Both \autoref{fig:predictions-subplots} and \autoref{fig:predictions}
 represent a day ahead prediction of the Bitcoin price, compared to the
-real Bitcoin price, shown in the variable \textit{MarketPrice}. It is
+real Bitcoin price, shown in the variable \textit{market price}. It is
 the same information presented in two different ways to allow the
 viewer to see the particular values of each one in
 \autoref{fig:predictions-subplots}, and, on the other side, to be able
-to compare closely the values of the two models and
-\textit{MarketPrice} in \autoref{fig:predictions}.
+to compare closely the values of the two models and \textit{market
+price} in \autoref{fig:predictions}.
 
 \begin{figure}[bth]
   \myfloatalign {
@@ -231,7 +231,7 @@ Although the shapes of the charts are similar, it can be noticed how
 see that \textbf{RNN} performs better than \textbf{RNN 8}. In this
 particular case, more features help to learn more rapidly from the
 data. But when we increase the number of \textit{recurrent input
-  neurons}, which is the same as saying that we increase the window of
+neurons}, which is the same as saying that we increase the window of
 the input time series, we get better results without resorting to the
 use of more features. There is a comparison of forecast accuracy
 measures that reflect the intuitions observed before in
@@ -391,14 +391,14 @@ model and the fluctuation (formally know as first difference or
 \textit{Diff(1)}) of the \textit{BTC} price. It's important to note
 that for the two models the \textit{MAE} is mostly beneath the daily
 fluctuation of \textit{BTC}, which tells us the the error is
-relatively small to predict the \textit{MarketPrice}.
+relatively small to predict the \textit{market price}.
 
 In the two lower graphs of \autoref{fig:comparison-errors} we see a
 comparison of model's \textit{MAE} and absolute errors. The errors of
 \textit{RNN} are located around two events of huge change of the
-\textit{MarketPrice}. There the errors of \textbf{RNN 20} are lower
+\textit{market price}. There the errors of \textbf{RNN 20} are lower
 than those of \textit{VAR}, but those of \textbf{RNN} and \textbf{RNN
-  8} are larger. That's the reason why \textbf{RNN} and \textbf{RNN 8}
+8} are larger. That's the reason why \textbf{RNN} and \textbf{RNN 8}
 have larger \textit{MSE} than \textit{VAR}, while \textbf{RNN 20} has
 lower \textit{MSE} than \textit{VAR}, because bigger errors are
 penalized. Besides, in the rest of the time series the errors of
@@ -546,8 +546,8 @@ distributed.
 \label{sec:results-for-2013-onwards}
 
 It's interesting to look at the results of the range of all
-predictions made after 2013, there are barely fluctuations of the BTC
-price.
+predictions made after 2013, there are barely fluctuations of the
+\textit{BTC} price.
 
 Both \autoref{fig:prediction-range-2013-subplots} and
 \autoref{fig:prediction-range-2013} are basically the same figures as

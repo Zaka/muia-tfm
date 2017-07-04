@@ -14,14 +14,15 @@ series, spanning from 03/01/2009 to 28/04/2016, with a granularity of
 1 data point per day.
 
 The thesis is organized as follows: \autoref{part:introduction}
-describes the aim of the thesis and the state-of-the-art of \textit{BTC}
-prediction and financial forecasting, \autoref{part:variables}
-describes the variables gathered and how they where selected,
-\autoref{part:method-technique} describes RNN and its suitability to
-time-series forecasting, \autoref{part:implementation} shows the
-implementation of RNN chosen and how it adapts to the particular
-problem of \textit{BTC} price prediction, \autoref{part:experiment} reviews
-the experiments executed and the data produced as output and, finally,
+describes the aim of the thesis and the state-of-the-art of
+\textit{BTC} prediction and financial forecasting,
+\autoref{part:variables} describes the variables gathered and how they
+where selected, \autoref{part:method-technique} describes \textit{RNN}
+and its suitability to time-series forecasting,
+\autoref{part:implementation} shows the implementation of RNN chosen
+and how it adapts to the particular problem of \textit{BTC} price
+prediction, \autoref{part:experiment} reviews the experiments executed
+and the data produced as output and, finally,
 \autoref{part:discussion} discusses the results obtained where we draw
 some conclusions and then propose some improvements to the work done
 in this thesis.
@@ -31,13 +32,13 @@ fluctuations of its price. \cite{madan_automated_2014} forecast the
 sign of the price of \textit{BTC} for periods of 24h (phase one) and
 10 minutes and 10 seconds (phase two), obtaining an accuracy of
 $98.7\%$ for \textit{phase one} and $50\% - 55\%$ for \textit{phase
-  two}. In \textit{phase one} they used \textit{binomial general
-  linear models (GLM)}, \textit{Support Vector Machine (SVM)} and
+two}. In \textit{phase one} they used \textit{binomial general linear
+models (GLM)}, \textit{Support Vector Machine (SVM)} and
 \textit{Random Forest}. \textit{Binomial GLM} shows higher precision
 and accuracy that the other two algorithms. For \textit{phase two}
 they used only \textit{Binomial GLM} and \textit{Random Forest}. When
 comparing 10 second and 10 minute prediction with \textit{Binomial
-  GLM} with 10 minute prediction for \textit{Random Forest}, it turns
+GLM} with 10 minute prediction for \textit{Random Forest}, it turns
 out that \textit{Random Forest} shows higher accuracy and precision
 than \textit{GLM} in both 10 seconds and 10 minutes interval
 prediction. \cite{garcia_social_2015} provide a consistent approach
@@ -46,10 +47,9 @@ traders. They applied multidimensional model of vector auto-regression
 to design different types of trading algorithms. The analysis
 performed reveals that increases in opinion polarization and exchange
 volume precede rising \textit{BTC} prices, and that emotional valence
-precedes opinion polarization and rising exchange volumes. They
-choosed a number of \textit{BTC} related variables based on the work
-of other researchers that can be seen in
-\autoref{tab:bitcoin-features-garcia}.
+precedes opinion polarization and rising exchange volumes. They chose
+a number of \textit{BTC} related variables based on the work of other
+researchers that can be seen in \autoref{tab:bitcoin-features-garcia}.
 
 \begin{table}[htb]
   %\tiny
@@ -75,16 +75,16 @@ of other researchers that can be seen in
   \label{tab:bitcoin-features-garcia}
 \end{table}
 
-When it comes to variables used for predicting the \textit{BTC}
-price, \cite{madan_automated_2014} uses for \textit{phase one} 16
-features (shown in \autoref{tab:bitcoin-features-madan}) relating to
-the \textit{BTC} price and payment network over the course of five
-years, recorded daily. The features were selected manually based on
-research of the significance to the problem of forecasting. For the
+When it comes to variables used for predicting the \textit{BTC} price,
+\cite{madan_automated_2014} uses for \textit{phase one} 16 features
+(shown in \autoref{tab:bitcoin-features-madan}) relating to the
+\textit{BTC} price and payment network over the course of five years,
+recorded daily. The features were selected manually based on research
+of the significance to the problem of forecasting. For the
 \textit{phase two} the data consisted of 10-second and 10-minute
-interval \textit{BTC} price. There is no particular feature selection technique
-used by \cite{madan_automated_2014} given that they manually selected
-the features to use to perform the prediction.
+interval \textit{BTC} price. There is no particular feature selection
+technique used by \cite{madan_automated_2014} given that they manually
+selected the features to use to perform the prediction.
 
 \begin{table}[htb]
   %\tiny
@@ -346,8 +346,8 @@ forecasting with a focus on neural networks and neuro-fuzzy techniques
 was made by \cite{atsalakis2009surveying}. This paper enumerates the
 modeling techniques used to forecast, the stock markets whose
 information are used (not very useful for this thesis because we are
-interested in \textit{BTC} where the information source is clear),
-the input variables, which we summarize in
+interested in \textit{BTC} where the information source is clear), the
+input variables, which we summarize in
 \autoref{tab:input-variables-atsalakis2009}, whether they perform data
 processing, sample sizes, network layers, membership functions,
 validation set and training method. They also show the methods used to
@@ -355,17 +355,16 @@ compare with for each article without giving the conclusions made in
 each article. Another very interesting information are the
 \textit{model performance measures} where the measures are classified
 as statistical and non-statistical measures: \textit{``Statistical
-  measures include the root mean square error (RMSE), the mean
-  absolute error (MAE) and the mean squared prediction error (MSPE),
-  statistical indicators like the autocorrelation, the correlation
-  coefficient, the mean absolute deviation, the squared correlation
-  and the standard deviation. [...] Non-statistical performance
-  measures include measures that are related with the economical side
-  of the forecast. The most common used performance measure is the so
-  called Hit Rate that measures the percentage of correct predictions
-  of the model. Another two measures that deal with the profitability
-  of the model are the annual rate of return and the average annual
-  profit of the model''}
+measures include the root mean square error (RMSE), the mean absolute
+error (MAE) and the mean squared prediction error (MSPE), statistical
+indicators like the autocorrelation, the correlation coefficient, the
+mean absolute deviation, the squared correlation and the standard
+deviation. [...] Non-statistical performance measures include measures
+that are related with the economical side of the forecast. The most
+common used performance measure is the so called Hit Rate that
+measures the percentage of correct predictions of the model. Another
+two measures that deal with the profitability of the model are the
+annual rate of return and the average annual profit of the model''}
 
 \begin{table}[htbp]
   \scriptsize
@@ -398,13 +397,13 @@ as statistical and non-statistical measures: \textit{``Statistical
 \end{table}
 
 As a conclusion, they mention that: \textit{``The observation is that
-  neural networks and neuro-fuzzy models are suitable for stock market
-  forecasting. Experiments demonstrate that soft computing techniques
-  outperform conventional models in most cases. They return better
-  results as trading systems and higher forecasting accuracy. However,
-  difficulties arise when defining the structure of the model (the
-  hidden layers the neurons etc.). For the time being, the structure
-  of the model is a matter of trial and error procedures.``}
+neural networks and neuro-fuzzy models are suitable for stock market
+forecasting. Experiments demonstrate that soft computing techniques
+outperform conventional models in most cases. They return better
+results as trading systems and higher forecasting accuracy. However,
+difficulties arise when defining the structure of the model (the
+hidden layers the neurons etc.). For the time being, the structure of
+the model is a matter of trial and error procedures.``}
 
 Following the surveying articles is the one introduced by
 \cite{carpinteiro2012forecasting} which gives a comparison of three
@@ -418,7 +417,7 @@ due to its hierarchical architecture.
 
 \cite{krollner2010financial} performs a meta-survey, with 46
 forecasting studies. They divide the papers into \textit{Artificial
-  Neural Network (ANN)} based and evolutionary and optimisation based
+Neural Network (ANN)} based and evolutionary and optimisation based
 techniques. Related to this division they show the amount of studies
 using each technique, which we reproduce in
 \autoref{tab:reviewed-papers-machine-learning}.
@@ -468,8 +467,8 @@ input variables. Most commonly used parameters are daily opening,
 high, low and close prices. Also several technical indicators are
 used, been the more important: \textit{Simple moving average (SMA)},
 \textit{Exponential moving average (EMA)}, \textit{Relative strength
-  index (RSI)}, \textit{Rate of change (ROC)}, \textit{Moving average
-  convergence/divergence (MACD)}, \textit{William's oscillator} and
+index (RSI)}, \textit{Rate of change (ROC)}, \textit{Moving average
+convergence/divergence (MACD)}, \textit{William's oscillator} and
 \textit{Average true range (ATR)}.
 \autoref{tab:reviewed-papers-by-input-variables} displays the number
 of studies using the different input variables.
@@ -485,7 +484,7 @@ of studies using the different input variables.
     Trading volume & 4 \\
     Technical Indicators & 13 \\
     Oil Price & 4 \\
-    S\&P 500 / NASDAQ /Dow Jones (non US studies) & 4 \\
+    SP500 / NASDAQ / Dow Jones (non US studies) & 4 \\
     Unemployment Rate & 1 \\
     Money Supply & 3 \\
     Exchange Rates & 3 \\
@@ -526,8 +525,8 @@ categories and the studies is reproduced in
 
 An interesting quote made by \cite{krollner2010financial} is:
 \textit{``Over 80\% of the papers report that their model outperformed
-  the benchmark model. However, most analysed studies do not consider
-  real world constraints like trading costs and splippage.``}
+the benchmark model. However, most analysed studies do not consider
+real world constraints like trading costs and splippage.``}
 
 As one of the conclusions of the review they state that \textit{ANN}
 are the dominant techniques for the field of financial forecasting.
@@ -597,18 +596,18 @@ other methods.
     \tableheadline{Domain} & \tableheadline{Author(s)} &
     \tableheadline{Approaches compared} & \tableheadline{Conclusion} \\ 
     \midrule
-    Mortages choice decision & \cite{hawley1990artificial} & NN
-    compared with probit & Artificial NN has a better performance \\
+    Mortages choice decision & \cite{hawley1990artificial} & \textit{NN}
+    compared with probit & Artificial \textit{NN} has a better performance \\
     \midrule
-    Portfolio optimization & \cite{wong1998neural} & B\&H strategy &
-    Artificial NN has a better performance \\
+    Portfolio optimization & \cite{wong1998neural} & \textit{B\&H} strategy &
+    Artificial \textit{NN} has a better performance \\
     \midrule
     Portfolio optimization & \cite{holsapple1988adapting} &
-    Back-Propagation NN with mean-variance model & Artificial NN has a
-    better performance \\
+    Back-Propagation \textit{NN} with mean-variance model & Artificial
+    \textit{NN} has a better performance \\
     \bottomrule
   \end{tabularx}
-  \caption{Comparison between ANNs and other methods of portfolio
+  \caption{Comparison between \textit{ANN}s and other methods of portfolio
     management in \cite{beiranvand_comparative_2012}}
   \label{tab:ann-comparison-portfolio-manage}
 \end{table}
@@ -622,33 +621,33 @@ other methods.
     \tableheadline{Approaches compared} & \tableheadline{Conclusion} \\ 
     \midrule
     Selecting financial variables & \cite{markowitz1959portfolio} &
-    ANN models that uses constant relevant variables compared to LR,
-    B\&H strategy, and random walk & Artificial NN has a better
-    performance \\
+    \textit{ANN} models that uses constant relevant variables compared to
+    \textit{LR}, \textit{B\&H} strategy, and random walk & Artificial
+    \textit{NN} has a better performance \\
     \midrule
-    Exchange rates prediction & \cite{lam2004neural} & ANN compared to
-    linear autorefressive and random walk models & PNN and MLP have a
-    better performance \\
+    Exchange rates prediction & \cite{lam2004neural} & \textit{ANN}
+    compared to linear autoregressive and random walk models &
+    \textit{PNN} and \textit{MLP} have a better performance \\
     \midrule
     Post-bankruptcy resolutions & \cite{atsalakis2009surveying} & 5
-    various models of ANN & Artificial NN has a better performance \\
+    various models of \textit{ANN} & \textit{ANN} has a better performance \\
     \midrule
-    Bankruptcy forecasting & \cite{mochon2008soft} & ANN with MDA &
-    Artificial NN has a better performance \\
+    Bankruptcy forecasting & \cite{mochon2008soft} & \textit{ANN} with
+    \textit{MDA} & \textit{ANN} has a better performance \\
     \midrule
     Classification of financial data &
-    \cite{sivanandam2007introduction} & ANN with LDA and LR &
-    Artificial NN has a better performance \\
+    \cite{sivanandam2007introduction} & \textit{ANN} with \textit{LDA}
+    and \textit{LR} & \textit{ANN} has a better performance \\
     \midrule
-    Asset value prediction & \cite{prasad2008soft} & BPNN with
-    regression models & Artificial NN has a better performance \\
+    Asset value prediction & \cite{prasad2008soft} & \textit{BPNN} with
+    regression models & \textit{ANN} has a better performance \\
     \midrule
     Consumer price index forecasting & \cite{atiya2001bankruptcy} &
-    ANN with random walk model & Artificial NN has a better
+    \textit{ANN} with random walk model & \textit{ANN} has a better
     performance \\
     \bottomrule
   \end{tabularx}
-  \caption{Comparison between ANNs and other methods of forecasting
+  \caption{Comparison between \textit{ANN}s and other methods of forecasting
     and planning in \cite{beiranvand_comparative_2012}}
   \label{tab:ann-comparison-forecasting}
 \end{table}
@@ -683,8 +682,8 @@ accurate than the other techniques. This is expected, since an
 ensemble integrates several predictors. In a successful ensemble
 design, a tradeoff between the ensemble accuracy and the diversity of
 ensemble members is achieved. [...]. However, transparency of
-ensemble-based techniques is rather limited, when compared to RS or
-IF-THEN rules- based approaches.''}
+ensemble-based techniques is rather limited, when compared to
+\textit{RS} or IF-THEN rules- based approaches.''}
 
 % \begin{table}[htbp]
 %   \tiny
@@ -819,14 +818,14 @@ prediction.''}
 
 As a major downside of soft computing thechniques their conclusion is:
 \textit{``The non-linear nature of hybrid and ensemble-based models
-  and the lack of a widely accepted procedures for designing such
-  models are major factors contributing to pitfalls in applications of
-  these technologies. Model building, model selection and comparison
-  are the designing steps where the most common pitfalls occur due to
-  small sample sizes, model over-fitting or under-fitting, the
-  sensitivity of solutions to initial conditions. The problem of
-  selecting a model of appropriate complexity is often forgotten when
-  developing soft computing techniques for bankruptcy prediction.''}
+and the lack of a widely accepted procedures for designing such models
+are major factors contributing to pitfalls in applications of these
+technologies. Model building, model selection and comparison are the
+designing steps where the most common pitfalls occur due to small
+sample sizes, model over-fitting or under-fitting, the sensitivity of
+solutions to initial conditions. The problem of selecting a model of
+appropriate complexity is often forgotten when developing soft
+computing techniques for bankruptcy prediction.''}
 
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------

@@ -17,7 +17,7 @@ the variable works and the boxplot that can help us determine if there
 are outliers in the data-set.
 
 There are 16 variables descriptions, two of them are sets of
-variables, namely, \textit{Bitcoins Days Destroyed}, which groups two
+variables, namely, \textit{bitcoins days destroyed}, which groups two
 individual variables, and \textit{Standard \& Poors 500}, which groups
 another two individual variables. Therefore in the data-set, every
 individual member of said sets, would count as an individual feature
@@ -27,10 +27,10 @@ The data-sets were obtained from a variaty of sources, but mostly from
 \href{https://blockchain.info/charts}{blockchain.info}, excluding
 \textit{Euro price in USD} that was obtained from the
 \href{https://www.ecb.europa.eu/stats/exchange/eurofxref/html/index.en.html}{European
-  Central Bank} web site, and the \textit{Standard \& Poors 500} that
+Central Bank} web site, and the \textit{Standard \& Poors 500} that
 was obtained from
 \href{https://finance.yahoo.com/q/hp?s=^GSPC\&a=00\&b=3\&c=1950\&d=05\&e=8\&f=2016\&g=d}{Yahoo!
-  Finance}.
+Finance}.
 
 While all the data-set have daily data points for their values, they
 have different spanning dates, been \textit{Euro price in USD} and
@@ -42,10 +42,10 @@ range between 2009-01-03 and 2016-04-28.
 \section{Bitcoin Days Destroyed}
 \label{sec:bitcoin-days-destroyed}
 
-\textit{Bitcoin Days Destroyed} is a weighted measure of aggregate
+\textit{Bitcoin days destroyed} is a weighted measure of aggregate
 economic activity, placing value on transacted coins in proportion to
 the time they have spent idle on the Bitcoin blockchain. For any given
-transaction, \textit{Bitcoin Days Destroyed} is calculated by
+transaction, \textit{Bitcoin days destroyed} is calculated by
 multiplying its estimated transaction value by the number of days
 since the coins within the transaction were last spent. It is a useful
 proxy for measuring growth in real value transacted on the Bitcoin
@@ -93,7 +93,7 @@ flooding the network with meaningless chatter. Looks pretty good,
 hey?}''
 
 In \autoref{fig:bitcoin-days-destroyed-over-time} we show data over
-time for \textit{Bitcoin Days Destroyed}.
+time for \textit{Bitcoin days destroyed}.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -109,20 +109,20 @@ time for \textit{Bitcoin Days Destroyed}.
 \section{Cost Per Transaction}
 \label{sec:cost-per-transaction}
 
-This variable shows miners revenue (in USD) divided by the number of
-transactions. Miners revenue are a result of the transaction fees plus
-the reward for block discovery. The block discovery reward is fixed by
-the community, and is up to the miner to accept any transaction
-regardless of the fee in the transaction. A miner can choose not to
-add any transaction at all to the block, or add transactions with a
-$0$ BTC fee.
+This variable shows miners revenue (in \textit{USD}) divided by the
+number of transactions. Miners revenue are a result of the transaction
+fees plus the reward for block discovery. The block discovery reward
+is fixed by the community, and is up to the miner to accept any
+transaction regardless of the fee in the transaction. A miner can
+choose not to add any transaction at all to the block, or add
+transactions with a $0$ \textit{BTC} fee.
 
 \autoref{fig:cost-per-transaction-over-time} shows that in the end of
-2010 the Cost Per Transactions started to increase and had a local
-maximum followed by another local maximum in mid 2011. This two peaks
-took place in a low price of Bitcoin scenario, hence probably the
-blocks were introduced with a small amount of transactions, and with a
-subtle increase in the Bitcoin price the ratio would increase.
+2010 the \textit{Cost per transactions} started to increase and had a
+local maximum followed by another local maximum in mid 2011. This two
+peaks took place in a low price of Bitcoin scenario, hence probably
+the blocks were introduced with a small amount of transactions, and
+with a subtle increase in the Bitcoin price the ratio would increase.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -133,13 +133,14 @@ subtle increase in the Bitcoin price the ratio would increase.
 \end{figure}
 
 On the contrary, the two peaks of 2014 are in the highest price of the
-Bitcoin history, where the number of transactions would make little
-effect. Price in that period fluctuates between $700$ USD and $1100$
-USD approximately.
+\textit{Bitcoin} history, where the number of transactions would make
+little effect. Price in that period fluctuates between $700$
+\textit{USD} and $1100$ \textit{USD} approximately.
 
 \autoref{tab:cost-per-transaction} shows us that the median revenue is
-$6.199964$ USD and the mean is $9.731184$ USD. This information is
-later increased in \autoref{sec:cost-per-transaction-percent}.
+$6.199964$ \textit{USD} and the mean is $9.731184$ \textit{USD}. This
+information is later increased in
+\autoref{sec:cost-per-transaction-percent}.
 
 \begin{table}[bth]
   \myfloatalign
@@ -181,8 +182,8 @@ few exceptions.
 \end{figure}
 
 As of 2016, miners are more concerned about the reward obtained by
-discovering new blocks in the Bitcoin network. In the future the
-median percentage is $3.297002$ (see
+discovering new blocks in the \textit{Bitcoin} network. In the future
+the median percentage is $3.297002$ (see
 \autoref{tab:cost-per-transaction-percent}) will probably increase,
 because the sole income for miners will be transaction fees.
 
@@ -213,18 +214,19 @@ because the sole income for miners will be transaction fees.
 \label{sec:estimated-transaction-volume}
 
 
-The total estimated value of transactions on the Bitcoin blockchain
-(does not include coins returned to sender as change). The transaction
-volume represented in
+The total estimated value of transactions on the \textit{Bitcoin}
+blockchain (does not include coins returned to sender as change). The
+transaction volume represented in
 \autoref{fig:estimated-transaction-volume-over-time} is very slowly
-increasing, meaning that more transactions in Bitcoin are processed.
-However, it doesn't represent the actual value of transactions,
-because people think in their local currency when trading or shopping,
-and Bitcoin's value is volatile. The next variable, \textit{Estimated
-  Transaction Volume USD}, is more appropriate for measuring the
-transactions volume as it gives us the value of transactions in USD.
-The peak that happened in 2012 wouldn't occur easily today due to the
-current value of Bitcoin.
+increasing, meaning that more transactions in \textit{Bitcoin} are
+processed. However, it doesn't represent the actual value of
+transactions, because people think in their local currency when
+trading or shopping, and \textit{Bitcoin}'s value is volatile. The
+next variable, \textit{Estimated Transaction Volume USD}, is more
+appropriate for measuring the transactions volume as it gives us the
+value of transactions in \textit{USD}. The peak that happened in 2012
+wouldn't occur easily today due to the current value of
+\textit{Bitcoin}.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -240,18 +242,18 @@ current value of Bitcoin.
 % \label{sec:estimated-transaction-volume-usd}
 
 
-% The Estimated Transaction Volume in USD value, shown in
+% The Estimated Transaction Volume in \textit{USD} value, shown in
 % \autoref{fig:estimated-transaction-volume-usd-over-time}, can be
-% explained by the average value of Bitcoin, shown in
+% explained by the average value of \textit{Bitcoin}, shown in
 % \autoref{fig:market-price-over-time}, because nearly all the events
 % are paired in the two figures. There is a small increase in estimated
-% transaction volume in USD in mid 2011 at the same time than the
-% average price of Bitcoin increases. Later on, in 2013 there is a
+% transaction volume in \textit{USD} in mid 2011 at the same time than the
+% average price of \textit{Bitcoin} increases. Later on, in 2013 there is a
 % bigger increase in estimated volume that is also reflected in the
 % average price. Then we have the two biggest peaks around January of
-% 2014 coinciding with the highest average value of Bitcoin (also
+% 2014 coinciding with the highest average value of \textit{Bitcoin} (also
 % represented in two peaks). After that there is decrease in average
-% price and estimated volume till 2016 where Bitcoin average price
+% price and estimated volume till 2016 where \textit{Bitcoin} average price
 % starts to increase at the same time that the estimate transaction
 % volume increases.
 
@@ -259,7 +261,7 @@ current value of Bitcoin.
 %   \myfloatalign
 %   {\includegraphics[width=1\linewidth]
 %     {gfx/estimated-transaction-volume-usd-over-time}}
-%   \caption{\textit{Estimated transaction volume USD} chart}
+%   \caption{\textit{Estimated transaction volume \textit{USD}} chart}
 %   \label{fig:estimated-transaction-volume-usd-over-time}
 % \end{figure}
 
@@ -276,11 +278,11 @@ of miners. \autoref{fig:difficulty-over-time} displays the difficulty
 values over time. It can be noticed the staggered nature of the
 values, that is because the \textit{Difficulty} is adjusted
 automatically every 2016 blocks, and changes equally for the entire
-Bitcoin network. Until 2014, the difficulty of mining was very low, it
-started to raise probably because the trade volume in the end of 2013
-and start of 2014 was approximately 70.000.000\$, which attracted
-professional miners with a greater processing power, those creating
-more and more blocks and augmenting the difficulty of mining.
+\textit{Bitcoin} network. Until 2014, the difficulty of mining was
+very low, it started to raise probably because the trade volume in the
+end of 2013 and start of 2014 was approximately 70.000.000\$, which
+attracted professional miners with a greater processing power, those
+creating more and more blocks and augmenting the difficulty of mining.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -296,23 +298,26 @@ more and more blocks and augmenting the difficulty of mining.
 \label{sec:euro-price-in-usd}
 
 
-Euro price in USD provided by the European Central Bank from the
-creation of the Euro. We have found latent values which have been
-interpolated in order to fill the missing values.
+\textit{Euro price in USD} provided by the \textit{European Central
+Bank (ECB)} is a variable that shows the \textit{Euro} price in
+\textit{USD}. We have found latent values which have been interpolated
+in order to fill them.
 
-As shown in \autoref{fig:euro-price-in-usd-over-time} the value of Euro
-has been above that of the USD from its creation, been the period of
-2000 through 2003 its closer price to each other. From 2003 to 2007
-the price of the Euro increased, coinciding with an increase on the
-interest imposed by the BCE. This increase in the interest of the
-credits is followed by the collapse of the housing bubble in 2007,
-where the price of the Euro kept increasing, altough the interest was
-maintained by the BCE until 2009 where the BCE started to lower it.
-The increase in the Euro price is probably due to strategies of the
-Federal Reserve to lower the price of the USD. Finally in 2015, the
-BCE lowered the interests of credits approaching the $0.0\%$, and
-that's reflected with a decrease in the price of the Euro with respect
-to USD.
+As shown in \autoref{fig:euro-price-in-usd-over-time} the value of
+\textit{Euro} has been above that of the \textit{USD} from its
+creation, been the period of 2000 through 2003 its closer price to
+each other. From 2003 to 2007 the price of the \textit{Euro}
+increased, coinciding with an increase on the interest imposed by the
+\textit{ECB}. This increase in the interest of the credits is followed
+by the collapse of the housing bubble in 2007, where the price of the
+\textit{Euro} kept increasing, altough the interest was maintained by
+the \textit{ECB} until 2009 where the \textit{ECB} started to lower
+it. The increase in the \textit{Euro} price is probably due to
+strategies of the \textit{Federal Reserve} to lower the price of the
+\textit{USD}. Finally in 2015, the \textit{ECB} lowered the interests
+of credits approaching the $0.0\%$, and that's reflected with a
+decrease in the price of the \textit{Euro} with respect to
+\textit{USD}.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -329,13 +334,13 @@ to USD.
 
 
 
-The USD value of Bitcoin, as calculated by the daily average market
-price across major exchanges. This variable is related to many others,
-starting with the number of transactions, that can explain the
-fluctuations in the Bitcoin price and different events. In March 9,
-2011, the Bitcoin reaches parity with USD which is shown in a timid
-growth in market price followed by a decrease (see
-\autoref{fig:market-price-over-time}).
+The \textit{USD} value of \textit{Bitcoin}, as calculated by the daily
+average market price across major exchanges. This variable is related
+to many others, starting with the number of transactions, that can
+explain the fluctuations in the \textit{Bitcoin} price and different
+events. In March 9, 2011, the \textit{Bitcoin} reaches parity with
+\textit{USD} which is shown in a timid growth in market price followed
+by a decrease (see \autoref{fig:market-price-over-time}).
 
 \begin{figure}[bth]
   \myfloatalign
@@ -346,27 +351,29 @@ growth in market price followed by a decrease (see
 \end{figure}
 
 After that there isn't a big growth until 2013, where several things
-happen, Mega, the cloud storage service, starts accepting Bitcoins,
-Internet Archive starts accepting Bitcoins, a new food service
-\href{PizzaForCoins.com}{PizzaForCoins.com} accepts Bitcoins as a
-payment for food, CoinDesk is launched by Spotify investor and
-Coinbase receives 5 million USD in funding. This, and several other
-events increase the market price of Bitcoin.
+happen, Mega, the cloud storage service, starts accepting
+\textit{Bitcoin}s, Internet Archive starts accepting
+\textit{Bitcoin}s, a new food service
+\href{PizzaForCoins.com}{PizzaForCoins.com} accepts \textit{Bitcoin}s
+as a payment for food, CoinDesk is launched by Spotify investor and
+Coinbase receives 5 million \textit{USD} in funding. This, and several
+other events increase the market price of \textit{Bitcoin}.
 
-After that there is a decrease in market price of Bitcoin, maybe
-because MtGox, the largest exchange operator at the time, was seized
-by The United States Department of Homeland Security.
+After that there is a decrease in market price of \textit{Bitcoin},
+maybe because MtGox, the largest exchange operator at the time, was
+seized by The United States Department of Homeland Security.
 
 In the second half of 2013, various events happen that can be the
-cause of the raise of Bitcoin market price, first, in August 6th,
-Bitcoin is ruled currency by a Texas judge, then in August 20th,
-Bitcoin is ruled as private money in Germany, then in August 28th,
-RoboCoin, a Bitcoin ATM manufacturer, starts accepting orders. This
-can be the cause of the huge peek at the end of 2013 and start of
-2014, where it reaches its highest value (see
-\autoref{tab:market-price}). There are no clear events in the Bitcoin
-history that explain the period after 2014, which leads us to think
-that the price has been fluctuating due to trading strategies.
+cause of the raise of \textit{Bitcoin} market price, first, in August
+6th, \textit{Bitcoin} is ruled currency by a Texas judge, then in
+August 20th, \textit{Bitcoin} is ruled as private money in Germany,
+then in August 28th, RoboCoin, a \textit{Bitcoin} ATM manufacturer,
+starts accepting orders. This can be the cause of the huge peek at the
+end of 2013 and start of 2014, where it reaches its highest value (see
+\autoref{tab:market-price}). There are no clear events in the
+\textit{Bitcoin} history that explain the period after 2014, which
+leads us to think that the price has been fluctuating due to trading
+strategies.
 
 \begin{table}[bth]
   \myfloatalign
@@ -389,11 +396,11 @@ that the price has been fluctuating due to trading strategies.
   \label{tab:market-price}
 \end{table}
 
-Is important to note how volatile is the Bitcoin average price,
-ranging from nearly $0$ USD to $1151$ USD in just a year (see
-\autoref{tab:market-price}), and now, in 2016 fluctuating in a range
-bigger than $10$ USD on average. These fluctuations, if predicted, can
-be very profitable for the trader.
+Is important to note how volatile is the \textit{Bitcoin} average
+price, ranging from nearly $0$ \textit{USD} to $1151$ \textit{USD} in
+just a year (see \autoref{tab:market-price}), and now, in 2016
+fluctuating in a range bigger than $10$ \textit{USD} on average. These
+fluctuations, if predicted, can be very profitable for the trader.
 
 %----------------------------------------------------------------------
 
@@ -404,13 +411,13 @@ The median time for a transaction to be accepted into a mined block
 and added to the public ledger (note: only includes transactions with
 miner fees). Until the end of 2011, the confirmation time is
 negligible. There is an important event that can be related to the
-growth of the median confirmation time, and that is the largest
-Bitcoin fee in a single transaction, in December 12, 171 Bitcoins was
-paids as fee in block 157235.
+growth of the \textit{median confirmation time}, and that is the
+largest \textit{Bitcoin} fee in a single transaction, in December 12,
+171 \textit{Bitcoin}s was paids as fee in block 157235.
 
 If we look at \autoref{fig:median-confirmation-time-over-time} there
 is a peak in mid 2012, that can coincide with the increase in
-\textit{Output Volume} seen in \autoref{fig:output-volume-over-time}.
+\textit{output volume} seen in \autoref{fig:output-volume-over-time}.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -425,15 +432,16 @@ is a peak in mid 2012, that can coincide with the increase in
 \section{Number of Transactions}
 \label{sec:n-transactions-multiple}
 
-Here we analyze \textit{Number of transactions}, which is defined as
-``\textit{The number of daily confirmed Bitcoin transactions}''. The
-\textit{Number of transactions} represented in
-\autoref{fig:n-transactions-over-time} show a moderated
-growth compared to that of the market price. That may be because this
-variable doesn't depend on the inflation of the Bitcoin, and there
-aren't exagerated fluctuation. We see that even the price of the
-Bitcoin is not at its peak in 2016, the \textit{Number of
-  transactions} are at its higher point so far in the Bitcoin history.
+Here we analyze \textit{number of transactions}, which is defined as
+``\textit{The number of daily confirmed \textit{Bitcoin}
+transactions}''. The \textit{number of transactions} represented in
+\autoref{fig:n-transactions-over-time} show a moderated growth
+compared to that of the market price. That may be because this
+variable doesn't depend on the inflation of the \textit{Bitcoin}, and
+there aren't exaggerated fluctuation. We see that even the price of the
+\textit{Bitcoin} is not at its peak in 2016, the \textit{number of
+transactions} are at its higher point so far in the \textit{Bitcoin}
+history.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -450,9 +458,9 @@ Bitcoin is not at its peak in 2016, the \textit{Number of
 
 The total value of all transaction outputs per day (includes coins
 returned to the sender as change). There are a lot of events that
-appear in \textit{OutputVolume}(\autoref{fig:output-volume-over-time})
-that also appear in
-\textit{MarketPrice}(\autoref{fig:market-price-over-time}) showing
+appear in \textit{output
+volume}(\autoref{fig:output-volume-over-time}) that also appear in
+\textit{market price}(\autoref{fig:market-price-over-time}) showing
 that there is a strong relationship between the two measures.
 
 \begin{figure}[bth]
@@ -464,37 +472,37 @@ that there is a strong relationship between the two measures.
 \end{figure}
 
 It's easier to understand the meaning of output and change returned to
-the sender in the Bitcoin world with an explanation given by a user
-nicknamed \textit{DeathAndTaxes} in
+the sender in the \textit{Bitcoin} world with an explanation given by
+a user nicknamed \textit{DeathAndTaxes} in
 \href{https://bitcointalk.org/index.php?topic=99593.0}{Bitcointalk.org}:
 
-``\textit{Bitcoin can only create transactions by using as the input
-  an ENTIRE prior unspent output. The most important thing to realize
-  is that Bitcoin tx have inputs and outputs. The "value" of your
-  wallet is an abstraction. It is simply your client (software which
-  analyzes the wallet) taking a SUM of all the unspent outputs which
-  you have private keys for. The input of a tx is the output of a
-  PRIOR tx. You can only use unspent outputs in a new tx. Once they
-  are part of a tx they can never be used again ("spent").}
+``\textit{\textit{Bitcoin} can only create transactions by using as
+the input an ENTIRE prior unspent output. The most important thing to
+realize is that \textit{Bitcoin} tx have inputs and outputs. The
+"value" of your wallet is an abstraction. It is simply your client
+(software which analyzes the wallet) taking a SUM of all the unspent
+outputs which you have private keys for. The input of a tx is the
+output of a PRIOR tx. You can only use unspent outputs in a new tx.
+Once they are part of a tx they can never be used again ("spent").}
 
 \textit{Say you I send you 50 BTC (for simplicity lets assume this is
-  compromised of a single 50 BTC output). No matter how you spend that
-  the input for the tx will be 50 BTC.}
+compromised of a single 50 BTC output). No matter how you spend that
+the input for the tx will be 50 BTC.}
 
 \textit{Want to spend 20 BTC? Input: 50 BTC Output: 20 BTC + 30 BTC
-  "change" back to an address you control. Want to spend 1 BTC? Input:
-  50 BTC Output: 1 BTC + 49 BTC "change" back to an address you
-  control.}''
+"change" back to an address you control. Want to spend 1 BTC? Input:
+50 BTC Output: 1 BTC + 49 BTC "change" back to an address you
+control.}''
 
 Output can be due to three circumstances, large amout of transactions,
-transactions of big amount of Bitcoins, and big amount of change
-returned to sender. The peak of 2013 is clearly due to change received
-by sender as \textit{DeathAndTaxes} explains: ``\textit{In the early
-  days of Bitcoin there really was nothing to "spend" it on so most tx
-  tended to be accumulation. This resulted in most addresses having
-  very large unspent outputs. As people started "breaking" up those
-  unspent outputs in tx involving smaller amounts most of the volume
-  WAS change.}''
+transactions of big amount of \textit{Bitcoin}s, and big amount of
+change returned to sender. The peak of 2013 is clearly due to change
+received by sender as \textit{DeathAndTaxes} explains: ``\textit{In
+the early days of \textit{Bitcoin} there really was nothing to "spend"
+it on so most tx tended to be accumulation. This resulted in most
+addresses having very large unspent outputs. As people started
+"breaking" up those unspent outputs in tx involving smaller amounts
+most of the volume WAS change.}''
 
 %--------------------------------------------------------------------- 
 
@@ -506,18 +514,17 @@ From the
 \href{https://en.wikipedia.org/wiki/S\%26P_500_Index}{Wikipedia}:
 
 ``\textit{The Standard \& Poor's 500, often abbreviated as the S\&P
-  500, or just "the S\&P", is an American stock market index based on
-  the market capitalizations of 500 large companies having common
-  stock listed on the NYSE or NASDAQ. The S\&P 500 index components
-  and their weightings are determined by S\&P Dow Jones Indices. It
-  differs from other U.S. stock market indices, such as the Dow Jones
-  Industrial Average or the Nasdaq Composite index, because of its
-  diverse constituency and weighting methodology. It is one of the
-  most commonly followed equity indices, and many consider it one of
-  the best representations of the U.S. stock market, and a bellwether
-  for the U.S. economy. The National Bureau of Economic Research has
-  classified common stocks as a leading indicator of business
-  cycles.}''
+500, or just "the S\&P", is an American stock market index based on
+the market capitalizations of 500 large companies having common stock
+listed on the NYSE or NASDAQ. The S\&P 500 index components and their
+weightings are determined by S\&P Dow Jones Indices. It differs from
+other U.S. stock market indices, such as the Dow Jones Industrial
+Average or the Nasdaq Composite index, because of its diverse
+constituency and weighting methodology. It is one of the most commonly
+followed equity indices, and many consider it one of the best
+representations of the U.S. stock market, and a bellwether for the
+U.S. economy. The National Bureau of Economic Research has classified
+common stocks as a leading indicator of business cycles.}''
 
 We can see the description of certain events of
 \autoref{fig:standard-and-poors-500-over-time} also from
@@ -532,53 +539,51 @@ We can see the description of certain events of
   \label{fig:standard-and-poors-500-over-time}
 \end{figure}
 
-``\textit{In mid-2007, the subprime mortgage crisis spread to the wider
-  U.S. financial sector. The resulting situation became acute in
-  September 2008, ushering in a period of unusual market volatility,
-  encompassing record 100-point swings in both directions and reaching
-  the highest levels since 1929. On November 20, 2008, the index
-  closed at 752.44, its lowest since early 1997. A modest recovery the
-  following day still left the index down 45.5\% for the year. This
-  year-to-date loss was the greatest since 1931, when the broad market
-  declined more than 50\%. The index closed the year at 903.25, for a
-  loss of 38.5\%. The market continued to decline in early 2009,
-  surrounding the financial crisis of 2008. The index reached a nearly
-  13-year low, closing at 676.53, on March 9, 2009.}
+``\textit{In mid-2007, the subprime mortgage crisis spread to the
+wider U.S. financial sector. The resulting situation became acute in
+September 2008, ushering in a period of unusual market volatility,
+encompassing record 100-point swings in both directions and reaching
+the highest levels since 1929. On November 20, 2008, the index closed
+at 752.44, its lowest since early 1997. A modest recovery the
+following day still left the index down 45.5\% for the year. This
+year-to-date loss was the greatest since 1931, when the broad market
+declined more than 50\%. The index closed the year at 903.25, for a
+loss of 38.5\%. The market continued to decline in early 2009,
+surrounding the financial crisis of 2008. The index reached a nearly
+13-year low, closing at 676.53, on March 9, 2009.}
 
 \textit{On March 23, 2009, the S\&P 500 marked a 20\% gain when it hit
-  822.92. The Dow Jones Industrial Average soon followed. The close
-  for 2009 was 1,115.10, making it the second-best year of the decade.
-  On April 14, 2010 the index broke 1200 closing at 1210.65, but by
-  July 2, 2010 it had closed at 1022.58. On April 29, 2011, the index
-  closed at 1363.61, but it had a sharp drop in August and briefly
-  broke 1100 in October (with the VIX hitting 40). Gains continued
-  despite significant volatility amid electoral and fiscal
-  uncertainty, and the 2012 close of the S\&P 500 following QE3 was
-  its third-highest ever, at 1,426.22 points. Many people hated the
-  bull market. On March 28, 2013, it closed above the closing high
-  from 2007. On April 10, 2013, it also closed above the intraday high
-  from 2007.}
+822.92. The Dow Jones Industrial Average soon followed. The close for
+2009 was 1,115.10, making it the second-best year of the decade. On
+April 14, 2010 the index broke 1200 closing at 1210.65, but by July 2,
+2010 it had closed at 1022.58. On April 29, 2011, the index closed at
+1363.61, but it had a sharp drop in August and briefly broke 1100 in
+October (with the VIX hitting 40). Gains continued despite significant
+volatility amid electoral and fiscal uncertainty, and the 2012 close
+of the S\&P 500 following QE3 was its third-highest ever, at 1,426.22
+points. Many people hated the bull market. On March 28, 2013, it
+closed above the closing high from 2007. On April 10, 2013, it also
+closed above the intraday high from 2007.}
 
 \textit{On May 3, 2013—more than 13 years since its first close above
-  1,500—the S\&P 500 closed above 1,600 for the first time, at
-  1,614.42. This would be the first of three 100-point milestones in
-  2013: 1,600 on May 3, 2013; 1,700 on August 1, 2013; and 1,800 on
-  November 22, 2013. The S\&P 500 closed out 2013 at a record high,
-  finishing the December 31, 2013, trading day at 1,848.36. On May 23,
-  2014, the index for the first time closed above 1,900, at 1,900.53.
-  On August 26, 2014, the index closed above 2,000 for the very first
-  time, and on December 22 the S\&P 500 climbed to 2078, an all-time
-  high. The index closed on December 29 at 2,090.57 with a closing of
-  2,058.90 at the end of 2014. This was a gain of 85\% (in price
-  return, and 105\% in total return) for the five years 2010-2014. On
-  February 17, 2015, the index first closed above 2,100, closing at
-  2,100.34. On February 25, 2015 it reached 2,119.59 during mid-day,
-  and on the following day it closed at record high of 2,115.48. On
-  May 21, 2015, the index closed at 2,130.82, its high point for the
-  year. At the close of 2015, the index hit 2,043.94, down 0.73\% for
-  the year.}''
+1,500—the S\&P 500 closed above 1,600 for the first time, at 1,614.42.
+This would be the first of three 100-point milestones in 2013: 1,600
+on May 3, 2013; 1,700 on August 1, 2013; and 1,800 on November 22,
+2013. The S\&P 500 closed out 2013 at a record high, finishing the
+December 31, 2013, trading day at 1,848.36. On May 23, 2014, the index
+for the first time closed above 1,900, at 1,900.53. On August 26,
+2014, the index closed above 2,000 for the very first time, and on
+December 22 the S\&P 500 climbed to 2078, an all-time high. The index
+closed on December 29 at 2,090.57 with a closing of 2,058.90 at the
+end of 2014. This was a gain of 85\% (in price return, and 105\% in
+total return) for the five years 2010-2014. On February 17, 2015, the
+index first closed above 2,100, closing at 2,100.34. On February 25,
+2015 it reached 2,119.59 during mid-day, and on the following day it
+closed at record high of 2,115.48. On May 21, 2015, the index closed
+at 2,130.82, its high point for the year. At the close of 2015, the
+index hit 2,043.94, down 0.73\% for the year.}''
 
-Variable \textit{Close} has a linear increasing trend which can
+Variable \textit{close} has a linear increasing trend which can
 probably be explained because of the inflation, while the volume is a
 random walk, following no apparent trend or seasonality. To complete
 the information and better understand the graphics shown the reader
@@ -613,12 +618,13 @@ can analyze \autoref{tab:standard-and-poors-500}.
 
 The total number of bitcoins that have already been mined; in other
 words, the current supply of bitcoins on the network. First we have to
-know that, according to the \href{}{Wikipedia} ``The bitcoin protocol
-specifies that the reward for adding a block will be halved every
-210000 blocks (approximately every four years). Eventually, the reward
-will decrease to zero, and the limit of 21 million bitcoins will be
-reached circa 2140; the record keeping will then be rewarded by
-transaction fees solely.'' As shown in
+know that, according to the
+\href{https://en.wikipedia.org/wiki/Bitcoin}{Wikipedia} ``The bitcoin
+protocol specifies that the reward for adding a block will be halved
+every 210000 blocks (approximately every four years). Eventually, the
+reward will decrease to zero, and the limit of 21 million bitcoins
+will be reached circa 2140; the record keeping will then be rewarded
+by transaction fees solely.'' As shown in
 \autoref{fig:total-bitcoins-over-time} the growth of bitcoin amount
 will decrease every time the difficulty increases, with 21 million
 been the upper limit. This change in difficulty depend on the blocks
@@ -637,13 +643,14 @@ discovered by miners.
 \section{Trade Volume}
 \label{sec:trade-volume}
 
-The total USD value of trading volume on major Bitcoin exchanges.
+The total \textit{USD} value of trading volume on major
+\textit{Bitcoin} exchanges.
 
-By comparing
-\textit{TradeVolume}(\autoref{fig:trade-volume-over-time}) with other
-figures as \textit{MarketPrice}(\autoref{fig:market-price-over-time})
-it's clear that there is a big bound between trade volume and market
-price of Bitcoin. There are peaks in mid 2011, March of 2013, December
+By comparing \textit{trade
+volume}(\autoref{fig:trade-volume-over-time}) with other figures as
+\textit{market price}(\autoref{fig:market-price-over-time}) it's clear
+that there is a big bound between trade volume and market price of
+\textit{Bitcoin}. There are peaks in mid 2011, March of 2013, December
 of 2013, and the end of 2015 in both variable, showing the
 aforementioned relationship.
 
@@ -656,12 +663,12 @@ aforementioned relationship.
   \label{fig:trade-volume-over-time}
 \end{figure}
 
-Trade volume doesn't really exhibit the real activity in the Bitcoin
-network, because with this variable we don't see the transactions
-between users. There is also another pattern that can be seen in the
-trade volume, is that when the market price is maintained the trade
-volume decreases, meaning that people are interested in the Bitcoin
-exchange when its price fluctuates.
+Trade volume doesn't really exhibit the real activity in the
+\textit{Bitcoin} network, because with this variable we don't see the
+transactions between users. There is also another pattern that can be
+seen in the trade volume, is that when the market price is maintained
+the trade volume decreases, meaning that people are interested in the
+\textit{Bitcoin} exchange when its price fluctuates.
 
 %--------------------------------------------------------------------- 
 
@@ -669,24 +676,23 @@ exchange when its price fluctuates.
 \label{sec:transaction-fees}
 
 The total value of all transaction fees paid to miners (not including
-the coinbase value of block rewards) in BTC. This variable depends on
-the amount of transactions and the amount of fee paid per transaction.
-If we look at
-\textit{TransactionsFees}(\autoref{fig:transaction-fees-over-time}) we
-can see that even there is an increase in the number of transactions
-near the peaks, the height of those peaks is not comparable, in
-consequence we can assume that at least those peaks are not due
-entirely to the number of transactions made. We can see that there is
-some relationship with
-\textit{MarketPrice}(\autoref{fig:market-price-over-time}), reflecting
-how ``\textit{eager}'' is the user to have the transaction accepted.
-This relationship is not in the sense that the peaks appear
-simultaneously in the charts, but the peaks of
-\textit{TransactionFees} procede those of \textit{MarketPrice}. This
-can also be due to the low price of Bitcoin in those
-\textit{TransactionFees} peaks, because people think in USD mostly, so
-they fix the price of the fee in USD instead of BTC producing those
-rises.
+the coinbase value of block rewards) in \textit{BTC}. This variable
+depends on the amount of transactions and the amount of fee paid per
+transaction. If we look at \textit{transactions
+fees}(\autoref{fig:transaction-fees-over-time}) we can see that even
+there is an increase in the number of transactions near the peaks, the
+height of those peaks is not comparable, in consequence we can assume
+that at least those peaks are not due entirely to the number of
+transactions made. We can see that there is some relationship with
+\textit{market price}(\autoref{fig:market-price-over-time}),
+reflecting how ``\textit{eager}'' is the user to have the transaction
+accepted. This relationship is not in the sense that the peaks appear
+simultaneously in the charts, but the peaks of \textit{transaction
+fees} precede those of \textit{market price}. This can also be due to
+the low price of \textit{Bitcoin} in those \textit{transaction fees}
+peaks, because people think in \textit{USD} mostly, so they fix the
+price of the fee in \textit{USD} instead of \textit{BTC} producing
+those rises.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -702,12 +708,12 @@ rises.
 \label{sec:transaction-fees-usd}
 
 The total value of all transaction fees paid to miners (not including
-the coinbase value of block rewards) in USD.
-\textit{TransactionFeesUSD}
+the coinbase value of block rewards) in \textit{USD}.
+\textit{transaction fees usd}
 (\autoref{fig:transaction-fees-usd-over-time}) shows how the fees
-measured in USD are more stable in time than fees measured in BTC
-shown in
-\textit{TransactionFees}(\autoref{fig:transaction-fees-over-time}).
+measured in \textit{USD} are more stable in time than fees measured in
+BTC shown in \textit{transaction
+fees}(\autoref{fig:transaction-fees-over-time}).
 
 \begin{figure}[bth]
   \myfloatalign
@@ -718,18 +724,18 @@ shown in
 \end{figure}
 
 There highest fees prices have been paid in the last half of 2013 and
-start of 2014, falling together with the highest price of Bitcoin,
-this can be explained because the users would want their transactions
-to be processed before others. There is another peak, very localized
-because it's only one day where the transactions fees reach
-$157676.252$ USD (see \autoref{tab:transaction-fees-usd}), this can be
-because the transactions/trade volume ratio is at its highest point
-since 2011, which means that Bitcoin transaction volume is even higher
-than January of 2014 when the price of Bitcoin was approaching three
-times the current price, so we can assume that the Bitcoin transaction
-volume is due to number of transactions more than amount of Bitcoin
-per transaction.
-
+start of 2014, falling together with the highest price of
+\textit{Bitcoin}, this can be explained because the users would want
+their transactions to be processed before others. There is another
+peak, very localized because it's only one day where the transactions
+fees reach $157676.252$ \textit{USD} (see
+\autoref{tab:transaction-fees-usd}), this can be because the
+transactions/trade volume ratio is at its highest point since 2011,
+which means that \textit{Bitcoin} transaction volume is even higher
+than January of 2014 when the price of \textit{Bitcoin} was
+approaching three times the current price, so we can assume that the
+\textit{Bitcoin} transaction volume is due to number of transactions
+more than amount of \textit{Bitcoin} per transaction.
 
 \begin{table}[bth]
   \myfloatalign
@@ -757,10 +763,12 @@ per transaction.
 \section{Transactions/Trade Ratio}
 \label{sec:tx-trade-ratio}
 
-\textit{TxTradeRatio} (\autoref{fig:tx-trade-ratio-over-time})
-presents the relationship between BTC transaction volume and USD
-exchange volume. This is another chart that can gives us an idea of
-the transactions inside the Bitcoin network, excluding the trading.
+\textit{transactions trade ratio}
+(\autoref{fig:tx-trade-ratio-over-time}) presents the relationship
+between \textit{BTC} transaction volume and \textit{USD} exchange
+volume. This is another chart that can gives us an idea of the
+transactions inside the \textit{Bitcoin} network, excluding the
+trading.
 
 \begin{figure}[bth]
   \myfloatalign
@@ -770,16 +778,16 @@ the transactions inside the Bitcoin network, excluding the trading.
   \label{fig:tx-trade-ratio-over-time}
 \end{figure}
 
-
 High values of this variable can mean two different things. One is
-that the value of Bitcoin is very low, as in 2011, and the
+that the value of \textit{Bitcoin} is very low, as in 2011, and the
 transactions between users, no matter how high they are, measured in
-Bitcoin, are going to have low values measured in USD. The other
-explanation is that there are a lot of transactions inside the Bitcoin
-network compared with the USD echange volume, even if the Bitcoin
-price is high, which would probably mean that there is a high usage of
-Bitcoin as a currency between individuals, this may be the cause of
-the raise of this ratio since the end of 2015.
+\textit{Bitcoin}, are going to have low values measured in
+\textit{USD}. The other explanation is that there are a lot of
+transactions inside the \textit{Bitcoin} network compared with the
+\textit{USD} echange volume, even if the \textit{Bitcoin} price is
+high, which would probably mean that there is a high usage of
+\textit{Bitcoin} as a currency between individuals, this may be the
+cause of the raise of this ratio since the end of 2015.
 
 %--------------------------------------------------------------------- 
 
@@ -787,8 +795,8 @@ the raise of this ratio since the end of 2015.
 \label{sec:wikipedia-trend-for-bitcoin}
 
 The particular trend used in this case is the page views per day of
-the Bitcoin article in the English version of Wikipedia. The daily
-visits to this paige has been as high as $923659$ (see
+the \textit{Bitcoin} article in the English version of Wikipedia. The
+daily visits to this paige has been as high as $923659$ (see
 \autoref{tab:wikipedia-trend-for-bitcoin}), and a mean of
 $8168.301160$.
 
@@ -814,10 +822,10 @@ $8168.301160$.
 \end{table}
 
 For a better understanding of this variable we can rely on the
-ubiquitous \textit{MarketPrice} since Bitcoins allure is it's price
-and fluctuation with respect to more stable currencies like USD or
-EUR. There are a number of events that can produce the spike produced
-in second half of 2015 (see
+ubiquitous \textit{market price} since \textit{Bitcoin}s allure is
+it's price and fluctuation with respect to more stable currencies like
+\textit{USD} or \textit{EUR}. There are a number of events that can
+produce the spike produced in second half of 2015 (see
 \autoref{fig:wikipedia-trend-for-bitcoin-over-time}).
 
 \begin{figure}[bth]
@@ -829,28 +837,31 @@ in second half of 2015 (see
   \label{fig:wikipedia-trend-for-bitcoin-over-time}
 \end{figure}
 
-In January the \textit{New York Stock Exchange} invests $75M$ USD in
-Coinbase. In March the results of the UK Treasury's call for
-information on digital currency are announced. In May the 19th Ross
-Ulbricht, operator of the \textit{Silk Road} marketplace, is sentenced
-to life in prison. In June the 3rd, New York state releases the
-BitLicense, a set of customized rules meant to regulate Bitcoin and
-digital currency businesses that serve customers located in New York
-state. In July the 1st, two federal agents plead guilty to Silk Road
-theft during their active investigation of the marketplace. In August
-the 1st, Mark Karpeles, the CEO of the failed Bitcoin exchange Mt.
-Gox, was arrested in Japan on charges of fraud and embezzlement in
-relation to collapse of the exchange. Bitcoin Core developers Mike
-Hearn and Gavin Andresen released a separate version of the Bitcoin
-client software, called Bitcoin XT. The release illustrates an ongoing
-controversy in the Bitcoin development community: \textit{What limit
-  should be placed on the size of Bitcoin's blocks?}. In October the
-22nd, The European Court of Justice ruled that the exchange of Bitcoin
-and "virtual currencies" is not subject to value-added-tax (VAT) in
-the European Union. In October, the 31st, Bitcoin is featured on front
-page of The Economist. In November, the 3rd, Bitcoin sign is accepted
-into Unicode. This are all events that may have produced many visits
-to the Bitcoin Wikipedia page.
+In January the \textit{New York Stock Exchange} invests $75M$
+\textit{USD} in Coinbase. In March the results of the \textit{UK
+Treasury}'s call for information on digital currency are announced. In
+May the 19th Ross Ulbricht, operator of the \textit{Silk Road}
+marketplace, is sentenced to life in prison. In June the 3rd, New York
+state releases the BitLicense, a set of customized rules meant to
+regulate \textit{Bitcoin} and digital currency businesses that serve
+customers located in New York state. In July the 1st, two federal
+agents plead guilty to \textit{Silk Road} theft during their active
+investigation of the marketplace. In August the 1st, Mark Karpeles,
+the CEO of the failed \textit{Bitcoin} exchange Mt. Gox, was arrested
+in Japan on charges of fraud and embezzlement in relation to collapse
+of the exchange. \textit{Bitcoin} Core developers Mike Hearn and Gavin
+Andresen released a separate version of the \textit{Bitcoin} client
+software, called \textit{Bitcoin XT}. The release illustrates an
+ongoing controversy in the \textit{Bitcoin} development community:
+\textit{What limit should be placed on the size of \textit{Bitcoin}'s
+blocks?}. In October the 22nd, The \textit{European Court of Justice}
+ruled that the exchange of \textit{Bitcoin} and "virtual currencies"
+is not subject to \textit{value added tax (VAT)} in the
+\textit{European Union}. In October, the 31st, \textit{Bitcoin} is
+featured on front page of The Economist. In November, the 3rd,
+\textit{Bitcoin} sign is accepted into Unicode. This are all events
+that may have produced many visits to the \textit{Bitcoin} Wikipedia
+page.
 
 %--------------------------------------------------------------------- 
 
@@ -862,7 +873,8 @@ thesis is composed of two steps. One where we choose a set of
 variables with \textit{principal component analysis (PCA)}
 (\cite{pearson1901liii}) which is going to be our feature super-set
 for all the models. Later on, for selecting per-model subsets a
-\textit{Wrapper FSS (WFSS)} technique (\cite{kohavi1997wrappers}) is used.
+\textit{wrapper FSS (WFSS)} technique (\cite{kohavi1997wrappers}) is
+used.
 
 This approach to \textit{FSS} has been taken because wrapper methods
 select the best features (\cite{inza2004filter, kumari2011filter})
@@ -871,9 +883,9 @@ filter methods. We came out with the mixed approach of selecting a
 super-set with \textit{PCA}, which is computationally cheap and then
 we selected the final subsets with a wrapper method.
 
-\textit{WFSS} is a greedy algorithm, also called a forward
-feature selection. In each iteration a model is produced with a subset
-which initially is composed of one variable. In each iteration of the
+\textit{WFSS} is a greedy algorithm, also called a forward feature
+selection. In each iteration a model is produced with a subset which
+initially is composed of one variable. In each iteration of the
 algorithm the variable that minimizes the error produced is added to
 selected features. If in a iteration a variable selected doesn't
 minimize the error of the selected features the algorithm has
@@ -884,7 +896,7 @@ obtained by running a \textit{PCA} over 41 variables selecting the 18
 that added more information to the prediction.
 
 We can see in \autoref{fig:explained-variance} an ordered
-representation of the \textit{Explained variance} of the dimensions
+representation of the \textit{explained variance} of the dimensions
 obtained by performing \textit{PCA} over the original data-set. This
 information is what led us to choose 17 as the dimensions that has
 some meaningful information to predict the \textit{Bitcoin} price.
