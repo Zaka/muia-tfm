@@ -143,6 +143,7 @@ information is later increased in
 \autoref{sec:cost-per-transaction-percent}.
 
 \begin{table}[bth]
+  \caption{Statistical values for \textit{Cost per transaction}}
   \myfloatalign
   \tiny
   \begin{tabularx}{\textwidth}{XX} 
@@ -159,7 +160,6 @@ information is later increased in
     max    & $90.202095$ \\
     \bottomrule
   \end{tabularx}
-  \caption{Statistical values for \textit{Cost per transaction}}
   \label{tab:cost-per-transaction}
 \end{table}
 
@@ -188,6 +188,7 @@ the median percentage is $3.297002$ (see
 because the sole income for miners will be transaction fees.
 
 \begin{table}[bth]
+  \caption{Statistical values for \textit{Cost per transaction percent}}
   \myfloatalign
   \tiny
   \begin{tabularx}{\textwidth}{XX} 
@@ -204,7 +205,6 @@ because the sole income for miners will be transaction fees.
     max    & $3.65e+07$     \\
     \bottomrule
   \end{tabularx}
-  \caption{Statistical values for \textit{Cost per transaction percent}}
   \label{tab:cost-per-transaction-percent}
 \end{table}
 
@@ -376,6 +376,7 @@ leads us to think that the price has been fluctuating due to trading
 strategies.
 
 \begin{table}[bth]
+  \caption{Statistical values for \textit{Market price}}
   \myfloatalign
   \tiny
   \begin{tabularx}{\textwidth}{XX} 
@@ -392,7 +393,6 @@ strategies.
     max & $1151$ \\
     \bottomrule
   \end{tabularx}
-  \caption{Statistical values for \textit{Market price}}
   \label{tab:market-price}
 \end{table}
 
@@ -590,6 +590,7 @@ the information and better understand the graphics shown the reader
 can analyze \autoref{tab:standard-and-poors-500}.
 
 \begin{table}[bth]
+  \caption{Statistical values for \textit{Standard \& poors 500}}
   \myfloatalign
   \tiny
   \begin{tabularx}{\textwidth}{XXX} 
@@ -607,7 +608,6 @@ can analyze \autoref{tab:standard-and-poors-500}.
     max    & $2130.820068$ & $1.061781e+10$ \\
     \bottomrule
   \end{tabularx}
-  \caption{Statistical values for \textit{Standard \& poors 500}}
   \label{tab:standard-and-poors-500}
 \end{table}
 
@@ -709,7 +709,7 @@ those rises.
 
 The total value of all transaction fees paid to miners (not including
 the coinbase value of block rewards) in \textit{USD}.
-\textit{transaction fees usd}
+\textit{Transaction fees usd}
 (\autoref{fig:transaction-fees-usd-over-time}) shows how the fees
 measured in \textit{USD} are more stable in time than fees measured in
 BTC shown in \textit{transaction
@@ -738,6 +738,7 @@ approaching three times the current price, so we can assume that the
 more than amount of \textit{Bitcoin} per transaction.
 
 \begin{table}[bth]
+  \caption{Statistical values for \textit{Transaction fees USD}}
   \myfloatalign
   \tiny
   \begin{tabularx}{\textwidth}{XX} 
@@ -754,7 +755,6 @@ more than amount of \textit{Bitcoin} per transaction.
     max & $157676.252853$ \\
     \bottomrule
   \end{tabularx}
-  \caption{Statistical values for \textit{Transaction fees USD}}
   \label{tab:transaction-fees-usd}
 \end{table}
 
@@ -801,6 +801,7 @@ daily visits to this paige has been as high as $923659$ (see
 $8168.301160$.
 
 \begin{table}[bth]
+  \caption{Statistical values for \textit{Wikipedia trend for bitcoin}}
   \myfloatalign
   \tiny
   \begin{tabularx}{\textwidth}{XX} 
@@ -817,7 +818,6 @@ $8168.301160$.
     max & $923659$ \\
     \bottomrule
   \end{tabularx}
-  \caption{Statistical values for \textit{Wikipedia trend for bitcoin}}
   \label{tab:wikipedia-trend-for-bitcoin}
 \end{table}
 
@@ -877,11 +877,12 @@ for all the models. Later on, for selecting per-model subsets a
 used.
 
 This approach to \textit{FSS} has been taken because wrapper methods
-select the best features (\cite{inza2004filter, kumari2011filter})
-and, at the same time, they are more computationally expensive than
-filter methods. We came out with the mixed approach of selecting a
-super-set with \textit{PCA}, which is computationally cheap and then
-we selected the final subsets with a wrapper method.
+select an optimum (that can be local) set of features
+(\cite{inza2004filter, kumari2011filter}) and, at the same time, they
+are more computationally expensive than filter methods. We came out
+with the mixed approach of selecting a super-set with \textit{PCA},
+which is computationally cheap and then we selected the final subsets
+with a wrapper method.
 
 \textit{WFSS} is a greedy algorithm, also called a forward feature
 selection. In each iteration a model is produced with a subset which

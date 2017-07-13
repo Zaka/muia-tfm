@@ -21,7 +21,7 @@ This interdependent systems are known in econometric as
 \textit{endogenous}.
 
 \textit{VAR} is a generalization of \textit{Autoregressive Models
-  (AR)} applied to a vector of time series. Lets analyze the
+(AR)} applied to a vector of time series. Lets analyze the
 mathematical expression of a \textit{first order VAR}, or simply
 \textit{VAR(1)} for a bivariate system defined in \autoref{eq:var}.
 
@@ -66,7 +66,7 @@ directly fitting a \textit{VAR} to the data. On the other hand, if the
 series is non-stationary we take differences to transform the time
 series into a stationary one, and then, fit a \textit{VAR} to the
 differenciated data. In both cases the model parameters are estimated
-by \textit{OLS} per equation.
+by \textit{ordinary least squares (OLS)} per equation.
 
 The predictions are generated recursively. \textit{VAR} generates a
 prediction for each one of the variables involved in the model. Lets
@@ -127,20 +127,22 @@ x_3$ to $a_1^{(2)}$, which is in the second layer. In other words,
 $a_1^{(2)}$ has $x_0, x_1, x_2, x_3$ as inputs. This edges has
 associated weights, which multiply the output of the origin node and
 their purpose. In this particular network the weights are represented
-by $W_0, W_1, W_2$ and $W_3$. The term $a_1^{(2)}$ means the first
+by $w_0, w_1, w_2$ and $w_3$. The term $a_1^{(2)}$ means the first
 neuron in the second layer. In the next layer, called \textit{output
 layer}, we have the output neuron represented by $a_0^{(2)},$
 mentioned before. The nodes in this layer have an \textit{activation
 function} which can perform different computations with the inputs and
-a matrix of weights $W$. In this case is the \textit{sigmoid function}
-represented by $\sigma$ with the expression in
-\autoref{eq:sigmoid-function}. The expression $h_W(x)$ means that the
-output is a parameterized function of the inputs $x$ and that the
-parameters are the components of the \textit{weight} matrix $W$.
+a vector of weights $\mathbf{w}$. In this case is the \textit{sigmoid
+function} represented by $\sigma$ with the expression in
+\autoref{eq:sigmoid-function}. The expression $h(x) =
+\sigma(\mathbf{w^Tx})$ means that the input vector $\mathbf{x}$ is
+multiplied by the transpose of the vector of weights $\mathbf{w}$ and
+then the result of this operation is passed as input to the
+\textit{activation function} $\sigma$.
 
 \begin{figure}[bth]
   \myfloatalign
-  {\includegraphics[width=.6\linewidth]
+  {\includegraphics[width=.4\linewidth]
     {gfx/simple-ann-model}}
   \caption{One layer artificial neural network}
   \label{fig:one-layer-ann}
@@ -160,11 +162,11 @@ with the next, therefore each neuron of the hidden layer except for
 the bias term have all the neurons from the input layer as inputs.
 Last we have the output layer, which contains a single neuron in
 \textit{MLP} called $a_1^{(3)}$. This neuron gives the output of the
-neural network which is $h_{W}(x)$.
+neural network which is $h(x)$.
 
 \begin{figure}[bth]
   \myfloatalign
-  {\includegraphics[width=1\linewidth]
+  {\includegraphics[width=.6\linewidth]
     {gfx/two-layer-ann-model}}
   \caption{Two layer artificial neural network}
   \label{fig:two-layer-ann}
@@ -195,7 +197,7 @@ output in \autoref{eq:output-expression}.
 \begin{equation}
   \begin{aligned}
     \label{eq:output-expression}
-    h_{W}(x) & = a_1^{(3)} = \sigma(W_{10}^{(2)} a_0^{(2)}
+    h(x) & = a_1^{(3)} = \sigma(W_{10}^{(2)} a_0^{(2)}
     + W_{11}^{(2)} a_1^{(2)} + W_{12}^{(2)} a_2^{(2)}
     + W_{13}^{(2)} a_3^{(2)} \\
   \end{aligned}
@@ -220,10 +222,10 @@ function} in all our \textit{activation functions}.
 
 \section{Backpropagation Algorithm}
 
-\textit{BP} was developed in the context of control theory by
-\cite{kelley1960gradient} and later applied to \textit{artificial
-intelligence} by \cite{werbos1974beyond} and
-\cite{rumelhart1988learning}.
+\textit{Backpropagation (BP)} was developed in the context of control
+theory(\cite{kelley1960gradient}) and later applied to
+\textit{artificial intelligence}(\cite{werbos1974beyond} and
+\cite{rumelhart1988learning}).
 
 We are going to use gradient descent to optimize the \textit{error
 function} in terms of the \textit{weights} of the network. First we
@@ -355,7 +357,7 @@ connected handwriting recognition or speech recognition.
 
 \begin{figure}[bth]
   \centering
-  \includegraphics[width=.5\linewidth]{gfx/rnn.png}
+  \includegraphics[width=.4\linewidth]{gfx/rnn.png}
   \caption{Recurrent Neural Network}
   \label{fig:rnn-structure}
 \end{figure}
@@ -366,11 +368,12 @@ are described in \autoref{eq:rnn-equations}. This equation
 \begin{align}
   \begin{split}
     \label{eq:rnn-equations}
-    h^{(t)} & = \sigma(W_{ij} x^{(t)} + W_{jj} h^{(t-1)} + b_h ) \\
-    \hat{y}^{(t)} & = \sigma(W_{jk} h^{(t)} + b_y ) \\
-    W_{ij} & \gets \text{Matrix of weights between inputs and hidden
-      layer} \\
-    W_{jj} & \gets \text{Matrix of recurrent weights between hidden
+    h^{(t)} & = \sigma(\mathbf{w_{ij}} x^{(t)} + \mathbf{w_{jj}}
+    h^{(t-1)} + b_h ) \\ 
+    \hat{y}^{(t)} & = \sigma(\mathbf{w_{jk}} h^{(t)} + b_y ) \\
+    \mathbf{w_{ij}} & \gets \text{Vector of weights between inputs and
+      hidden layer} \\ 
+    \mathbf{w_{jj}} & \gets \text{Vector of recurrent weights between hidden
       layer and itself} \\
     b_h, b_y & \gets \text{Biases to learn offsets}
   \end{split}

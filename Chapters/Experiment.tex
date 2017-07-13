@@ -8,10 +8,11 @@ For the experimentation phase we have used an Intel Core i7-6700HQ CPU
 960M graphic card.
 
 The data-set previously described in \autoref{ch:stat-var-analysis}
-has been pre-processed. This process consisted in narrowing down the
-data to the same date range. Later the missing values where filled
-with interpolated values. Finally the data-set has been normalized
-using a standard score described in \autoref{eq:standard-score}.
+has been processed prior to using it to fit the models. This process
+consisted in narrowing down the data to the same date range. Later the
+missing values where filled with interpolated values. Finally the
+data-set has been normalized using a standard score described in
+\autoref{eq:standard-score}.
 
 \begin{equation}
   \begin{aligned}
@@ -30,11 +31,12 @@ represented in \autoref{eq:inverse-standard-score}.
 
 \begin{equation}
   \begin{aligned}
-    \label{eq:inverse-standard-score} \hat{X} & = \hat{X}_{norm}
-\times \sigma + \mu \\ \hat{X}_{norm} & \leftarrow \text{Normalized
-prediction} \\ \hat{X} & \leftarrow \text{De-normalized prediction} \\
-\mu & \leftarrow \text{Feature mean} \\ \sigma & \leftarrow
-\text{Feature standard deviation} \\
+    \label{eq:inverse-standard-score}
+    \hat{X} & = \hat{X}_{norm} \times \sigma + \mu \\
+    \hat{X}_{norm} & \leftarrow \text{Normalized prediction} \\
+    \hat{X} & \leftarrow \text{De-normalized prediction} \\
+    \mu & \leftarrow \text{Feature mean} \\
+    \sigma & \leftarrow\text{Feature standard deviation} \\
   \end{aligned}
 \end{equation}
 
@@ -43,8 +45,8 @@ network} prediction model, each one with it's own layout, which we are
 going to explain below.
 
 For the first experiment, the topology is the one shown in
-\autoref{fig:rnn-1-topology}. We used all 18 features selected by
-\textit{PCA} which are fed to the \textit{RNN} neuron. This 18
+\autoref{fig:rnn-1-topology}. We used all 17 features selected by
+\textit{PCA} which are fed to the \textit{RNN} neuron. This 17
 features are fed to the \textit{RNN} neuron, which also feds itself
 with it's output. The output of the \textit{RNN} neuron is the output
 of the first experiment's \textit{recurrent neural network}.
@@ -115,9 +117,9 @@ Regarding \textit{vector autoregression (VAR)} we had to choose two
 parameters to build the model, one is the number of variables or
 features and the other is the lags of each variable. For the features
 used, as mentioned in \autoref{ch:feature-selection}, we used a
-\textit{principal component analysis (PCA)} to select a subset of 18
+\textit{principal component analysis (PCA)} to select a subset of 17
 features out of the original 41. After that, using \textit{wrapper
-feature subset selection (WFSS)} we chose a subset of those 18
+feature subset selection (WFSS)} we chose a subset of those 17
 features previously selected. The size and the particular features
 selected in the last subset depends on the model used and the
 parameters chosen. Considering this, we will explain first how did we
@@ -125,7 +127,7 @@ choose the lag parameter and then how that choice affected
 \textit{WFSS} and the result of these process.
 
 To set the lag parameter we have built an automated system to choose
-from several information criteria available in the \textbf{vars}
+from several information criteria available in the \textit{vars}
 package. This information criteria are, \textit{Akaike's information
 criteria (AIC)} by \cite{akaike1974new}, \textit{bayesian information
 criteria (BIC)} by \cite{schwarz1978estimating}, \textit{final
@@ -179,7 +181,7 @@ order to control the learning rate, we have added an \textit{L2} or
 % If needed, the explanation behind regularization term is here:
 % http://neuralnetworksanddeeplearning.com/chap3.html#overfitting_and_regularization
 
-For the feature selection we also used the 18 features obtained with
+For the feature selection we also used the 17 features obtained with
 \textit{PCA} and \textit{WFSS} for getting an even smaller feature
 subset. In this case the subset was computed, as mentioned before, by
 using a number of \textit{epochs} equal to 10, in order to run the
@@ -201,7 +203,7 @@ network (RNN)} and \textit{vector autoregression (VAR)}, being
 \textit{RNN} configured in three different ways. The first
 \textit{RNN} configuration, previously introduced in
 \autoref{ch:experimental-setup}, called simply \textbf{RNN}, is a
-\textit{RNN} with the 18 features selected by \textit{PCA} as input
+\textit{RNN} with the 17 features selected by \textit{PCA} as input
 which feed one single \textit{recurrent neuron}. The second is an
 \textit{RNN} with 8 \textit{recurrent neurons} and uses only the two
 features selected by \textit{WFSS} as input, this configuration is
@@ -258,6 +260,7 @@ upper-right and lower-left chart of \autoref{fig:predictions}.
 \label{sec:accuracy-measures}
 
 \begin{table}[bth]
+  \caption{Forecast accuracy measures}
   \myfloatalign
   \tiny
   \begin{tabularx}{\textwidth}{Xcccc}
@@ -273,7 +276,6 @@ upper-right and lower-left chart of \autoref{fig:predictions}.
     \textit{Theil's U statistic} & $0.47$ & $0.08$ & $0.01$ & $0.03$ \\
     \bottomrule
   \end{tabularx}
-  \caption{Forecast accuracy measures}
   \label{tab:forecast-accuracy-measures}
 \end{table}
 
@@ -285,8 +287,8 @@ quantities in the same unit as the original variable and that is
 easily understandable.
 
 When the fluctuation of the \textit{BTC} price are low, \textit{RNN}
-is closer to \textit{MarketPrice} than \textit{VAR}, which can be seen
-in \autoref{fig:comparison-histogram-prediction-errors}.
+is closer to \textit{market price} than \textit{VAR}, which can be
+seen in \autoref{fig:comparison-histogram-prediction-errors}.
 
 \begin{equation}
   \begin{aligned}
@@ -469,6 +471,7 @@ The mathematical expression of the skewness measure is defined in
 \end{equation}
 
 \begin{table}[bth]
+  \caption{Normality test results}
   \myfloatalign
   \tiny
   \begin{tabularx}{\textwidth}{Xcc}
@@ -484,7 +487,6 @@ The mathematical expression of the skewness measure is defined in
     \textit{RNN 20 WFSS D’Agostino and Pearson omnibus test} & $2069.63$ & $0.0$ \\
     \bottomrule
   \end{tabularx}
-  \caption{Normality test results}
   \label{tab:normality-test-results}
 \end{table}
 
@@ -584,6 +586,7 @@ range than for the original range in
 \autoref{tab:forecast-accuracy-measures-2013-onwards}.
 
 \begin{table}[bth]
+  \caption{Forecast accuracy measures for 2013 onwards}
   \myfloatalign
   \tiny
   \begin{tabularx}{\textwidth}{Xcc}
@@ -597,7 +600,6 @@ range than for the original range in
     \textit{Theil's U statistic} & $0.01534$ & $0.03588$ \\
     \bottomrule
   \end{tabularx}
-  \caption{Forecast accuracy measures for 2013 onwards}
   \label{tab:forecast-accuracy-measures-2013-onwards}
 \end{table}
 
